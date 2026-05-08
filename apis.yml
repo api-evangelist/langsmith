@@ -1,0 +1,29 @@
+aid: langsmith
+url: https://raw.githubusercontent.com/api-evangelist/langsmith/refs/heads/main/apis.yml
+name: LangSmith
+x-type: company
+description: >-
+  LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The LangSmith API exposes tracing, dataset management, evaluation, and prompt-hub functionality for AI engineering teams.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - AI
+  - LLM
+  - Observability
+  - Evaluations
+  - LangChain
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://smith.langchain.com/
+  - type: Plans
+    url: plans/langsmith-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/langsmith-rate-limits.yml
+  - type: FinOps
+    url: finops/langsmith-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
