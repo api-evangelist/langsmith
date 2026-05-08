@@ -29,6 +29,8 @@ apis:
         type: Documentation
       - url: https://docs.langchain.com/langsmith/tracing
         type: API Reference
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Capture, ingest, and inspect traces for LLM, agent, and chain executions. Traces include nested runs (spans), latency, token counts, errors, inputs/outputs, and metadata. Tracing is the primary unit of pricing on LangSmith.
   - aid: langsmith:langsmith-datasets-api
@@ -43,6 +45,8 @@ apis:
     properties:
       - url: https://docs.langchain.com/langsmith/datasets
         type: Documentation
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Manage datasets and example records used as ground-truth or test inputs for evaluating LLM applications. Supports CRUD on datasets, examples, and dataset splits.
   - aid: langsmith:langsmith-evaluations-api
@@ -57,6 +61,8 @@ apis:
     properties:
       - url: https://docs.langchain.com/langsmith/evaluation
         type: Documentation
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Run offline and online evaluations against datasets, attach feedback and scores to runs, and compare experiments. Supports LLM-as-judge, code-based, and human evaluators.
   - aid: langsmith:langsmith-prompts-api
@@ -71,6 +77,8 @@ apis:
     properties:
       - url: https://docs.langchain.com/langsmith/prompt-hub
         type: Documentation
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Versioned prompt repository (Prompt Hub) for storing, retrieving, and collaborating on LLM prompts. Supports tagged versions, public/private prompts, and pull/push from SDKs.
   - aid: langsmith:langsmith-feedback-api
@@ -85,6 +93,8 @@ apis:
     properties:
       - url: https://docs.langchain.com/langsmith/feedback
         type: Documentation
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Attach human or programmatic feedback (scores, comments, correction labels) to runs and trace nodes for evaluation, monitoring, and reinforcement signal collection.
   - aid: langsmith:langsmith-annotation-queues-api
@@ -99,6 +109,8 @@ apis:
     properties:
       - url: https://docs.langchain.com/langsmith/annotation-queues
         type: Documentation
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Route runs to human reviewers via annotation queues. Reviewers grade outputs, attach corrections, and feed labels back into datasets for evaluation and fine-tuning.
   - aid: langsmith:langsmith-fleet-api
@@ -113,6 +125,8 @@ apis:
     properties:
       - url: https://docs.langchain.com/langsmith/deployments
         type: Documentation
+      - url: openapi/langsmith-openapi.json
+        type: OpenAPI
     description: >-
       Deploy and manage LangGraph agents in production via Fleet. Provides agent invocation, run management, scheduled jobs, and uptime billing for hosted agent deployments.
 common:
