@@ -15,22 +15,54 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for LangSmith. Replace with real limits once the pipeline
-  researches the provider's rate-limit documentation.
-notes: Initial scaffold — limits have not yet been reconciled against the provider's documentation.
+description: LangSmith does not publish per-endpoint request-rate limits in its public docs;
+  the primary throttling surface is monthly base-trace and Fleet-run quotas defined on each
+  plan. Enterprise contracts negotiate custom limits.
+notes: Tracing/ingest endpoints are designed for high-throughput trace upload; quota enforcement
+  is monthly rather than per-second. Update this artifact if LangChain publishes an explicit
+  rate-limit schedule.
 sources:
-- https://smith.langchain.com/
+- https://www.langchain.com/pricing
+- https://docs.langchain.com/langsmith
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Developer Monthly Base Traces
+  scope: account
+  metric: trace
+  limit: 5000
+  timeFrame: monthly
+  notes: Hard cap on free tier base traces; overage requires upgrading to a paid plan.
+- name: Plus Monthly Base Traces (Included)
+  scope: account
+  metric: trace
+  limit: 10000
+  timeFrame: monthly
+  notes: Included allowance; additional traces billed at $2.50 per 1,000.
+- name: Developer Fleet Runs
+  scope: account
+  metric: run
+  limit: 50
+  timeFrame: monthly
+  notes: Maximum monthly Fleet agent runs on the Developer plan.
+- name: Plus Fleet Runs (Included)
+  scope: account
+  metric: run
+  limit: 500
+  timeFrame: monthly
+  notes: Included Fleet agent run allowance on the Plus plan.
+- name: Enterprise Custom Limits
   scope: account
   metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  limit: contract
+  notes: Enterprise customers negotiate custom trace, run, and rate-limit ceilings.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After
+    header.
+- name: Trace Batching
+  description: SDKs batch trace events client-side before flushing to the ingest endpoint to
+    minimize per-request overhead.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

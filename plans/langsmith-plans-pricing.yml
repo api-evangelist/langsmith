@@ -5,7 +5,7 @@ provider: LangSmith
 providerId: langsmith
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - AI
 - LLM
@@ -13,30 +13,141 @@ tags:
 - Evaluations
 - LangChain
 - Plans
-description: Placeholder plans/pricing artifact for LangSmith. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled against the provider's documentation.
+description: LangSmith plans and pricing reconciled against the LangChain pricing page. LangSmith
+  is sold as part of the broader LangChain platform, and pricing is per-seat plus pay-as-you-go
+  trace and Fleet (agent deployment) consumption.
 sources:
-- https://smith.langchain.com/
+- https://www.langchain.com/pricing
+- https://docs.langchain.com/langsmith
 plans:
-- id: langsmith-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers (Free / Pro / Enterprise / pay-as-you-go,
-    etc.) once pricing is reconciled.
+- id: langsmith-developer
+  name: Developer
+  type: free
+  description: Free entry tier for individuals, hobby projects, and POCs. Pay-as-you-go for
+    overage traces.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Seats
+    name: seats
     type: flat
-    metric: varies
+    metric: seat
+    limit: 1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  - label: Base Traces Included
+    name: base_traces_included
+    type: usage
+    metric: trace
+    limit: 5000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  - label: Fleet Agent Runs
+    name: fleet_agent_runs
+    type: usage
+    metric: run
+    limit: 50
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  elements:
+  - name: Tracing
+  - name: Monitoring
+  - name: Evaluation
+  - name: Prompt Hub
+  - name: Playground
+  - name: Community Support
+- id: langsmith-plus
+  name: Plus
+  type: paid
+  description: Per-seat plan for production teams. Includes unlimited team seats, larger trace
+    allowance, and one development-sized agent deployment.
+  entries:
+  - label: Per-Seat Subscription
+    name: seats
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 39
+    userMultiplied: true
+  - label: Base Traces Included
+    name: base_traces_included
+    type: usage
+    metric: trace
+    limit: 10000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  - label: Base Traces Overage
+    name: base_traces_overage
+    type: usage
+    metric: trace
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1000
+    price: 2.50
+    userMultiplied: false
+  - label: Fleet Agent Runs Included
+    name: fleet_agent_runs
+    type: usage
+    metric: run
+    limit: 500
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  - label: Production Deployment Uptime
+    name: deployment_uptime
+    type: usage
+    metric: minute
     limit: -1
     timeFrame: usage
     geo: global
     unit: 1
-    price: see https://smith.langchain.com/
+    price: 0.0036
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Email Support
+  - name: Unlimited Team Seats
+  - name: 1 Free Development-Sized Deployment
+  - name: Up to 3 Workspaces
+  - name: Unlimited Fleet Agents
+- id: langsmith-enterprise
+  name: Enterprise
+  type: enterprise
+  description: Custom contract pricing for large organizations. Includes hybrid/self-hosted
+    deployment, SSO, dedicated support, and custom limits.
+  entries:
+  - label: Contract
+    name: contract
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: All Plus Features
+  - name: Hybrid and Self-Hosted Hosting
+  - name: Custom SSO and RBAC
+  - name: Dedicated Support and SLAs
+  - name: Team Training
+  - name: Custom Trace Limits and Fleet Packages
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

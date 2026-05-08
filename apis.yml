@@ -3,7 +3,7 @@ url: https://raw.githubusercontent.com/api-evangelist/langsmith/refs/heads/main/
 name: LangSmith
 x-type: company
 description: >-
-  LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The LangSmith API exposes tracing, dataset management, evaluation, and prompt-hub functionality for AI engineering teams.
+  LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The LangSmith API exposes tracing, dataset management, evaluation, prompt-hub, and Fleet agent functionality for AI engineering teams.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - AI
@@ -14,10 +14,114 @@ tags:
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: langsmith:langsmith-tracing-api
+    name: LangSmith Tracing API
+    tags:
+      - Tracing
+      - Observability
+      - LLM
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/tracing
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith
+        type: Documentation
+      - url: https://docs.langchain.com/langsmith/tracing
+        type: API Reference
+    description: >-
+      Capture, ingest, and inspect traces for LLM, agent, and chain executions. Traces include nested runs (spans), latency, token counts, errors, inputs/outputs, and metadata. Tracing is the primary unit of pricing on LangSmith.
+  - aid: langsmith:langsmith-datasets-api
+    name: LangSmith Datasets API
+    tags:
+      - Datasets
+      - Examples
+      - Evaluations
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/datasets
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith/datasets
+        type: Documentation
+    description: >-
+      Manage datasets and example records used as ground-truth or test inputs for evaluating LLM applications. Supports CRUD on datasets, examples, and dataset splits.
+  - aid: langsmith:langsmith-evaluations-api
+    name: LangSmith Evaluations API
+    tags:
+      - Evaluations
+      - Experiments
+      - LLM
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/evaluation
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith/evaluation
+        type: Documentation
+    description: >-
+      Run offline and online evaluations against datasets, attach feedback and scores to runs, and compare experiments. Supports LLM-as-judge, code-based, and human evaluators.
+  - aid: langsmith:langsmith-prompts-api
+    name: LangSmith Prompt Hub API
+    tags:
+      - Prompts
+      - Prompt Management
+      - LLM
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/prompt-hub
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith/prompt-hub
+        type: Documentation
+    description: >-
+      Versioned prompt repository (Prompt Hub) for storing, retrieving, and collaborating on LLM prompts. Supports tagged versions, public/private prompts, and pull/push from SDKs.
+  - aid: langsmith:langsmith-feedback-api
+    name: LangSmith Feedback API
+    tags:
+      - Feedback
+      - Scoring
+      - Evaluations
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/feedback
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith/feedback
+        type: Documentation
+    description: >-
+      Attach human or programmatic feedback (scores, comments, correction labels) to runs and trace nodes for evaluation, monitoring, and reinforcement signal collection.
+  - aid: langsmith:langsmith-annotation-queues-api
+    name: LangSmith Annotation Queues API
+    tags:
+      - Annotation
+      - Human Review
+      - Evaluations
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/annotation-queues
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith/annotation-queues
+        type: Documentation
+    description: >-
+      Route runs to human reviewers via annotation queues. Reviewers grade outputs, attach corrections, and feed labels back into datasets for evaluation and fine-tuning.
+  - aid: langsmith:langsmith-fleet-api
+    name: LangSmith Fleet (Agent Deployment) API
+    tags:
+      - Agents
+      - Deployment
+      - LangGraph
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.langchain.com/langsmith/deployments
+    baseURL: https://api.smith.langchain.com
+    properties:
+      - url: https://docs.langchain.com/langsmith/deployments
+        type: Documentation
+    description: >-
+      Deploy and manage LangGraph agents in production via Fleet. Provides agent invocation, run management, scheduled jobs, and uptime billing for hosted agent deployments.
 common:
   - type: Website
     url: https://smith.langchain.com/
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: Pricing
+    url: https://www.langchain.com/pricing
   - type: Plans
     url: plans/langsmith-plans-pricing.yml
   - type: RateLimits

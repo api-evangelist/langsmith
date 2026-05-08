@@ -5,7 +5,7 @@ provider: LangSmith
 providerId: langsmith
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - AI
 - LLM
@@ -15,11 +15,12 @@ tags:
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for LangSmith. Pipeline will replace with the provider's
-  real billing-model details once researched.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: FOCUS-aligned FinOps profile for LangSmith. LangSmith billing combines a per-seat
+  subscription with usage-based charges for base traces, Fleet agent runs, and production
+  deployment uptime minutes.
 sources:
-- https://smith.langchain.com/
+- https://www.langchain.com/pricing
+- https://docs.langchain.com/langsmith
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,10 +28,10 @@ alignedWith:
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-publisherName: LangSmith
+publisherName: LangChain
 serviceCategory: AI
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription + Usage
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
@@ -40,28 +41,54 @@ billingModel:
 focusColumns:
   ServiceName: LangSmith
   ServiceCategory: AI
-  ProviderName: LangSmith
-  PublisherName: LangSmith
-  InvoiceIssuerName: LangSmith
+  ProviderName: LangChain
+  PublisherName: LangChain
+  InvoiceIssuerName: LangChain
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation against the provider's published metering.
-  unit: varies
+- name: seats
+  description: Per-seat monthly subscription on the Plus plan ($39/seat/month).
+  unit: seat
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - workspace
+  - user
+- name: base_traces
+  description: Billable base traces ingested in a month. Plus includes 10k; overage is
+    $2.50 per 1,000.
+  unit: trace
+  aggregation: sum
+  dimensions:
+  - workspace
+  - project
+- name: fleet_runs
+  description: Fleet agent runs executed in a month. Each plan includes a baseline allowance.
+  unit: run
+  aggregation: sum
+  dimensions:
+  - workspace
+  - agent
+- name: deployment_uptime_minutes
+  description: Minutes of production deployment uptime billed at $0.0036/min on the Plus plan.
+  unit: minute
+  aggregation: sum
+  dimensions:
+  - workspace
+  - deployment
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Pull LangChain billing exports and tag traces by project to map spend to teams
+    and applications.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Use workspace, project, and trace metadata to allocate trace, Fleet-run, and
+    deployment costs to consuming services.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Sample or filter low-value traces, right-size Fleet agent concurrency, and
+    pause unused production deployments to reduce uptime minutes.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign each LangSmith workspace to a budget owner and review monthly trace
+    and run consumption.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
