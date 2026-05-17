@@ -1,7 +1,7 @@
 aid: langsmith
 url: https://raw.githubusercontent.com/api-evangelist/langsmith/refs/heads/main/apis.yml
 name: LangSmith
-x-type: company
+kind: company
 description: >-
   LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The LangSmith API exposes tracing, dataset management, evaluation, prompt-hub, and Fleet agent functionality for AI engineering teams.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -28,7 +28,7 @@ apis:
       - url: https://docs.langchain.com/langsmith
         type: Documentation
       - url: https://docs.langchain.com/langsmith/tracing
-        type: API Reference
+        type: APIReference
       - url: openapi/langsmith-openapi.json
         type: OpenAPI
     description: >-
