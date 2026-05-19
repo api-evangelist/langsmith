@@ -1,0 +1,224 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: LangSmith — gateway-policies
+  description: 'LangSmith — gateway-policies. 5 operations. Lead operation: List gateway policies. Self-contained Naftiko
+    capability covering one Langsmith business surface.'
+  tags:
+  - Langsmith
+  - gateway-policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LANGSMITH_API_KEY: LANGSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: langsmith-gateway-policies
+    baseUri: ''
+    description: LangSmith — gateway-policies business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-platform-gateway-policies
+      path: /v1/platform/gateway-policies
+      operations:
+      - name: get
+        method: GET
+        description: List gateway policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post
+        method: POST
+        description: Create a gateway policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-platform-gateway-policies-id
+      path: /v1/platform/gateway-policies/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Get a gateway policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Policy ID
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete a gateway policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Policy ID
+          required: true
+      - name: patch
+        method: PATCH
+        description: Update a gateway policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Policy ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.LANGSMITH_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: langsmith-gateway-policies-rest
+    port: 8080
+    description: REST adapter for LangSmith — gateway-policies. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/platform/gateway-policies
+      name: v1-platform-gateway-policies
+      description: REST surface for v1-platform-gateway-policies.
+      operations:
+      - method: GET
+        name: get
+        description: List gateway policies
+        call: langsmith-gateway-policies.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Create a gateway policy
+        call: langsmith-gateway-policies.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/platform/gateway-policies/{id}
+      name: v1-platform-gateway-policies-id
+      description: REST surface for v1-platform-gateway-policies-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get a gateway policy
+        call: langsmith-gateway-policies.get
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a gateway policy
+        call: langsmith-gateway-policies.delete
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Update a gateway policy
+        call: langsmith-gateway-policies.patch
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: langsmith-gateway-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for LangSmith — gateway-policies. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-gateway-policies
+      description: List gateway policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: langsmith-gateway-policies.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-gateway-policy
+      description: Create a gateway policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: langsmith-gateway-policies.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-gateway-policy
+      description: Get a gateway policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: langsmith-gateway-policies.get
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-gateway-policy
+      description: Delete a gateway policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: langsmith-gateway-policies.delete
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-gateway-policy
+      description: Update a gateway policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: langsmith-gateway-policies.patch
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,191 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: LangSmith — directories
+  description: 'LangSmith — directories. 3 operations. Lead operation: Get directory contents. Self-contained Naftiko capability
+    covering one Langsmith business surface.'
+  tags:
+  - Langsmith
+  - directories
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LANGSMITH_API_KEY: LANGSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: langsmith-directories
+    baseUri: ''
+    description: LangSmith — directories business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-platform-hub-repos-owner-repo-directories
+      path: /v1/platform/hub/repos/{owner}/{repo}/directories
+      operations:
+      - name: get
+        method: GET
+        description: Get directory contents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Repository owner handle or '-' for current tenant
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Repository handle
+          required: true
+        - name: commit
+          in: query
+          type: string
+          description: Commit hash/tag to resolve (defaults to latest)
+      - name: delete
+        method: DELETE
+        description: Delete directory repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Repository owner handle or '-' for current tenant
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Repository handle
+          required: true
+    - name: v1-platform-hub-repos-owner-repo-directories-commits
+      path: /v1/platform/hub/repos/{owner}/{repo}/directories/commits
+      operations:
+      - name: post
+        method: POST
+        description: Create directory commit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Repository owner handle or '-' for current tenant
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Repository handle
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.LANGSMITH_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: langsmith-directories-rest
+    port: 8080
+    description: REST adapter for LangSmith — directories. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/platform/hub/repos/{owner}/{repo}/directories
+      name: v1-platform-hub-repos-owner-repo-directories
+      description: REST surface for v1-platform-hub-repos-owner-repo-directories.
+      operations:
+      - method: GET
+        name: get
+        description: Get directory contents
+        call: langsmith-directories.get
+        with:
+          owner: rest.owner
+          repo: rest.repo
+          commit: rest.commit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete directory repository
+        call: langsmith-directories.delete
+        with:
+          owner: rest.owner
+          repo: rest.repo
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/platform/hub/repos/{owner}/{repo}/directories/commits
+      name: v1-platform-hub-repos-owner-repo-directories-commits
+      description: REST surface for v1-platform-hub-repos-owner-repo-directories-commits.
+      operations:
+      - method: POST
+        name: post
+        description: Create directory commit
+        call: langsmith-directories.post
+        with:
+          owner: rest.owner
+          repo: rest.repo
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: langsmith-directories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for LangSmith — directories. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-directory-contents
+      description: Get directory contents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: langsmith-directories.get
+      with:
+        owner: tools.owner
+        repo: tools.repo
+        commit: tools.commit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-directory-repository
+      description: Delete directory repository
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: langsmith-directories.delete
+      with:
+        owner: tools.owner
+        repo: tools.repo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-directory-commit
+      description: Create directory commit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: langsmith-directories.post
+      with:
+        owner: tools.owner
+        repo: tools.repo
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

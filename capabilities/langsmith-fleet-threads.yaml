@@ -1,0 +1,228 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: LangSmith — fleet threads
+  description: 'LangSmith — fleet threads. 5 operations. Lead operation: Create thread. Self-contained Naftiko capability
+    covering one Langsmith business surface.'
+  tags:
+  - Langsmith
+  - fleet threads
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LANGSMITH_API_KEY: LANGSMITH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: langsmith-fleet-threads
+    baseUri: ''
+    description: LangSmith — fleet threads business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-fleet-threads
+      path: /v1/fleet/threads
+      operations:
+      - name: post
+        method: POST
+        description: Create thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-fleet-threads-search
+      path: /v1/fleet/threads/search
+      operations:
+      - name: post
+        method: POST
+        description: Search threads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-fleet-threads-threadID
+      path: /v1/fleet/threads/{threadID}
+      operations:
+      - name: get
+        method: GET
+        description: Get thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: threadID
+          in: path
+          type: string
+          description: Thread id
+          required: true
+    - name: v1-fleet-threads-threadID-resolve-interrupt
+      path: /v1/fleet/threads/{threadID}/resolve-interrupt
+      operations:
+      - name: post
+        method: POST
+        description: Resolve an interrupted thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: threadID
+          in: path
+          type: string
+          description: Thread id
+          required: true
+    - name: v1-fleet-threads-threadID-runs
+      path: /v1/fleet/threads/{threadID}/runs
+      operations:
+      - name: post
+        method: POST
+        description: Create thread run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: threadID
+          in: path
+          type: string
+          description: Thread id
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.LANGSMITH_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: langsmith-fleet-threads-rest
+    port: 8080
+    description: REST adapter for LangSmith — fleet threads. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/fleet/threads
+      name: v1-fleet-threads
+      description: REST surface for v1-fleet-threads.
+      operations:
+      - method: POST
+        name: post
+        description: Create thread
+        call: langsmith-fleet-threads.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/fleet/threads/search
+      name: v1-fleet-threads-search
+      description: REST surface for v1-fleet-threads-search.
+      operations:
+      - method: POST
+        name: post
+        description: Search threads
+        call: langsmith-fleet-threads.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/fleet/threads/{threadid}
+      name: v1-fleet-threads-threadid
+      description: REST surface for v1-fleet-threads-threadID.
+      operations:
+      - method: GET
+        name: get
+        description: Get thread
+        call: langsmith-fleet-threads.get
+        with:
+          threadID: rest.threadID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/fleet/threads/{threadid}/resolve-interrupt
+      name: v1-fleet-threads-threadid-resolve-interrupt
+      description: REST surface for v1-fleet-threads-threadID-resolve-interrupt.
+      operations:
+      - method: POST
+        name: post
+        description: Resolve an interrupted thread
+        call: langsmith-fleet-threads.post
+        with:
+          threadID: rest.threadID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/fleet/threads/{threadid}/runs
+      name: v1-fleet-threads-threadid-runs
+      description: REST surface for v1-fleet-threads-threadID-runs.
+      operations:
+      - method: POST
+        name: post
+        description: Create thread run
+        call: langsmith-fleet-threads.post
+        with:
+          threadID: rest.threadID
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: langsmith-fleet-threads-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for LangSmith — fleet threads. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-thread
+      description: Create thread
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: langsmith-fleet-threads.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-threads
+      description: Search threads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: langsmith-fleet-threads.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-thread
+      description: Get thread
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: langsmith-fleet-threads.get
+      with:
+        threadID: tools.threadID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resolve-interrupted-thread
+      description: Resolve an interrupted thread
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: langsmith-fleet-threads.post
+      with:
+        threadID: tools.threadID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-thread-run
+      description: Create thread run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: langsmith-fleet-threads.post
+      with:
+        threadID: tools.threadID
+      outputParameters:
+      - type: object
+        mapping: $.
