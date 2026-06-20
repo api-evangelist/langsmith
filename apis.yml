@@ -6,7 +6,7 @@ description: >-
   LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The
   LangSmith API exposes tracing, dataset management, evaluation, prompt-hub, and Fleet agent functionality for AI
   engineering teams.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AI
   - LLM
@@ -23,7 +23,7 @@ apis:
       - Tracing
       - Observability
       - LLM
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/tracing
     baseURL: https://api.smith.langchain.com
     properties:
@@ -42,7 +42,7 @@ apis:
       - Datasets
       - Examples
       - Evaluations
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/datasets
     baseURL: https://api.smith.langchain.com
     properties:
@@ -59,7 +59,7 @@ apis:
       - Evaluations
       - Experiments
       - LLM
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/evaluation
     baseURL: https://api.smith.langchain.com
     properties:
@@ -76,7 +76,7 @@ apis:
       - Prompts
       - Prompt Management
       - LLM
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/prompt-hub
     baseURL: https://api.smith.langchain.com
     properties:
@@ -93,7 +93,7 @@ apis:
       - Feedback
       - Scoring
       - Evaluations
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/feedback
     baseURL: https://api.smith.langchain.com
     properties:
@@ -110,7 +110,7 @@ apis:
       - Annotation
       - Human Review
       - Evaluations
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/annotation-queues
     baseURL: https://api.smith.langchain.com
     properties:
@@ -127,7 +127,7 @@ apis:
       - Agents
       - Deployment
       - LangGraph
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.langchain.com/langsmith/deployments
     baseURL: https://api.smith.langchain.com
     properties:
