@@ -139,6 +139,10 @@ apis:
       Deploy and manage LangGraph agents in production via Fleet. Provides agent invocation, run management, scheduled
       jobs, and uptime billing for hosted agent deployments.
 common:
+  - type: DomainSecurity
+    url: security/langsmith-domain-security.yml
+  - type: Authentication
+    url: authentication/langsmith-authentication.yml
   - type: Website
     url: https://smith.langchain.com/
   - type: Documentation
@@ -151,6 +155,8 @@ common:
     url: rate-limits/langsmith-rate-limits.yml
   - type: FinOps
     url: finops/langsmith-finops.yml
+  - type: Blog
+    url: https://www.langchain.com/blog/rss.xml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
