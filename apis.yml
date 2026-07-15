@@ -139,6 +139,8 @@ apis:
       Deploy and manage LangGraph agents in production via Fleet. Provides agent invocation, run management, scheduled
       jobs, and uptime billing for hosted agent deployments.
 common:
+  - type: AgenticAccess
+    url: agentic-access/langsmith-agentic-access.yml
   - type: DomainSecurity
     url: security/langsmith-domain-security.yml
   - type: Authentication
