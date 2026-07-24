@@ -1,0 +1,438 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies agents API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: agents
+paths:
+  /v1/fleet/agents:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns the agents accessible to the authenticated user.
+      tags:
+      - agents
+      summary: List agents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ListAgentsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+      parameters: []
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Creates an agent with optional initial file tree. Validation runs
+
+        before any write; the call is atomic. Default response omits the
+
+        full file tree — pass ?include=files to echo it back.'
+      tags:
+      - agents
+      summary: Create an agent
+      parameters:
+      - description: 'Comma-separated includes. Supported: files'
+        name: include
+        in: query
+        schema:
+          type: string
+          title: Include
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.CreateAgentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/agents.CreateAgentRequest'
+  /v1/fleet/agents/{agentID}:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns the specified agent.
+      tags:
+      - agents
+      summary: Get an agent
+      parameters:
+      - description: Agent ID
+        name: agentID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.Agent'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+    patch:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Updates the specified agent. All request fields are optional;
+
+        omitted fields are left unchanged. When a top-level field is
+
+        provided, it replaces the existing value in full. Entries under
+
+        `files` are created or replaced by path; paths listed in
+
+        `deleted_paths` are removed. The call is atomic: if any entry
+
+        fails validation, no changes are applied. The file tree is
+
+        omitted from the response by default; pass ?include=files to
+
+        include it.'
+      tags:
+      - agents
+      summary: Update an agent
+      parameters:
+      - description: Agent ID
+        name: agentID
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: 'Comma-separated includes. Supported: files'
+        name: include
+        in: query
+        schema:
+          type: string
+          title: Include
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.UpdateAgentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/agents.ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/agents.UpdateAgentRequest'
+components:
+  schemas:
+    agents.AgentConfigurable:
+      type: object
+      properties:
+        backend_type:
+          type: string
+        llm_model_config:
+          type: object
+          additionalProperties: {}
+        sandbox_proxy_profile_ids:
+          type: array
+          items:
+            type: string
+        triggers_paused:
+          type: boolean
+        user_email:
+          type: string
+        user_name:
+          type: string
+        user_timezone:
+          type: string
+    agents.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+    agents.AgentMetadata:
+      type: object
+      properties:
+        agent_type:
+          type: string
+        agent_version:
+          type: string
+        icon:
+          type: string
+        icon_color:
+          type: string
+        shared_read_users:
+          type: array
+          items:
+            type: string
+        shared_run_users:
+          type: array
+          items:
+            type: string
+        shared_update_users:
+          type: array
+          items:
+            type: string
+        tenant_access_level:
+          type: string
+        visibility_scope:
+          type: string
+    agents.CreateAgentRequest:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        graph_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+    agents.UpdateAgentResponse:
+      type: object
+      properties:
+        assistant_id:
+          type: string
+        commit_hash:
+          type: string
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        created_at:
+          type: string
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        graph_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+        owner_id:
+          type: string
+        updated_at:
+          type: string
+    agents.Agent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+    agents.ListAgentsResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/agents.Agent'
+    agents.UpdateAgentRequest:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        deleted_paths:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+    agents.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+    agents.CreateAgentResponse:
+      type: object
+      properties:
+        assistant_id:
+          type: string
+        commit_hash:
+          type: string
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        created_at:
+          type: string
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        graph_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+        owner_id:
+          type: string
+        updated_at:
+          type: string
+    agents.AgentConfig:
+      type: object
+      properties:
+        configurable:
+          $ref: '#/components/schemas/agents.AgentConfigurable'
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id

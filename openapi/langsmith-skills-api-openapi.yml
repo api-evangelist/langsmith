@@ -1,0 +1,380 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies skills API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: skills
+paths:
+  /v1/fleet/skills:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns the skills in the caller's workspace, paginated.
+      tags:
+      - skills
+      summary: List skills
+      parameters:
+      - description: Items per page (default 20, max 100)
+        name: page_size
+        in: query
+        schema:
+          type: integer
+          title: Page Size
+      - description: Opaque pagination cursor
+        name: cursor
+        in: query
+        schema:
+          type: string
+          title: Cursor
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ListSkillsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Creates a workspace skill with the supplied file tree. Atomic:
+
+        if the file commit fails, no repo is created.'
+      tags:
+      - skills
+      summary: Create a skill
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.Skill'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/skills.CreateSkillRequest'
+  /v1/fleet/skills/{skillID}:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns the specified skill, including its full file tree.
+      tags:
+      - skills
+      summary: Get a skill
+      parameters:
+      - description: Skill ID
+        name: skillID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.Skill'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+    put:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Replaces the skill''s file tree in full. Any file present in the
+
+        current skill but absent from the request body is deleted. The
+
+        call is atomic; on validation failure no changes are applied.'
+      tags:
+      - skills
+      summary: Replace a skill
+      parameters:
+      - description: Skill ID
+        name: skillID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.Skill'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/skills.ReplaceSkillRequest'
+    delete:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Deletes the skill and all of its files. Idempotent: deleting an
+
+        already-deleted skill returns 204.'
+      tags:
+      - skills
+      summary: Delete a skill
+      parameters:
+      - description: Skill ID
+        name: skillID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/skills.ErrorResponse'
+components:
+  schemas:
+    skills.ListSkillsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills.Skill'
+        next_cursor:
+          type: string
+    skills.ReplaceSkillRequest:
+      type: object
+      properties:
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/skills.FileEntry'
+        name:
+          type: string
+    skills.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+        type:
+          type: string
+    skills.CreateSkillRequest:
+      type: object
+      properties:
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/skills.FileEntry'
+        name:
+          type: string
+    skills.Skill:
+      type: object
+      properties:
+        commit_hash:
+          type: string
+        commit_id:
+          type: string
+        created_at:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/skills.FileEntry'
+        id:
+          type: string
+        name:
+          type: string
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills.SkillOwner'
+        updated_at:
+          type: string
+        visibility:
+          type: string
+    skills.SkillOwner:
+      type: object
+      properties:
+        created_at:
+          type: string
+        email:
+          type: string
+        full_name:
+          type: string
+        identity_id:
+          type: string
+        ls_user_id:
+          type: string
+    skills.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id

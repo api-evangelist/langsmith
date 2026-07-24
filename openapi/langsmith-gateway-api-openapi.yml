@@ -1,0 +1,334 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies gateway API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: gateway
+paths:
+  /anthropic/v1/messages:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Forwards an Anthropic Messages API request to api.anthropic.com.
+
+        The gateway injects the workspace''s stored ANTHROPIC_API_KEY
+
+        unless the request carries a Claude-Code-style OAuth bearer
+
+        (`Authorization: Bearer sk-ant-oat01-...`), in which case the
+
+        bearer is forwarded as-is and the workspace key is not used.
+
+        Spend-cap and guard policies apply in both modes.
+
+
+        Streaming (`stream: true`) responses are forwarded as
+
+        `text/event-stream` chunks. Non-streaming responses are
+
+        forwarded as `application/json`.'
+      tags:
+      - gateway
+      summary: Proxy Anthropic Messages through the LLM Gateway
+      parameters: []
+      responses:
+        '200':
+          description: Anthropic Messages response, forwarded verbatim
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: request body invalid or workspace ANTHROPIC_API_KEY missing
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: missing or invalid LangSmith credentials
+          content:
+            application/json:
+              schema:
+                type: string
+        '402':
+          description: request blocked by a spend-cap policy
+          content:
+            application/json:
+              schema:
+                type: string
+        '403':
+          description: Anthropic OAuth passthrough disabled for this organization
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: gateway-side failure (secrets load, body prep)
+          content:
+            application/json:
+              schema:
+                type: string
+        '502':
+          description: upstream Anthropic transport failed
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+  /gemini/v1beta/models/{model}:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Forwards a Gemini v1beta `generateContent` or
+
+        `streamGenerateContent` request to
+
+        generativelanguage.googleapis.com. The gateway injects the
+
+        workspace''s stored GOOGLE_API_KEY as the `x-goog-api-key`
+
+        header; any client-supplied `?key=` query parameter is
+
+        stripped before forwarding so the workspace credential is the
+
+        only one in play. Spend-cap and guard policies apply.
+
+
+        `streamGenerateContent` responses are forwarded as
+
+        `text/event-stream`; `generateContent` responses are
+
+        forwarded as `application/json`.'
+      tags:
+      - gateway
+      summary: Proxy Google Gemini generateContent through the LLM Gateway
+      parameters:
+      - description: Model + action, e.g. `gemini-2.0-flash:generateContent` or `gemini-2.0-flash:streamGenerateContent`
+        name: model
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gemini response, forwarded verbatim
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: missing model in path or invalid request body
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: missing or invalid LangSmith credentials
+          content:
+            application/json:
+              schema:
+                type: string
+        '402':
+          description: request blocked by a spend-cap policy
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: gateway-side failure (secrets load, body prep)
+          content:
+            application/json:
+              schema:
+                type: string
+        '501':
+          description: Gemini action not supported by this gateway version
+          content:
+            application/json:
+              schema:
+                type: string
+        '502':
+          description: upstream Gemini transport failed
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+  /openai/v1/chat/completions:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Forwards an OpenAI Chat Completions request to api.openai.com.
+
+        The request body is the unmodified OpenAI request shape; the
+
+        gateway injects the workspace''s stored OPENAI_API_KEY, applies
+
+        spend-cap and guard policies, and emits a LangSmith trace span
+
+        for the call.
+
+
+        Streaming (`stream: true`) responses are forwarded as
+
+        `text/event-stream` chunks. Non-streaming responses are
+
+        forwarded as `application/json`.'
+      tags:
+      - gateway
+      summary: Proxy OpenAI Chat Completions through the LLM Gateway
+      parameters: []
+      responses:
+        '200':
+          description: OpenAI Chat Completions response, forwarded verbatim
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: request body invalid or missing required fields
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: missing or invalid LangSmith credentials
+          content:
+            application/json:
+              schema:
+                type: string
+        '402':
+          description: request blocked by a spend-cap policy
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: gateway-side failure (secrets load, body prep)
+          content:
+            application/json:
+              schema:
+                type: string
+        '502':
+          description: upstream OpenAI transport failed
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+  /openai/v1/responses:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Forwards an OpenAI Responses API request to api.openai.com.
+
+        Same auth, policy, and tracing semantics as Chat Completions —
+
+        the workspace''s OPENAI_API_KEY is injected by the gateway and
+
+        the request body is forwarded verbatim.'
+      tags:
+      - gateway
+      summary: Proxy OpenAI Responses through the LLM Gateway
+      parameters: []
+      responses:
+        '200':
+          description: OpenAI Responses response, forwarded verbatim
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: request body invalid or missing required fields
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: missing or invalid LangSmith credentials
+          content:
+            application/json:
+              schema:
+                type: string
+        '402':
+          description: request blocked by a spend-cap policy
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: gateway-side failure (secrets load, body prep)
+          content:
+            application/json:
+              schema:
+                type: string
+        '502':
+          description: upstream OpenAI transport failed
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id

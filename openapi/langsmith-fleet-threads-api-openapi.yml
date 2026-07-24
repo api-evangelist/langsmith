@@ -1,0 +1,329 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies fleet threads API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: fleet threads
+paths:
+  /v1/fleet/threads:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Creates a thread record for use with subsequent runs. Request and response bodies are JSON objects describing the thread.
+      tags:
+      - fleet threads
+      summary: Create thread
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+      parameters: []
+  /v1/fleet/threads/search:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Searches threads. Request and response bodies are proxied unchanged to the upstream agent runtime.
+      tags:
+      - fleet threads
+      summary: Search threads
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+      parameters: []
+  /v1/fleet/threads/{threadID}:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns thread metadata and status for the given thread id.
+      tags:
+      - fleet threads
+      summary: Get thread
+      parameters:
+      - description: Thread id
+        name: threadID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+  /v1/fleet/threads/{threadID}/resolve-interrupt:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Completes a human-interrupt pause on the thread without sending new input, allowing execution to continue or finish. On success the response has no body.
+      tags:
+      - fleet threads
+      summary: Resolve an interrupted thread
+      parameters:
+      - description: Thread id
+        name: threadID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+  /v1/fleet/threads/{threadID}/runs:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Starts a run on the thread. The request body must include `assistant_id` (the assistant to execute). Include run inputs and options in the body as supported by this API.
+      tags:
+      - fleet threads
+      summary: Create thread run
+      parameters:
+      - description: Thread id
+        name: threadID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/threads.ErrorResponse'
+components:
+  schemas:
+    threads.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id

@@ -1,0 +1,302 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies directories API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: directories
+paths:
+  /v1/platform/hub/repos/{owner}/{repo}/directories:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Resolves the flattened file tree for an agent or skill repository at a specific commit, tag, or latest.
+      tags:
+      - directories
+      summary: Get directory contents
+      parameters:
+      - description: Repository owner handle or '-' for current tenant
+        name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Repository handle
+        name: repo
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Commit hash/tag to resolve (defaults to latest)
+        name: commit
+        in: query
+        schema:
+          type: string
+          title: Commit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/directories.GetDirectoryResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+    delete:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Deletes an agent or skill repository and its owned child file repositories.
+      tags:
+      - directories
+      summary: Delete directory repository
+      parameters:
+      - description: Repository owner handle or '-' for current tenant
+        name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Repository handle
+        name: repo
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /v1/platform/hub/repos/{owner}/{repo}/directories/commits:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Creates a new directory commit for an agent or skill repository by applying file/link create, update, and delete operations.
+      tags:
+      - directories
+      summary: Create directory commit
+      parameters:
+      - description: Repository owner handle or '-' for current tenant
+        name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Repository handle
+        name: repo
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/directories.CommitResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/directories.CreateDirectoryCommitRequest'
+components:
+  schemas:
+    directories.CommitInfo:
+      type: object
+      properties:
+        commit_hash:
+          type: string
+        created_at:
+          type: string
+        id:
+          type: string
+    directories.CreateDirectoryCommitRequest:
+      type: object
+      properties:
+        files:
+          description: Files maps path to an Entry (object = create/update/link, null = delete/unlink).
+          type: object
+          additionalProperties: {}
+        parent_commit:
+          type: string
+    directories.CommitResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/directories.CommitInfo'
+    directories.GetDirectoryResponse:
+      type: object
+      properties:
+        commit_hash:
+          type: string
+        commit_id:
+          type: string
+        files:
+          type: object
+          additionalProperties: {}
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id

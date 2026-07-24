@@ -1,0 +1,608 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies fleet auth API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: fleet auth
+paths:
+  /v1/fleet/auth-agents/{agent_id}/connections:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Lists the connection tokens granted to a specific agent.
+      tags:
+      - fleet auth
+      summary: List an agent's connections
+      parameters:
+      - description: Agent ID
+        name: agent_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Associates an existing connection token with an agent so the agent can act with that token.
+      tags:
+      - fleet auth
+      summary: Grant a connection token to an agent
+      parameters:
+      - description: Agent ID
+        name: agent_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+  /v1/fleet/auth-agents/{agent_id}/connections/{connection_id}:
+    delete:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Removes a single connection from an agent. The underlying token is not revoked.
+      tags:
+      - fleet auth
+      summary: Revoke an agent's connection
+      parameters:
+      - description: Agent ID
+        name: agent_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Connection ID
+        name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+  /v1/fleet/auth-providers:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Lists the OAuth providers configured for your organization. Each provider defines how a third-party service (GitHub, Google, Slack, etc.) authorizes connections.
+      tags:
+      - fleet auth
+      summary: List OAuth providers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+      parameters: []
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Registers an OAuth provider configuration for your organization. End users can then start authorization sessions against this provider.
+      tags:
+      - fleet auth
+      summary: Register an OAuth provider
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+      parameters: []
+  /v1/fleet/auth-providers/discover:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Auto-discovers an OAuth provider's metadata from an MCP server URL and registers it for your organization in one step.
+      tags:
+      - fleet auth
+      summary: Discover and register an OAuth provider
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+      parameters: []
+  /v1/fleet/auth-providers/{provider_id}:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns a single OAuth provider by ID.
+      tags:
+      - fleet auth
+      summary: Get an OAuth provider
+      parameters:
+      - description: Provider ID
+        name: provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+    delete:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Deletes an OAuth provider. Tokens previously issued for this provider are revoked.
+      tags:
+      - fleet auth
+      summary: Delete an OAuth provider
+      parameters:
+      - description: Provider ID
+        name: provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+    patch:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Updates an OAuth provider's configuration. Sent fields replace the stored values; absent fields are left unchanged.
+      tags:
+      - fleet auth
+      summary: Update an OAuth provider
+      parameters:
+      - description: Provider ID
+        name: provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+  /v1/fleet/auth-sessions:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Initiates an OAuth flow for the caller. If the user is already authorized, returns a completed session that references an existing token. Otherwise, returns a pending session containing a verification URL the user must visit to complete authorization.
+      tags:
+      - fleet auth
+      summary: Start an authorization session
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+      parameters: []
+  /v1/fleet/auth-sessions/{session_id}:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Returns the current status of an in-flight authorization session. Poll until status is COMPLETED, or the session expires.
+      tags:
+      - fleet auth
+      summary: Get an authorization session
+      parameters:
+      - description: Authorization session ID
+        name: session_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+  /v1/fleet/auth-tokens:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Lists the active OAuth tokens belonging to the caller. Optionally filter by provider or agent.
+      tags:
+      - fleet auth
+      summary: List your connection tokens
+      parameters:
+      - description: Filter by provider ID
+        name: provider_id
+        in: query
+        schema:
+          type: string
+          title: Provider Id
+      - description: Filter by agent ID
+        name: agent_id
+        in: query
+        schema:
+          type: string
+          title: Agent Id
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+  /v1/fleet/auth-tokens/revoke:
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Revokes the caller's connection tokens matching the body filter. Requires at least provider_id; rejects empty filters to prevent accidental mass revocation.
+      tags:
+      - fleet auth
+      summary: Revoke connection tokens by filter
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+      parameters: []
+  /v1/fleet/auth-tokens/{token_id}:
+    delete:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Revokes a single connection token by ID. The user is disconnected from the corresponding service.
+      tags:
+      - fleet auth
+      summary: Revoke a connection token
+      parameters:
+      - description: Token ID
+        name: token_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+    patch:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: Updates a token's metadata such as label or default flag.
+      tags:
+      - fleet auth
+      summary: Update a connection token
+      parameters:
+      - description: Token ID
+        name: token_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.errorResponse'
+components:
+  schemas:
+    auth.errorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id

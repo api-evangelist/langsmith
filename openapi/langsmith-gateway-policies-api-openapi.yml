@@ -1,0 +1,447 @@
+openapi: 3.1.0
+info:
+  title: LangSmith access_policies gateway-policies API
+  description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
+
+
+    ## Host
+
+    https://api.smith.langchain.com
+
+
+    ## Authentication
+
+    To authenticate with the LangSmith API, set the `X-Api-Key` header
+
+    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
+
+
+    '
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: gateway-policies
+paths:
+  /v1/platform/gateway-policies:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Returns every non-deleted gateway policy in the calling
+
+        organization, sorted by `priority` ASC then `created_at` DESC.
+
+        Each spend-cap row includes `current_spend_usd` — the spend
+
+        accumulated in the policy''s active window. This is the
+
+        primary cost-tracking surface for the LLM Gateway: dashboards
+
+        and alerts read per-policy spend off this response. Disabled
+
+        spend-cap policies still surface `current_spend_usd` so
+
+        admins can see what would have been enforced.'
+      tags:
+      - gateway-policies
+      summary: List gateway policies
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/gateway_policies.GatewayPolicyRecord'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '403':
+          description: LLM Gateway not enabled, or caller lacks OrganizationRead
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+      parameters: []
+    post:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Creates a `spend_cap`, `default_spend_cap`, or `guard` policy
+
+        for the calling organization. If a non-deleted policy in the
+
+        same family already exists with set-equal `subject_matchers`,
+
+        the existing row is upserted (mutable fields overwritten,
+
+        `id` preserved) — including takeover of materialized
+
+        default-spend-cap children.'
+      tags:
+      - gateway-policies
+      summary: Create a gateway policy
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.GatewayPolicyRecord'
+        '400':
+          description: validation failure (bad matchers, unknown policy_type, missing required field)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '401':
+          description: missing or invalid auth
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '403':
+          description: LLM Gateway not enabled for the organization, or caller lacks OrganizationManage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '409':
+          description: policy name conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gateway_policies.CreateGatewayPolicyRequest'
+  /v1/platform/gateway-policies/{id}:
+    get:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Returns a single gateway policy by id. Spend-cap rows include
+
+        `current_spend_usd` for the active window so callers can read
+
+        per-policy cost without a separate endpoint.'
+      tags:
+      - gateway-policies
+      summary: Get a gateway policy
+      parameters:
+      - description: Policy ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.GatewayPolicyRecord'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '403':
+          description: LLM Gateway not enabled, or caller lacks OrganizationRead
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '404':
+          description: policy not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+    delete:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Soft-deletes a gateway policy. Deleting a `default_spend_cap`
+
+        cascade-soft-deletes every attached child in the same
+
+        transaction, so the admin wipes a template and its rollouts
+
+        in a single call. Spend counters for the deleted policy are
+
+        left to expire naturally — the policy id is never reused,
+
+        so any residual counter is unreachable.'
+      tags:
+      - gateway-policies
+      summary: Delete a gateway policy
+      parameters:
+      - description: Policy ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '403':
+          description: LLM Gateway not enabled, or caller lacks OrganizationManage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '404':
+          description: policy not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+    patch:
+      security:
+      - API Key: []
+      - Tenant ID: []
+      - Bearer Auth: []
+      description: 'Partially updates a gateway policy. Only fields present in the
+
+        request body are applied; absent fields are left unchanged.
+
+        Editing a `default_spend_cap` cascades the new
+
+        config/action/enabled/priority onto every attached child so
+
+        the template stays the source of truth across rollouts.'
+      tags:
+      - gateway-policies
+      summary: Update a gateway policy
+      parameters:
+      - description: Policy ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.GatewayPolicyRecord'
+        '400':
+          description: validation failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '403':
+          description: LLM Gateway not enabled, or caller lacks OrganizationManage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '404':
+          description: policy not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '409':
+          description: matcher edit collides with another policy in the same family
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gateway_policies.errorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gateway_policies.UpdateGatewayPolicyRequest'
+components:
+  schemas:
+    gateway_policies.SubjectMatcher:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    gateway_policies.errorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    gateway_policies.CreateGatewayPolicyRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        config:
+          type: object
+        description:
+          type: string
+        enabled:
+          type: boolean
+        name:
+          type: string
+        policy_type:
+          type: string
+        priority:
+          type: integer
+        subject_matchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
+    gateway_policies.GatewayPolicyRecord:
+      type: object
+      properties:
+        action:
+          type: string
+        config:
+          type: object
+        created_at:
+          type: string
+        created_by:
+          type: string
+        current_spend_usd:
+          description: 'CurrentSpendUSD is the spend in the policy''s current window. Set for
+
+            any spend_cap policy regardless of enabled state — disabled policies
+
+            still surface usage so users can see what would have been counted.
+
+            Nil for non-spend_cap policies or when the spend lookup failed.'
+          type: number
+        description:
+          type: string
+        enabled:
+          type: boolean
+        id:
+          type: string
+        is_system_generated:
+          type: boolean
+        name:
+          type: string
+        organization_id:
+          type: string
+        parent_policy_id:
+          description: 'ParentPolicyID is set on materialized children of a default_spend_cap
+
+            to the default''s id, and cleared (NULL) only when an admin Create
+
+            with the same matchers takes over the materialized row. Update on a
+
+            child preserves the link; Delete on the parent cascade-soft-deletes
+
+            every child rather than detaching them.'
+          type: string
+        policy_type:
+          type: string
+        priority:
+          type: integer
+        subject_matchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
+        tenant_id:
+          type: string
+        updated_at:
+          type: string
+    gateway_policies.UpdateGatewayPolicyRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        config:
+          type: object
+        description:
+          type: string
+        enabled:
+          type: boolean
+        name:
+          type: string
+        priority:
+          type: integer
+        subject_matchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    Tenant ID:
+      type: apiKey
+      in: header
+      name: X-Tenant-Id
+    Bearer Auth:
+      type: http
+      description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
+      scheme: bearer
+    Organization ID:
+      type: apiKey
+      in: header
+      name: X-Organization-Id
