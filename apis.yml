@@ -6,7 +6,20 @@ description: >-
   LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The
   LangSmith API exposes tracing, dataset management, evaluation, prompt-hub, and Fleet agent functionality for AI
   engineering teams.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/langsmith.png
 tags:
   - AI
   - LLM
@@ -17,127 +30,1905 @@ created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: langsmith:langsmith-tracing-api
-    name: LangSmith Tracing API
-    tags:
-      - Tracing
-      - Observability
-      - LLM
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/tracing
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith
-        type: Documentation
-      - url: https://docs.langchain.com/langsmith/tracing
-        type: APIReference
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Capture, ingest, and inspect traces for LLM, agent, and chain executions. Traces include nested runs (spans),
-      latency, token counts, errors, inputs/outputs, and metadata. Tracing is the primary unit of pricing on LangSmith.
-  - aid: langsmith:langsmith-datasets-api
-    name: LangSmith Datasets API
-    tags:
-      - Datasets
-      - Examples
-      - Evaluations
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/datasets
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith/datasets
-        type: Documentation
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Manage datasets and example records used as ground-truth or test inputs for evaluating LLM applications. Supports
-      CRUD on datasets, examples, and dataset splits.
-  - aid: langsmith:langsmith-evaluations-api
-    name: LangSmith Evaluations API
-    tags:
-      - Evaluations
-      - Experiments
-      - LLM
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/evaluation
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith/evaluation
-        type: Documentation
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Run offline and online evaluations against datasets, attach feedback and scores to runs, and compare experiments.
-      Supports LLM-as-judge, code-based, and human evaluators.
-  - aid: langsmith:langsmith-prompts-api
-    name: LangSmith Prompt Hub API
-    tags:
-      - Prompts
-      - Prompt Management
-      - LLM
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/prompt-hub
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith/prompt-hub
-        type: Documentation
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Versioned prompt repository (Prompt Hub) for storing, retrieving, and collaborating on LLM prompts. Supports
-      tagged versions, public/private prompts, and pull/push from SDKs.
-  - aid: langsmith:langsmith-feedback-api
-    name: LangSmith Feedback API
-    tags:
-      - Feedback
-      - Scoring
-      - Evaluations
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/feedback
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith/feedback
-        type: Documentation
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Attach human or programmatic feedback (scores, comments, correction labels) to runs and trace nodes for
-      evaluation, monitoring, and reinforcement signal collection.
-  - aid: langsmith:langsmith-annotation-queues-api
-    name: LangSmith Annotation Queues API
-    tags:
-      - Annotation
-      - Human Review
-      - Evaluations
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/annotation-queues
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith/annotation-queues
-        type: Documentation
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Route runs to human reviewers via annotation queues. Reviewers grade outputs, attach corrections, and feed labels
-      back into datasets for evaluation and fine-tuning.
-  - aid: langsmith:langsmith-fleet-api
-    name: LangSmith Fleet (Agent Deployment) API
-    tags:
-      - Agents
-      - Deployment
-      - LangGraph
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.langchain.com/langsmith/deployments
-    baseURL: https://api.smith.langchain.com
-    properties:
-      - url: https://docs.langchain.com/langsmith/deployments
-        type: Documentation
-      - url: openapi/langsmith-openapi.json
-        type: OpenAPI
-    description: >-
-      Deploy and manage LangGraph agents in production via Fleet. Provides agent invocation, run management, scheduled
-      jobs, and uptime billing for hosted agent deployments.
+- aid: langsmith:langsmith-access-policies-api
+  name: LangSmith access_policies API
+  description: The access_policies API from LangSmith — 3 operation(s) for access_policies.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - access_policies
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-access-policies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-ace-api
+  name: LangSmith ace API
+  description: The ace API from LangSmith — 1 operation(s) for ace.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - ace
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-ace-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-agents-api
+  name: LangSmith agents API
+  description: The agents API from LangSmith — 2 operation(s) for agents.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - agents
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-agents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-alert-rules-api
+  name: LangSmith alert_rules API
+  description: The alert_rules API from LangSmith — 3 operation(s) for alert_rules.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - alert_rules
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-alert-rules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-annotation-queues-api
+  name: LangSmith annotation-queues API
+  description: The annotation-queues API from LangSmith — 17 operation(s) for annotation-queues.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - annotation-queues
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-annotation-queues-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-api-key-api
+  name: LangSmith api-key API
+  description: The api-key API from LangSmith — 4 operation(s) for api-key.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - api-key
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-audit-logs-api
+  name: LangSmith audit-logs API
+  description: The audit-logs API from LangSmith — 1 operation(s) for audit-logs.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - audit-logs
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-audit-logs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-auth-api
+  name: LangSmith auth API
+  description: The auth API from LangSmith — 7 operation(s) for auth.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - auth
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-auth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-aws-marketplace-api
+  name: LangSmith aws_marketplace API
+  description: The aws_marketplace API from LangSmith — 1 operation(s) for aws_marketplace.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - aws_marketplace
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-aws-marketplace-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-backfills-api
+  name: LangSmith backfills API
+  description: The backfills API from LangSmith — 1 operation(s) for backfills.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - backfills
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-backfills-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-beacon-api
+  name: LangSmith beacon API
+  description: The beacon API from LangSmith — 1 operation(s) for beacon.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - beacon
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-beacon-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-bulk-exports-api
+  name: LangSmith bulk-exports API
+  description: The bulk-exports API from LangSmith — 7 operation(s) for bulk-exports.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - bulk-exports
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-bulk-exports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-charts-api
+  name: LangSmith charts API
+  description: The charts API from LangSmith — 13 operation(s) for charts.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - charts
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-charts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-comments-api
+  name: LangSmith comments API
+  description: The comments API from LangSmith — 3 operation(s) for comments.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - comments
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-comments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-commits-api
+  name: LangSmith commits API
+  description: The commits API from LangSmith — 2 operation(s) for commits.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - commits
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-commits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-data-planes-api
+  name: LangSmith data_planes API
+  description: The data_planes API from LangSmith — 1 operation(s) for data_planes.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - data_planes
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-data-planes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-datasets-api
+  name: LangSmith datasets API
+  description: The datasets API from LangSmith — 28 operation(s) for datasets.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-directories-api
+  name: LangSmith directories API
+  description: The directories API from LangSmith — 2 operation(s) for directories.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - directories
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-directories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-evaluators-api
+  name: LangSmith evaluators API
+  description: The evaluators API from LangSmith — 2 operation(s) for evaluators.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - evaluators
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-evaluators-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-examples-api
+  name: LangSmith examples API
+  description: The examples API from LangSmith — 9 operation(s) for examples.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - examples
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-examples-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-experiment-view-overrides-api
+  name: LangSmith experiment-view-overrides API
+  description: >-
+    The experiment-view-overrides API from LangSmith — 2 operation(s) for experiment-view-overrides.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - experiment-view-overrides
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-experiment-view-overrides-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-experiments-api
+  name: LangSmith experiments API
+  description: The experiments API from LangSmith — 1 operation(s) for experiments.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - experiments
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-experiments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-features-api
+  name: LangSmith features API
+  description: The features API from LangSmith — 4 operation(s) for features.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - features
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-features-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-feedback-api
+  name: LangSmith feedback API
+  description: The feedback API from LangSmith — 7 operation(s) for feedback.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - feedback
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-feedback-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-feedback-configs-api
+  name: LangSmith feedback-configs API
+  description: The feedback-configs API from LangSmith — 1 operation(s) for feedback-configs.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - feedback-configs
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-feedback-configs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-auth-api
+  name: LangSmith fleet auth API
+  description: The fleet auth API from LangSmith — 10 operation(s) for fleet auth.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet auth
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-auth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-github-app-api
+  name: LangSmith fleet github-app API
+  description: The fleet github-app API from LangSmith — 9 operation(s) for fleet github-app.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet github-app
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-github-app-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-integrations-api
+  name: LangSmith fleet integrations API
+  description: The fleet integrations API from LangSmith — 3 operation(s) for fleet integrations.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-mcp-api
+  name: LangSmith fleet mcp API
+  description: The fleet mcp API from LangSmith — 7 operation(s) for fleet mcp.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet mcp
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-mcp-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-threads-api
+  name: LangSmith fleet threads API
+  description: The fleet threads API from LangSmith — 5 operation(s) for fleet threads.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet threads
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-threads-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-usage-api
+  name: LangSmith fleet usage API
+  description: The fleet usage API from LangSmith — 4 operation(s) for fleet usage.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet usage
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-fleet-webhooks-api
+  name: LangSmith fleet_webhooks API
+  description: The fleet_webhooks API from LangSmith — 1 operation(s) for fleet_webhooks.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - fleet_webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-fleet-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-gateway-api
+  name: LangSmith gateway API
+  description: The gateway API from LangSmith — 4 operation(s) for gateway.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - gateway
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-gateway-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-gateway-policies-api
+  name: LangSmith gateway-policies API
+  description: The gateway-policies API from LangSmith — 2 operation(s) for gateway-policies.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - gateway-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-gateway-policies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-hub-environments-api
+  name: LangSmith hub_environments API
+  description: The hub_environments API from LangSmith — 2 operation(s) for hub_environments.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - hub_environments
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-hub-environments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-info-api
+  name: LangSmith info API
+  description: The info API from LangSmith — 2 operation(s) for info.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - info
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-info-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-integrations-api
+  name: LangSmith integrations API
+  description: The integrations API from LangSmith — 1 operation(s) for integrations.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-likes-api
+  name: LangSmith likes API
+  description: The likes API from LangSmith — 1 operation(s) for likes.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - likes
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-likes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-mcp-api
+  name: LangSmith mcp API
+  description: The mcp API from LangSmith — 2 operation(s) for mcp.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - mcp
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-mcp-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-mcp-vendors-api
+  name: LangSmith mcp_vendors API
+  description: The mcp_vendors API from LangSmith — 6 operation(s) for mcp_vendors.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - mcp_vendors
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-mcp-vendors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-me-api
+  name: LangSmith me API
+  description: The me API from LangSmith — 4 operation(s) for me.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - me
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-me-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-metrics-api
+  name: LangSmith metrics API
+  description: The metrics API from LangSmith — 1 operation(s) for metrics.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-model-price-map-api
+  name: LangSmith model-price-map API
+  description: The model-price-map API from LangSmith — 2 operation(s) for model-price-map.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - model-price-map
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-model-price-map-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-nps-api
+  name: LangSmith nps API
+  description: The nps API from LangSmith — 1 operation(s) for nps.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - nps
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-nps-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-oauth-api
+  name: LangSmith oauth API
+  description: The oauth API from LangSmith — 8 operation(s) for oauth.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-ok-api
+  name: LangSmith Ok API
+  description: The Ok API from LangSmith — 1 operation(s) for ok.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - Ok
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-ok-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-optimization-jobs-api
+  name: LangSmith optimization-jobs API
+  description: The optimization-jobs API from LangSmith — 4 operation(s) for optimization-jobs.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - optimization-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-optimization-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-organizations-api
+  name: LangSmith Organizations API
+  description: The Organizations API from LangSmith — 1 operation(s) for organizations.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-orgs-api
+  name: LangSmith orgs API
+  description: The orgs API from LangSmith — 39 operation(s) for orgs.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-orgs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-ownerships-api
+  name: LangSmith ownerships API
+  description: The ownerships API from LangSmith — 1 operation(s) for ownerships.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - ownerships
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-ownerships-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-playground-settings-api
+  name: LangSmith playground-settings API
+  description: The playground-settings API from LangSmith — 2 operation(s) for playground-settings.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - playground-settings
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-playground-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-prompt-webhooks-api
+  name: LangSmith prompt-webhooks API
+  description: The prompt-webhooks API from LangSmith — 3 operation(s) for prompt-webhooks.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - prompt-webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-prompt-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-prompts-api
+  name: LangSmith prompts API
+  description: The prompts API from LangSmith — 2 operation(s) for prompts.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - prompts
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-prompts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-public-api
+  name: LangSmith public API
+  description: The public API from LangSmith — 20 operation(s) for public.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - public
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-public-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-repos-api
+  name: LangSmith repos API
+  description: The repos API from LangSmith — 5 operation(s) for repos.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - repos
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-repos-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-run-api
+  name: LangSmith run API
+  description: The run API from LangSmith — 19 operation(s) for run.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - run
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-run-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-runs-api
+  name: LangSmith runs API
+  description: The runs API from LangSmith — 7 operation(s) for runs.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - runs
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-runs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-sandboxes-api
+  name: LangSmith sandboxes API
+  description: The sandboxes API from LangSmith — 12 operation(s) for sandboxes.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - sandboxes
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-sandboxes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-sandboxes-internal-api
+  name: LangSmith sandboxes-internal API
+  description: The sandboxes-internal API from LangSmith — 1 operation(s) for sandboxes-internal.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - sandboxes-internal
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-sandboxes-internal-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-scim-tokens-api
+  name: LangSmith SCIM Tokens API
+  description: The SCIM Tokens API from LangSmith — 2 operation(s) for scim tokens.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - SCIM Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-scim-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-service-accounts-api
+  name: LangSmith service-accounts API
+  description: The service-accounts API from LangSmith — 2 operation(s) for service-accounts.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - service-accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-service-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-sessions-api
+  name: LangSmith sessions API
+  description: The sessions API from LangSmith — 1 operation(s) for sessions.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-settings-api
+  name: LangSmith settings API
+  description: The settings API from LangSmith — 2 operation(s) for settings.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - settings
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-skills-api
+  name: LangSmith skills API
+  description: The skills API from LangSmith — 2 operation(s) for skills.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - skills
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-skills-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-tag-transitions-api
+  name: LangSmith tag-transitions API
+  description: The tag-transitions API from LangSmith — 1 operation(s) for tag-transitions.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - tag-transitions
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-tag-transitions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-tags-api
+  name: LangSmith tags API
+  description: The tags API from LangSmith — 2 operation(s) for tags.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-tenant-api
+  name: LangSmith tenant API
+  description: The tenant API from LangSmith — 1 operation(s) for tenant.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - tenant
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-tenant-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-threads-api
+  name: LangSmith threads API
+  description: The threads API from LangSmith — 2 operation(s) for threads.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - threads
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-threads-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-tools-api
+  name: LangSmith tools API
+  description: The tools API from LangSmith — 3 operation(s) for tools.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - tools
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-tools-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-tracer-sessions-api
+  name: LangSmith tracer-sessions API
+  description: The tracer-sessions API from LangSmith — 14 operation(s) for tracer-sessions.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - tracer-sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-tracer-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-ttl-settings-api
+  name: LangSmith TTL Settings API
+  description: The TTL Settings API from LangSmith — 2 operation(s) for ttl settings.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - TTL Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-ttl-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-usage-limits-api
+  name: LangSmith usage-limits API
+  description: The usage-limits API from LangSmith — 3 operation(s) for usage-limits.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - usage-limits
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-usage-limits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-workspaces-api
+  name: LangSmith workspaces API
+  description: The workspaces API from LangSmith — 25 operation(s) for workspaces.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
 common:
   - type: AgenticAccess
     url: agentic-access/langsmith-agentic-access.yml
