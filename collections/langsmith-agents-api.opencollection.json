@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies agents API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/agents",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the agents accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/agents",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated includes. Supported: files"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates an agent with optional initial file tree. Validation runs\nbefore any write; the call is atomic. Default response omits the\nfull file tree — pass ?include=files to echo it back."
+        },
+        {
+          "info": {
+            "name": "Get an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/agents/:agentID",
+            "params": [
+              {
+                "name": "agentID",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the specified agent."
+        },
+        {
+          "info": {
+            "name": "Update an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/fleet/agents/:agentID",
+            "params": [
+              {
+                "name": "agentID",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated includes. Supported: files"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the specified agent. All request fields are optional;\nomitted fields are left unchanged. When a top-level field is\nprovided, it replaces the existing value in full. Entries under\n`files` are created or replaced by path; paths listed in\n`deleted_paths` are removed. The call is atomic: if any entry\nfails validation, no changes are applied. The file tree is\nomitted from the response by default; pass ?include=files to\ninclude it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

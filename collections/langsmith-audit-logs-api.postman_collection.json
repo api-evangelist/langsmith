@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "a9a6e93a-0992-414a-93dd-f9bad9bafa3c",
+      "name": "audit-logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8200270c-462d-4676-9c19-27a28441dd54",
+          "name": "Get Audit Logs",
+          "request": {
+            "name": "Get Audit Logs",
+            "description": {
+              "content": "Retrieve audit log records for the authenticated user's organization in OCSF format.\n\nRequires both start_time and end_time parameters to filter logs within a date range.\nSupports cursor-based pagination.\n\nReturns results in OCSF API Activity (Class UID: 6003) format,\nwhich is compatible with security monitoring and SIEM tools.\nReference: https://schema.ocsf.io/1.7.0/classes/api_activity",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "audit-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Cursor for pagination (base64-encoded JSON string)"
+                },
+                {
+                  "disabled": false,
+                  "key": "workspace_id",
+                  "value": "<uuid>",
+                  "description": "Filter by workspace ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "(Required) Start datetime (inclusive) in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "(Required) End datetime (inclusive) in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "operations",
+                  "value": "<string>",
+                  "description": "Filter by operation names. If omitted, all operations are returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "operations",
+                  "value": "<string>",
+                  "description": "Filter by operation names. If omitted, all operations are returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "24d1a588-ad7c-48a1-b2a4-b6c0bc93ac8a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workspace_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "create_forge_configuration"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "list_pending_organization_invites"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursor\": \"string\",\n  \"items\": [\n    {\n      \"class_uid\": 6003,\n      \"class_name\": \"API Activity\",\n      \"category_uid\": 6,\n      \"category_name\": \"Application Activity\",\n      \"severity_id\": 99,\n      \"type_uid\": 600301,\n      \"activity_id\": 99,\n      \"activity_name\": \"string\",\n      \"status_id\": 1,\n      \"status\": \"string\",\n      \"time\": 9393,\n      \"metadata\": {\n        \"uid\": \"4df91121-e492-8011-0e69-c77eaad023b2\",\n        \"product\": {\n          \"name\": \"string\",\n          \"vendor_name\": \"string\"\n        }\n      },\n      \"api\": {\n        \"operation\": \"get_run_cluster\"\n      },\n      \"http_request\": {\n        \"http_method\": \"string\",\n        \"url\": {\n          \"path\": \"string\"\n        }\n      },\n      \"http_response\": {\n        \"code\": 3004\n      },\n      \"actor\": {\n        \"user\": {\n          \"uid\": \"3bd5e749-ca0d-b7ca-5c7c-9eb94135e8b5\",\n          \"credential_uid\": \"5184c6a2-6c12-12e0-e413-603e1fc96633\"\n        }\n      },\n      \"src_endpoint\": {\n        \"ip\": \"string\",\n        \"port\": 103,\n        \"intermediate_ips\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"resources\": [\n        {\n          \"uid\": \"5bdacd17-394d-87e2-4367-bb23fc16006d\"\n        },\n        {\n          \"uid\": \"a8bb21e5-1d3d-1b48-fbc9-3a71be2ef606\"\n        }\n      ],\n      \"unmapped\": {\n        \"original_audit_log\": {\n          \"id\": \"de19c620-cc07-baa9-506b-1d75d040dce3\",\n          \"operation_name\": \"string\",\n          \"operation_succeeded\": false,\n          \"request_time\": \"2021-01-22T14:23:00.726Z\",\n          \"api_key_id\": \"0fe8a433-c6b2-e3d2-259d-4bfe10257bf0\",\n          \"user_id\": \"a213c9b3-a9d6-ef41-10ac-94e5f7af40bb\",\n          \"ls_user_id\": \"14356b7c-c6fe-a271-0b98-37e043f566ab\",\n          \"organization_id\": \"38f6e719-e5e8-50d9-1662-8b8fcf32a439\",\n          \"workspace_id\": \"742c3d8e-e30a-2dcb-ca51-554c9e535c02\",\n          \"enrichments\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"class_uid\": 6003,\n      \"class_name\": \"API Activity\",\n      \"category_uid\": 6,\n      \"category_name\": \"Application Activity\",\n      \"severity_id\": 99,\n      \"type_uid\": 600303,\n      \"activity_id\": 99,\n      \"activity_name\": \"string\",\n      \"status_id\": 0,\n      \"status\": \"string\",\n      \"time\": 1514,\n      \"metadata\": {\n        \"uid\": \"d7d532d0-03d9-084c-5dba-7577b9f52fad\",\n        \"product\": {\n          \"name\": \"string\",\n          \"vendor_name\": \"string\"\n        }\n      },\n      \"api\": {\n        \"operation\": \"register_mcp_server_oauth\"\n      },\n      \"http_request\": {\n        \"http_method\": \"string\",\n        \"url\": {\n          \"path\": \"string\"\n        }\n      },\n      \"http_response\": {\n        \"code\": 7397\n      },\n      \"actor\": {\n        \"user\": {\n          \"uid\": \"0275982e-fc52-7c31-f6c7-08ae4b88fe5e\",\n          \"credential_uid\": \"32d421bc-fbe0-2c3f-fffd-1383d42a2d43\"\n        }\n      },\n      \"src_endpoint\": {\n        \"ip\": \"string\",\n        \"port\": 1484,\n        \"intermediate_ips\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"resources\": [\n        {\n          \"uid\": \"1a5ccdbd-4ee6-f351-b517-a7a768247255\"\n        },\n        {\n          \"uid\": \"4cd7a1b3-9ce5-5871-68c4-f0b7a6dd3b94\"\n        }\n      ],\n      \"unmapped\": {\n        \"original_audit_log\": {\n          \"id\": \"9eeb547a-6f12-66be-bc85-b106d806f3f8\",\n          \"operation_name\": \"string\",\n          \"operation_succeeded\": false,\n          \"request_time\": \"1963-08-23T15:23:14.217Z\",\n          \"api_key_id\": \"ae06e3b3-e8f0-2a7a-4035-13d559215785\",\n          \"user_id\": \"d5c88fe2-ec43-be58-0944-4134b23bd2ab\",\n          \"ls_user_id\": \"f8c1a596-524b-e5d0-20fc-0ce31fef73dc\",\n          \"organization_id\": \"567909ce-90f4-21aa-c9ef-3d6ebd062785\",\n          \"workspace_id\": \"a129b1f9-63da-10ea-0a53-b9a537ca1707\",\n          \"enrichments\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0272d95e-3ec6-4823-8ee6-287d5c835c0a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workspace_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "create_forge_configuration"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "list_pending_organization_invites"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4950442e-8364-440c-8265-473c94397a3d",
+    "name": "LangSmith access_policies audit-logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

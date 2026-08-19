@@ -1,0 +1,1854 @@
+{
+  "item": [
+    {
+      "id": "27632ac6-e5b6-493c-8372-3137a30f68ce",
+      "name": "bulk-exports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d86523c6-6aa2-4909-99a4-ec29815549a2",
+          "name": "Get Bulk Exports",
+          "request": {
+            "name": "Get Bulk Exports",
+            "description": {
+              "content": "Get the current workspace's bulk exports",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d53f20d-bb32-4bdb-8017-d61a5759c1d9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bulk_export_destination_id\": \"4932ce68-5c30-c68a-6fe0-73e59403fc37\",\n    \"session_id\": \"d0344a84-24a9-78b8-8f5f-2dc84f63ae77\",\n    \"start_time\": \"1975-05-04T12:16:15.874Z\",\n    \"id\": \"2d0f0922-1ece-e054-2961-6bcbd953ce91\",\n    \"tenant_id\": \"3fd0678c-8524-a638-fba1-007224f1ce5e\",\n    \"status\": \"Cancelled\",\n    \"created_at\": \"1973-10-31T02:51:15.244Z\",\n    \"updated_at\": \"1992-12-09T23:26:12.286Z\",\n    \"finished_at\": \"1980-12-17T16:37:59.392Z\",\n    \"end_time\": \"1981-07-29T04:17:34.477Z\",\n    \"filter\": \"string\",\n    \"format\": \"Parquet\",\n    \"format_version\": \"v1\",\n    \"compression\": \"gzip\",\n    \"interval_hours\": 7177,\n    \"export_fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"source_bulk_export_id\": \"c28b7e19-b79f-70e9-7995-e581d3173c3e\"\n  },\n  {\n    \"bulk_export_destination_id\": \"a2d409fb-8533-3d82-b80c-9bab6571c59d\",\n    \"session_id\": \"bc2d6c59-c1f7-3314-a36d-600653eb0001\",\n    \"start_time\": \"2018-01-17T21:28:48.318Z\",\n    \"id\": \"274b12ac-8476-1a1e-a6bb-5a457dea8333\",\n    \"tenant_id\": \"c00854ff-a303-cbd0-0266-7d0932a495fe\",\n    \"status\": \"Cancelled\",\n    \"created_at\": \"2006-06-23T17:59:10.355Z\",\n    \"updated_at\": \"1996-06-07T12:23:47.803Z\",\n    \"finished_at\": \"2009-08-08T20:22:03.258Z\",\n    \"end_time\": \"1977-12-03T21:35:52.578Z\",\n    \"filter\": \"string\",\n    \"format\": \"Parquet\",\n    \"format_version\": \"v1\",\n    \"compression\": \"gzip\",\n    \"interval_hours\": 8813,\n    \"export_fields\": [\n      \"string\",\n      \"string\"\n    ],\n    \"source_bulk_export_id\": \"03e4875a-a87c-4751-06d4-d2b57095ddc0\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4d16afd-3640-463e-8daa-5a5758501ada",
+          "name": "Create Bulk Export",
+          "request": {
+            "name": "Create Bulk Export",
+            "description": {
+              "content": "Create a new bulk export",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bulk_export_destination_id\": \"<uuid>\",\n  \"session_id\": \"<uuid>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"filter\": \"<string>\",\n  \"format\": \"Parquet\",\n  \"format_version\": \"v1\",\n  \"compression\": \"gzip\",\n  \"interval_hours\": \"<integer>\",\n  \"export_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f03d86e-2d34-4845-bd18-ce44e12d3519",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bulk_export_destination_id\": \"<uuid>\",\n  \"session_id\": \"<uuid>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"filter\": \"<string>\",\n  \"format\": \"Parquet\",\n  \"format_version\": \"v1\",\n  \"compression\": \"gzip\",\n  \"interval_hours\": \"<integer>\",\n  \"export_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulk_export_destination_id\": \"d5c2bbf2-22fe-0dfd-fc9d-8636b4deaee6\",\n  \"session_id\": \"a0b5ad2c-d9c3-54cf-dce9-5471da9d5f26\",\n  \"start_time\": \"1970-06-24T00:20:25.514Z\",\n  \"id\": \"36a02c11-7d86-86df-706e-824976746022\",\n  \"tenant_id\": \"34d31fcd-4f31-c6b5-e2ea-2f95ee81ad69\",\n  \"status\": \"TimedOut\",\n  \"created_at\": \"1972-11-19T17:17:33.185Z\",\n  \"updated_at\": \"1968-10-01T21:54:58.432Z\",\n  \"finished_at\": \"2000-01-30T04:58:37.547Z\",\n  \"end_time\": \"1947-08-04T19:44:03.248Z\",\n  \"filter\": \"string\",\n  \"format\": \"Parquet\",\n  \"format_version\": \"v1\",\n  \"compression\": \"gzip\",\n  \"interval_hours\": 8584,\n  \"export_fields\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source_bulk_export_id\": \"838129c7-b617-e02d-54f7-5a3803f5d68a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d5398ba-fbcd-44ee-8848-82aa4ef48674",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bulk_export_destination_id\": \"<uuid>\",\n  \"session_id\": \"<uuid>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"filter\": \"<string>\",\n  \"format\": \"Parquet\",\n  \"format_version\": \"v1\",\n  \"compression\": \"gzip\",\n  \"interval_hours\": \"<integer>\",\n  \"export_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86bdb529-3a76-429f-9388-cebc0477b529",
+          "name": "Get Bulk Export Destinations",
+          "request": {
+            "name": "Get Bulk Export Destinations",
+            "description": {
+              "content": "Get the current workspace's bulk export destinations",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c289060-3b44-422a-85b2-7df0f9146279",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"display_name\": \"ozkrC5cbi\",\n    \"config\": {\n      \"endpoint_url\": \"string\",\n      \"prefix\": \"\",\n      \"bucket_name\": \"stri\",\n      \"region\": \"string\",\n      \"s3_additional_kwargs\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      },\n      \"config_kwargs_s3\": {\n        \"addressing_style\": \"virtual\",\n        \"use_accelerate_endpoint\": false,\n        \"payload_signing_enabled\": true,\n        \"us_east_1_regional_endpoint\": \"legacy\"\n      },\n      \"include_bucket_in_prefix\": true\n    },\n    \"id\": \"ad4ff54a-6918-6058-516b-94bf2682c128\",\n    \"tenant_id\": \"64740f66-1bb8-d0c4-9cf7-81203a71c083\",\n    \"created_at\": \"1977-09-27T18:04:38.674Z\",\n    \"updated_at\": \"1952-06-13T20:54:23.878Z\",\n    \"credentials_keys\": [\n      \"string\",\n      \"string\"\n    ],\n    \"destination_type\": \"s3\"\n  },\n  {\n    \"display_name\": \"4i8UaH\",\n    \"config\": {\n      \"endpoint_url\": \"string\",\n      \"prefix\": \"\",\n      \"bucket_name\": \"string\",\n      \"region\": \"string\",\n      \"s3_additional_kwargs\": {\n        \"key_0\": 5801.529581615578,\n        \"key_1\": \"string\",\n        \"key_2\": 9953\n      },\n      \"config_kwargs_s3\": {\n        \"addressing_style\": \"virtual\",\n        \"use_accelerate_endpoint\": false,\n        \"payload_signing_enabled\": false,\n        \"us_east_1_regional_endpoint\": \"legacy\"\n      },\n      \"include_bucket_in_prefix\": true\n    },\n    \"id\": \"2f436d00-01a1-d057-c0c4-5c77353883e4\",\n    \"tenant_id\": \"6ea61cf9-7c49-f451-4185-d0fbaf6bb1eb\",\n    \"created_at\": \"2025-12-07T14:04:06.820Z\",\n    \"updated_at\": \"1983-01-12T05:55:34.588Z\",\n    \"credentials_keys\": [\n      \"string\",\n      \"string\"\n    ],\n    \"destination_type\": \"s3\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4db73522-3831-4317-8149-84f8683c7c77",
+          "name": "Create Bulk Export Destination",
+          "request": {
+            "name": "Create Bulk Export Destination",
+            "description": {
+              "content": "Create a new bulk export destination",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"display_name\": \"<string>\",\n  \"config\": {\n    \"endpoint_url\": \"<string>\",\n    \"prefix\": \"\",\n    \"bucket_name\": \"<string>\",\n    \"region\": \"<string>\",\n    \"s3_additional_kwargs\": {\n      \"key_0\": \"string\",\n      \"key_1\": false\n    },\n    \"config_kwargs_s3\": {\n      \"addressing_style\": \"<string>\",\n      \"use_accelerate_endpoint\": \"<boolean>\",\n      \"payload_signing_enabled\": \"<boolean>\",\n      \"us_east_1_regional_endpoint\": \"<string>\"\n    },\n    \"include_bucket_in_prefix\": true\n  },\n  \"destination_type\": \"s3\",\n  \"credentials\": {\n    \"access_key_id\": \"<string>\",\n    \"secret_access_key\": \"<string>\",\n    \"session_token\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fdcd669d-8e98-4c53-816f-20c9edbd7a98",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"config\": {\n    \"endpoint_url\": \"string\",\n    \"prefix\": \"\",\n    \"bucket_name\": \"string\",\n    \"region\": \"string\",\n    \"s3_additional_kwargs\": {\n      \"key_0\": false,\n      \"key_1\": 196,\n      \"key_2\": \"string\"\n    },\n    \"config_kwargs_s3\": {\n      \"addressing_style\": \"auto\",\n      \"use_accelerate_endpoint\": false,\n      \"payload_signing_enabled\": false,\n      \"us_east_1_regional_endpoint\": \"regional\"\n    },\n    \"include_bucket_in_prefix\": true\n  },\n  \"destination_type\": \"s3\",\n  \"credentials\": {\n    \"access_key_id\": \"string\",\n    \"secret_access_key\": \"string\",\n    \"session_token\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"display_name\": \"vPvBcSUJ\",\n  \"config\": {\n    \"endpoint_url\": \"string\",\n    \"prefix\": \"\",\n    \"bucket_name\": \"string\",\n    \"region\": \"string\",\n    \"s3_additional_kwargs\": {\n      \"key_0\": false,\n      \"key_1\": false,\n      \"key_2\": \"string\"\n    },\n    \"config_kwargs_s3\": {\n      \"addressing_style\": \"path\",\n      \"use_accelerate_endpoint\": true,\n      \"payload_signing_enabled\": false,\n      \"us_east_1_regional_endpoint\": \"regional\"\n    },\n    \"include_bucket_in_prefix\": true\n  },\n  \"id\": \"da2fe013-595b-bd8a-403f-30db810cbfe1\",\n  \"tenant_id\": \"c4fbd558-e563-6d19-4f61-7f924c8b0d7c\",\n  \"created_at\": \"2017-06-10T13:33:27.962Z\",\n  \"updated_at\": \"2008-06-26T08:39:11.443Z\",\n  \"credentials_keys\": [\n    \"string\",\n    \"string\"\n  ],\n  \"destination_type\": \"s3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe0d2ef4-883a-4073-8cfe-13fcee74cda2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"config\": {\n    \"endpoint_url\": \"string\",\n    \"prefix\": \"\",\n    \"bucket_name\": \"string\",\n    \"region\": \"string\",\n    \"s3_additional_kwargs\": {\n      \"key_0\": false,\n      \"key_1\": 196,\n      \"key_2\": \"string\"\n    },\n    \"config_kwargs_s3\": {\n      \"addressing_style\": \"auto\",\n      \"use_accelerate_endpoint\": false,\n      \"payload_signing_enabled\": false,\n      \"us_east_1_regional_endpoint\": \"regional\"\n    },\n    \"include_bucket_in_prefix\": true\n  },\n  \"destination_type\": \"s3\",\n  \"credentials\": {\n    \"access_key_id\": \"string\",\n    \"secret_access_key\": \"string\",\n    \"session_token\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "659691ea-a1c6-4900-bdf7-8b91ea91cfdc",
+          "name": "Get Bulk Export Runs Filtered",
+          "request": {
+            "name": "Get Bulk Export Runs Filtered",
+            "description": {
+              "content": "Get all bulk export runs for exports that were created from a scheduled bulk export",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "source_bulk_export_id",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd587003-ec1f-44df-b10a-22563db87b96",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source_bulk_export_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bulk_export_id\": \"e553af85-281a-fffd-4395-68fe23befecf\",\n    \"metadata\": {\n      \"prefix\": \"string\",\n      \"start_time\": \"1981-08-29T22:54:44.333Z\",\n      \"end_time\": \"2008-11-01T17:59:14.892Z\",\n      \"execution_backend\": \"clickhouse\",\n      \"result\": {\n        \"rows_written\": 747,\n        \"exported_files\": [\n          \"string\",\n          \"string\"\n        ],\n        \"export_path\": \"string\",\n        \"latest_cursor\": \"string\",\n        \"pending_upload\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"id\": \"097b1f41-f4b8-00ff-d4ed-3e26ed979b09\",\n    \"status\": \"Created\",\n    \"created_at\": \"1953-08-20T01:36:37.153Z\",\n    \"updated_at\": \"1966-10-22T10:47:30.510Z\",\n    \"finished_at\": \"1952-08-13T13:33:30.000Z\",\n    \"retry_number\": 0,\n    \"errors\": {\n      \"key_0\": 3484.562463356139,\n      \"key_1\": 1818,\n      \"key_2\": 7069,\n      \"key_3\": \"string\"\n    },\n    \"start_time\": \"1968-04-01T00:29:42.407Z\",\n    \"end_time\": \"1970-04-30T10:38:57.519Z\"\n  },\n  {\n    \"bulk_export_id\": \"66133d42-7407-32c3-ceab-e3e9ff74579a\",\n    \"metadata\": {\n      \"prefix\": \"string\",\n      \"start_time\": \"1986-12-01T21:43:19.071Z\",\n      \"end_time\": \"2006-03-11T14:32:38.630Z\",\n      \"execution_backend\": \"clickhouse\",\n      \"result\": {\n        \"rows_written\": 6920,\n        \"exported_files\": [\n          \"string\",\n          \"string\"\n        ],\n        \"export_path\": \"string\",\n        \"latest_cursor\": \"string\",\n        \"pending_upload\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"id\": \"cbe1b60a-a85c-cc1d-d58f-8e14d3b0dce0\",\n    \"status\": \"Cancelled\",\n    \"created_at\": \"1949-10-08T20:26:48.415Z\",\n    \"updated_at\": \"2020-09-03T04:29:28.347Z\",\n    \"finished_at\": \"1987-12-27T16:18:42.184Z\",\n    \"retry_number\": 0,\n    \"errors\": {\n      \"key_0\": 7272\n    },\n    \"start_time\": \"1962-10-08T07:38:16.295Z\",\n    \"end_time\": \"1961-11-26T12:58:14.528Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ec8c0e6-9996-4992-a270-c89df0d700f1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source_bulk_export_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c396fbb-0053-4adf-a78e-c4ef21624b5e",
+          "name": "Get Bulk Export",
+          "request": {
+            "name": "Get Bulk Export",
+            "description": {
+              "content": "Get a single bulk export by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                ":bulk_export_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bulk_export_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b5ae40d-2a59-42f7-a78b-98510f89fd17",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulk_export_destination_id\": \"d5c2bbf2-22fe-0dfd-fc9d-8636b4deaee6\",\n  \"session_id\": \"a0b5ad2c-d9c3-54cf-dce9-5471da9d5f26\",\n  \"start_time\": \"1970-06-24T00:20:25.514Z\",\n  \"id\": \"36a02c11-7d86-86df-706e-824976746022\",\n  \"tenant_id\": \"34d31fcd-4f31-c6b5-e2ea-2f95ee81ad69\",\n  \"status\": \"TimedOut\",\n  \"created_at\": \"1972-11-19T17:17:33.185Z\",\n  \"updated_at\": \"1968-10-01T21:54:58.432Z\",\n  \"finished_at\": \"2000-01-30T04:58:37.547Z\",\n  \"end_time\": \"1947-08-04T19:44:03.248Z\",\n  \"filter\": \"string\",\n  \"format\": \"Parquet\",\n  \"format_version\": \"v1\",\n  \"compression\": \"gzip\",\n  \"interval_hours\": 8584,\n  \"export_fields\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source_bulk_export_id\": \"838129c7-b617-e02d-54f7-5a3803f5d68a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b691d29f-052c-4feb-966d-824c97ae045c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "365e39db-c653-4b1f-9f3f-08cebd41e704",
+          "name": "Cancel Bulk Export",
+          "request": {
+            "name": "Cancel Bulk Export",
+            "description": {
+              "content": "Cancel a bulk export by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                ":bulk_export_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bulk_export_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Cancelled\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95998e5e-cf6d-4348-861b-1422a748388e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Cancelled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulk_export_destination_id\": \"d5c2bbf2-22fe-0dfd-fc9d-8636b4deaee6\",\n  \"session_id\": \"a0b5ad2c-d9c3-54cf-dce9-5471da9d5f26\",\n  \"start_time\": \"1970-06-24T00:20:25.514Z\",\n  \"id\": \"36a02c11-7d86-86df-706e-824976746022\",\n  \"tenant_id\": \"34d31fcd-4f31-c6b5-e2ea-2f95ee81ad69\",\n  \"status\": \"TimedOut\",\n  \"created_at\": \"1972-11-19T17:17:33.185Z\",\n  \"updated_at\": \"1968-10-01T21:54:58.432Z\",\n  \"finished_at\": \"2000-01-30T04:58:37.547Z\",\n  \"end_time\": \"1947-08-04T19:44:03.248Z\",\n  \"filter\": \"string\",\n  \"format\": \"Parquet\",\n  \"format_version\": \"v1\",\n  \"compression\": \"gzip\",\n  \"interval_hours\": 8584,\n  \"export_fields\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source_bulk_export_id\": \"838129c7-b617-e02d-54f7-5a3803f5d68a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6255f9f-1f0b-4f13-b977-2708ce34b25d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Cancelled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a11bbebd-f191-492c-8c93-f4795d81936d",
+          "name": "Get Bulk Export Destination",
+          "request": {
+            "name": "Get Bulk Export Destination",
+            "description": {
+              "content": "Get a single bulk export destination by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                "destinations",
+                ":destination_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "destination_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0dedef93-d077-4273-a9e5-56b1070d263b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations",
+                    ":destination_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "destination_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"display_name\": \"vPvBcSUJ\",\n  \"config\": {\n    \"endpoint_url\": \"string\",\n    \"prefix\": \"\",\n    \"bucket_name\": \"string\",\n    \"region\": \"string\",\n    \"s3_additional_kwargs\": {\n      \"key_0\": false,\n      \"key_1\": false,\n      \"key_2\": \"string\"\n    },\n    \"config_kwargs_s3\": {\n      \"addressing_style\": \"path\",\n      \"use_accelerate_endpoint\": true,\n      \"payload_signing_enabled\": false,\n      \"us_east_1_regional_endpoint\": \"regional\"\n    },\n    \"include_bucket_in_prefix\": true\n  },\n  \"id\": \"da2fe013-595b-bd8a-403f-30db810cbfe1\",\n  \"tenant_id\": \"c4fbd558-e563-6d19-4f61-7f924c8b0d7c\",\n  \"created_at\": \"2017-06-10T13:33:27.962Z\",\n  \"updated_at\": \"2008-06-26T08:39:11.443Z\",\n  \"credentials_keys\": [\n    \"string\",\n    \"string\"\n  ],\n  \"destination_type\": \"s3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47425076-b5cd-49bb-a63a-b721de782b18",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations",
+                    ":destination_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "destination_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94230de1-8f02-43d1-8ff8-e9f919ae51c2",
+          "name": "Update Bulk Export Destination",
+          "request": {
+            "name": "Update Bulk Export Destination",
+            "description": {
+              "content": "Update a bulk export destination",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                "destinations",
+                ":destination_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "destination_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credentials\": {\n    \"access_key_id\": \"<string>\",\n    \"secret_access_key\": \"<string>\",\n    \"session_token\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4e54892-5bd6-4618-831e-309befb50307",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations",
+                    ":destination_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "destination_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credentials\": {\n    \"access_key_id\": \"string\",\n    \"secret_access_key\": \"string\",\n    \"session_token\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"display_name\": \"vPvBcSUJ\",\n  \"config\": {\n    \"endpoint_url\": \"string\",\n    \"prefix\": \"\",\n    \"bucket_name\": \"string\",\n    \"region\": \"string\",\n    \"s3_additional_kwargs\": {\n      \"key_0\": false,\n      \"key_1\": false,\n      \"key_2\": \"string\"\n    },\n    \"config_kwargs_s3\": {\n      \"addressing_style\": \"path\",\n      \"use_accelerate_endpoint\": true,\n      \"payload_signing_enabled\": false,\n      \"us_east_1_regional_endpoint\": \"regional\"\n    },\n    \"include_bucket_in_prefix\": true\n  },\n  \"id\": \"da2fe013-595b-bd8a-403f-30db810cbfe1\",\n  \"tenant_id\": \"c4fbd558-e563-6d19-4f61-7f924c8b0d7c\",\n  \"created_at\": \"2017-06-10T13:33:27.962Z\",\n  \"updated_at\": \"2008-06-26T08:39:11.443Z\",\n  \"credentials_keys\": [\n    \"string\",\n    \"string\"\n  ],\n  \"destination_type\": \"s3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89a4251a-d7a8-410c-8f07-0c77ee99f573",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    "destinations",
+                    ":destination_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "destination_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credentials\": {\n    \"access_key_id\": \"string\",\n    \"secret_access_key\": \"string\",\n    \"session_token\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f454e2f-9ea9-43d4-b503-6e2ef633fcb4",
+          "name": "Get Bulk Export Runs",
+          "request": {
+            "name": "Get Bulk Export Runs",
+            "description": {
+              "content": "Get a bulk export's runs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                ":bulk_export_id",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bulk_export_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d18681d4-5470-4529-b0fd-3a35691db61b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bulk_export_id\": \"40f54825-b262-d0ed-c095-c0185389592f\",\n    \"metadata\": {\n      \"prefix\": \"string\",\n      \"start_time\": \"1974-11-16T16:33:17.201Z\",\n      \"end_time\": \"1997-05-11T15:58:58.623Z\",\n      \"execution_backend\": \"smithdb\",\n      \"result\": {\n        \"rows_written\": 5699,\n        \"exported_files\": [\n          \"string\",\n          \"string\"\n        ],\n        \"export_path\": \"string\",\n        \"latest_cursor\": \"string\",\n        \"pending_upload\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"id\": \"7e120a6c-180f-30b6-ab16-e698b5462bb9\",\n    \"status\": \"Cancelled\",\n    \"created_at\": \"1984-01-19T22:26:56.135Z\",\n    \"updated_at\": \"1979-11-20T06:35:14.203Z\",\n    \"finished_at\": \"1981-04-25T13:27:12.062Z\",\n    \"retry_number\": 0,\n    \"errors\": {\n      \"key_0\": true\n    },\n    \"start_time\": \"1973-11-28T04:03:56.073Z\",\n    \"end_time\": \"1970-12-20T03:26:34.682Z\"\n  },\n  {\n    \"bulk_export_id\": \"707b0305-b870-29e1-3c93-63e5a75092f5\",\n    \"metadata\": {\n      \"prefix\": \"string\",\n      \"start_time\": \"1966-07-31T06:29:51.067Z\",\n      \"end_time\": \"1987-03-02T13:36:37.983Z\",\n      \"execution_backend\": \"clickhouse\",\n      \"result\": {\n        \"rows_written\": 1637,\n        \"exported_files\": [\n          \"string\",\n          \"string\"\n        ],\n        \"export_path\": \"string\",\n        \"latest_cursor\": \"string\",\n        \"pending_upload\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"id\": \"03ee6411-1bcb-70d9-8f6c-6c93a473f8f4\",\n    \"status\": \"Created\",\n    \"created_at\": \"1947-07-25T07:25:18.392Z\",\n    \"updated_at\": \"2007-12-25T17:38:42.871Z\",\n    \"finished_at\": \"1983-01-24T22:20:41.577Z\",\n    \"retry_number\": 0,\n    \"errors\": {\n      \"key_0\": \"string\"\n    },\n    \"start_time\": \"2002-04-09T00:04:54.079Z\",\n    \"end_time\": \"2016-04-26T05:00:17.598Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5fdcf39-4670-4b94-be27-89f8c059c0b4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f36878c8-15b0-4c7e-b919-8aef2db2e8a7",
+          "name": "Get Bulk Export Run",
+          "request": {
+            "name": "Get Bulk Export Run",
+            "description": {
+              "content": "Get a single bulk export's run by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bulk-exports",
+                ":bulk_export_id",
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "bulk_export_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "run_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f25d8f03-3cc8-4262-9c53-1a96b692bf47",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bulk_export_id\": \"67b8dfaa-4dee-e474-05fc-1f5b6d8af0a3\",\n  \"metadata\": {\n    \"prefix\": \"string\",\n    \"start_time\": \"2014-03-03T11:02:32.828Z\",\n    \"end_time\": \"1985-07-16T22:22:03.671Z\",\n    \"execution_backend\": \"clickhouse\",\n    \"result\": {\n      \"rows_written\": 9419,\n      \"exported_files\": [\n        \"string\",\n        \"string\"\n      ],\n      \"export_path\": \"string\",\n      \"latest_cursor\": \"string\",\n      \"pending_upload\": {\n        \"target_cursor\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"file_path\": \"string\",\n        \"rows_count\": 3688\n      }\n    }\n  },\n  \"id\": \"0a004cbd-203a-266d-1b1b-6588c0c0907c\",\n  \"status\": \"Cancelled\",\n  \"created_at\": \"1966-07-06T09:08:51.219Z\",\n  \"updated_at\": \"1948-04-14T03:11:25.446Z\",\n  \"finished_at\": \"1987-02-24T06:17:57.945Z\",\n  \"retry_number\": 0,\n  \"errors\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": 5699\n  },\n  \"start_time\": \"1994-08-14T12:49:05.152Z\",\n  \"end_time\": \"1998-07-20T01:28:04.572Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af93b76a-27a6-469f-8131-7d240d241674",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bulk-exports",
+                    ":bulk_export_id",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "bulk_export_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e30130cf-c333-42c5-a95c-86697792e433",
+    "name": "LangSmith access_policies bulk-exports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

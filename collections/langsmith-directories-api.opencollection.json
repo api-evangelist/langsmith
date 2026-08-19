@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies directories API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "directories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get directory contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/platform/hub/repos/:owner/:repo/directories",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path",
+                "description": "Repository owner handle or '-' for current tenant"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path",
+                "description": "Repository handle"
+              },
+              {
+                "name": "commit",
+                "value": "",
+                "type": "query",
+                "description": "Commit hash/tag to resolve (defaults to latest)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Resolves the flattened file tree for an agent or skill repository at a specific commit, tag, or latest."
+        },
+        {
+          "info": {
+            "name": "Delete directory repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/platform/hub/repos/:owner/:repo/directories",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path",
+                "description": "Repository owner handle or '-' for current tenant"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path",
+                "description": "Repository handle"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes an agent or skill repository and its owned child file repositories."
+        },
+        {
+          "info": {
+            "name": "Create directory commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/platform/hub/repos/:owner/:repo/directories/commits",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path",
+                "description": "Repository owner handle or '-' for current tenant"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path",
+                "description": "Repository handle"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new directory commit for an agent or skill repository by applying file/link create, update, and delete operations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1385 @@
+{
+  "item": [
+    {
+      "id": "04af0fb8-b58c-49c6-b59b-cd894fd074af",
+      "name": "threads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7206bdf-9e82-4aa6-aefa-db06a34f0e64",
+          "name": "Query Threads",
+          "request": {
+            "name": "Query Threads",
+            "description": {
+              "content": "**Alpha:** The request and response contract may change;\nQuery threads within a project (session), with cursor-based pagination.\nReturns threads matching the given time range and optional filter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "threads",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "56aae09e-f2c5-45dd-8b37-aaba2ac556ab",
+              "name": "items and pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"has_more\": true,\n  \"items\": [\n    {\n      \"count\": 3,\n      \"feedback_stats\": {\n        \"key_0\": {\n          \"avg\": 0.87,\n          \"comments\": [\n            \"good answer\",\n            \"needs citation\"\n          ],\n          \"contains_thread_feedback\": false,\n          \"errors\": 0,\n          \"max\": 0.95,\n          \"min\": 0.8,\n          \"n\": 42,\n          \"sources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"stdev\": 0.05,\n          \"values\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"key_1\": {\n          \"avg\": 0.87,\n          \"comments\": [\n            \"good answer\",\n            \"needs citation\"\n          ],\n          \"contains_thread_feedback\": false,\n          \"errors\": 0,\n          \"max\": 0.95,\n          \"min\": 0.8,\n          \"n\": 42,\n          \"sources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"stdev\": 0.05,\n          \"values\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"first_inputs\": \"string\",\n      \"first_trace_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327\",\n      \"last_error\": \"string\",\n      \"last_outputs\": \"string\",\n      \"last_trace_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\",\n      \"latency_p50\": 0.15,\n      \"latency_p99\": 0.42,\n      \"max_start_time\": \"2025-01-15T12:05:00.000Z\",\n      \"min_start_time\": \"2025-01-15T12:00:00.000Z\",\n      \"start_time\": \"2025-01-15T12:00:00.000Z\",\n      \"thread_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327\",\n      \"total_cost\": 0.045,\n      \"total_cost_details\": {\n        \"key_0\": 1431.8296631979533\n      },\n      \"total_token_details\": {\n        \"key_0\": 7774\n      },\n      \"total_tokens\": 450,\n      \"trace_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9328\"\n    },\n    {\n      \"count\": 3,\n      \"feedback_stats\": {\n        \"key_0\": {\n          \"avg\": 0.87,\n          \"comments\": [\n            \"good answer\",\n            \"needs citation\"\n          ],\n          \"contains_thread_feedback\": false,\n          \"errors\": 0,\n          \"max\": 0.95,\n          \"min\": 0.8,\n          \"n\": 42,\n          \"sources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"stdev\": 0.05,\n          \"values\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"key_1\": {\n          \"avg\": 0.87,\n          \"comments\": [\n            \"good answer\",\n            \"needs citation\"\n          ],\n          \"contains_thread_feedback\": false,\n          \"errors\": 0,\n          \"max\": 0.95,\n          \"min\": 0.8,\n          \"n\": 42,\n          \"sources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"stdev\": 0.05,\n          \"values\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_3\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"first_inputs\": \"string\",\n      \"first_trace_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327\",\n      \"last_error\": \"string\",\n      \"last_outputs\": \"string\",\n      \"last_trace_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\",\n      \"latency_p50\": 0.15,\n      \"latency_p99\": 0.42,\n      \"max_start_time\": \"2025-01-15T12:05:00.000Z\",\n      \"min_start_time\": \"2025-01-15T12:00:00.000Z\",\n      \"start_time\": \"2025-01-15T12:00:00.000Z\",\n      \"thread_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327\",\n      \"total_cost\": 0.045,\n      \"total_cost_details\": {\n        \"key_0\": 2758.573565138015,\n        \"key_1\": 5544.743672492143,\n        \"key_2\": 5699.324290456041\n      },\n      \"total_token_details\": {\n        \"key_0\": 1220,\n        \"key_1\": 8695\n      },\n      \"total_tokens\": 450,\n      \"trace_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9328\"\n    }\n  ],\n  \"next_cursor\": \"eyJydW5zX2N1cnNvciI6Imx0KGN1cnNvciwiLi4uIikifQ==\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8730ec2a-6bd9-4b8d-9d2c-4730d3116a60",
+              "name": "bad request (malformed JSON or invalid parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "054ad07f-d370-44bb-b313-9512c2faa4c0",
+              "name": "missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18b15a28-4e53-460d-950f-f10becd4ffa5",
+              "name": "forbidden (insufficient permission)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2361696f-9636-42b5-8a58-c7b981a8ac25",
+              "name": "session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a8389a6-7012-455f-aa50-46aba466aa85",
+              "name": "unprocessable entity (e.g. invalid project UUID)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e5f3a0e-4bac-43f8-8b62-474ce90bdc45",
+              "name": "internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56f28749-648f-4c08-ba50-8d450a6613a6",
+              "name": "service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "822b0cd8-204d-4a8e-8e28-51dec31cd2bb",
+              "name": "gateway timeout or deadline exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"max_start_time\": \"<dateTime>\",\n  \"min_start_time\": \"<dateTime>\",\n  \"page_size\": 20,\n  \"project_id\": \"0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a0d5ede-9a06-475b-a996-cdaefbe09648",
+          "name": "Query Thread Traces",
+          "request": {
+            "name": "Query Thread Traces",
+            "description": {
+              "content": "**Alpha:** The request and response contract may change;\nRetrieve all traces belonging to a specific thread within a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "threads",
+                ":thread_id",
+                "traces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "`cursor` is the opaque string from a previous response's `next_cursor`. Omit on the first request; pass the returned cursor to fetch the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "`filter` narrows which traces are returned for this thread, using a LangSmith filter expression evaluated against each root trace run.\nFor example: eq(status, \"success\") or has(tags, \"production\").\nSee https://docs.langchain.com/langsmith/trace-query-syntax#filter-query-language for syntax."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "20",
+                  "description": "`page_size` is the maximum number of traces to return in this response. Defaults to 20 when omitted; must be between 1 and 100 inclusive when set."
+                },
+                {
+                  "disabled": false,
+                  "key": "project_id",
+                  "value": "<uuid>",
+                  "description": "(Required) `project_id` is the tracing project UUID (required)."
+                },
+                {
+                  "disabled": false,
+                  "key": "selects",
+                  "value": "<string>",
+                  "description": "`selects` lists which properties to include on each returned trace (repeatable query parameter). Accepts any value of the `ThreadTraceSelectField` enum. Properties not listed are omitted from each trace object; `trace_id` is always returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "selects",
+                  "value": "<string>",
+                  "description": "`selects` lists which properties to include on each returned trace (repeatable query parameter). Accepts any value of the `ThreadTraceSelectField` enum. Properties not listed are omitted from each trace object; `trace_id` is always returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "thread_id",
+                  "description": "(Required) Thread ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "373f46c2-04db-4be2-b428-bcd48ccc4567",
+              "name": "items and pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"has_more\": true,\n  \"items\": [\n    {\n      \"completion_cost\": 6047.309544799634,\n      \"completion_cost_details\": {\n        \"raw\": {\n          \"key_0\": 8851.195558648673,\n          \"key_1\": 2354.093479592122\n        }\n      },\n      \"completion_token_details\": {\n        \"raw\": {\n          \"key_0\": 956,\n          \"key_1\": 5480\n        }\n      },\n      \"completion_tokens\": 9308,\n      \"end_time\": \"2025-01-15T12:00:01.500Z\",\n      \"error_preview\": \"string\",\n      \"first_token_time\": \"2024-01-15T10:30:00.312Z\",\n      \"inputs_preview\": \"string\",\n      \"latency\": 6495.0112308917105,\n      \"name\": \"string\",\n      \"op\": 4997.265706040714,\n      \"outputs_preview\": \"string\",\n      \"prompt_cost\": 8505.80028108901,\n      \"prompt_cost_details\": {\n        \"raw\": {\n          \"key_0\": 2031.5158067331186,\n          \"key_1\": 8791.068080743322\n        }\n      },\n      \"prompt_token_details\": {\n        \"raw\": {\n          \"key_0\": 8383\n        }\n      },\n      \"prompt_tokens\": 6800,\n      \"start_time\": \"2025-01-15T12:00:00.000Z\",\n      \"thread_id\": \"d4e5f6a7-b8c9-4d5e-1f2a-3b4c5d6e7f8a\",\n      \"total_cost\": 2417.8883555823736,\n      \"total_tokens\": 541,\n      \"trace_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327\"\n    },\n    {\n      \"completion_cost\": 4315.551191929794,\n      \"completion_cost_details\": {\n        \"raw\": {\n          \"key_0\": 4341.402497357089,\n          \"key_1\": 2174.216124082232,\n          \"key_2\": 1344.687044934848,\n          \"key_3\": 2103.614759917212\n        }\n      },\n      \"completion_token_details\": {\n        \"raw\": {\n          \"key_0\": 7261,\n          \"key_1\": 3494\n        }\n      },\n      \"completion_tokens\": 5827,\n      \"end_time\": \"2025-01-15T12:00:01.500Z\",\n      \"error_preview\": \"string\",\n      \"first_token_time\": \"2024-01-15T10:30:00.312Z\",\n      \"inputs_preview\": \"string\",\n      \"latency\": 2745.178919400384,\n      \"name\": \"string\",\n      \"op\": 3730.3143270341443,\n      \"outputs_preview\": \"string\",\n      \"prompt_cost\": 6310.85335474424,\n      \"prompt_cost_details\": {\n        \"raw\": {\n          \"key_0\": 9358.241488235566,\n          \"key_1\": 5351.3392189157685,\n          \"key_2\": 6049.4231996493845,\n          \"key_3\": 522.8621087111585\n        }\n      },\n      \"prompt_token_details\": {\n        \"raw\": {\n          \"key_0\": 9551,\n          \"key_1\": 4503,\n          \"key_2\": 2874\n        }\n      },\n      \"prompt_tokens\": 813,\n      \"start_time\": \"2025-01-15T12:00:00.000Z\",\n      \"thread_id\": \"d4e5f6a7-b8c9-4d5e-1f2a-3b4c5d6e7f8a\",\n      \"total_cost\": 3480.0939114674366,\n      \"total_tokens\": 4116,\n      \"trace_id\": \"018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327\"\n    }\n  ],\n  \"next_cursor\": \"eyJydW5zX2N1cnNvciI6Imx0KGN1cnNvciwiLi4uIikifQ==\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb6a6099-01ea-4883-a61d-658ee9dd2764",
+              "name": "bad request (missing or invalid query parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eba446bb-8f01-49d6-888f-39d4c548019d",
+              "name": "missing or invalid authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ea049f2-d39b-4a2f-a127-8360dec86413",
+              "name": "forbidden (insufficient permission)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf2985f6-3c5d-44e5-b8cf-f461e8250f8d",
+              "name": "session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54c18b0e-e0c2-4e17-a33d-c52e5d4a1ad4",
+              "name": "unprocessable entity (e.g. invalid project UUID)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dee98778-4419-4156-b5aa-2c2e9d437d09",
+              "name": "internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a3d6bce-d755-4194-b1bc-7813217d9365",
+              "name": "service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8a7a91f-957d-47c4-b9e7-7263def46969",
+              "name": "gateway timeout or deadline exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "threads",
+                    ":thread_id",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "NAME"
+                    },
+                    {
+                      "key": "selects",
+                      "value": "START_TIME"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) Thread ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"remedy\": \"string\",\n  \"status\": 534,\n  \"title\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b60fd3c-40a7-4a0e-ac76-0c2739314eff",
+    "name": "LangSmith access_policies threads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

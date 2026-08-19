@@ -1,0 +1,841 @@
+{
+  "item": [
+    {
+      "id": "bda78711-5734-4484-a709-ee8da5c3e32f",
+      "name": "playground-settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0552b256-d483-428d-ab33-a39cdcae6e65",
+          "name": "List Playground Settings",
+          "request": {
+            "name": "List Playground Settings",
+            "description": {
+              "content": "Get all playground settings for this tenant id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "playground-settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c4ce8b60-5b8a-4149-a211-fa44c8a1c71e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"4ecfe026-fee1-8d0a-a2e7-aef6bf0c42a1\",\n    \"settings\": {\n      \"key_0\": 6585,\n      \"key_1\": 6515.239289126021\n    },\n    \"created_at\": \"2014-10-23T12:20:59.884Z\",\n    \"updated_at\": \"1994-03-20T02:18:28.406Z\",\n    \"options\": {\n      \"requests_per_second\": 4219\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"settings_type\": \"complex\",\n    \"created_by_ls_user_id\": \"9bb86beb-8329-7fb5-0a1a-68f7fbb55f98\",\n    \"updated_by_ls_user_id\": \"d6af0175-f9d4-e714-983e-7fcf985037ec\",\n    \"available_in_playground\": true,\n    \"available_in_evaluators\": true,\n    \"available_in_agent_builder\": false,\n    \"available_in_polly\": false,\n    \"available_in_insights_heavy\": false,\n    \"available_in_insights_light\": false,\n    \"available_in_issues_agent_heavy\": false,\n    \"available_in_issues_agent_light\": false\n  },\n  {\n    \"id\": \"8c85b3af-6fce-c425-9c72-d316170160bb\",\n    \"settings\": {\n      \"key_0\": 2167.1592688237797,\n      \"key_1\": \"string\"\n    },\n    \"created_at\": \"1987-02-05T16:38:14.392Z\",\n    \"updated_at\": \"2025-03-19T14:38:48.245Z\",\n    \"options\": {\n      \"requests_per_second\": 7523\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"settings_type\": \"complex\",\n    \"created_by_ls_user_id\": \"4ae25dcd-876b-a6c1-ad0c-327fd27826a5\",\n    \"updated_by_ls_user_id\": \"33cacc3f-7f92-5dc6-b092-4c0137a533ee\",\n    \"available_in_playground\": true,\n    \"available_in_evaluators\": true,\n    \"available_in_agent_builder\": false,\n    \"available_in_polly\": false,\n    \"available_in_insights_heavy\": false,\n    \"available_in_insights_light\": false,\n    \"available_in_issues_agent_heavy\": false,\n    \"available_in_issues_agent_light\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b0bbca4-fdec-48e4-960a-6719da3cd582",
+          "name": "Create Playground Settings",
+          "request": {
+            "name": "Create Playground Settings",
+            "description": {
+              "content": "Create playground settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "playground-settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"settings\": {\n    \"key_0\": 5063.168623386963\n  },\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"options\": {\n    \"requests_per_second\": \"<integer>\"\n  },\n  \"settings_type\": \"complex\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "250b7c63-4c66-4d29-a31e-1499b008326c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"settings\": {\n    \"key_0\": true,\n    \"key_1\": 6642\n  },\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"options\": {\n    \"requests_per_second\": 8476\n  },\n  \"settings_type\": \"complex\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9d037ed2-431b-bca7-2b69-030416046cc8\",\n  \"settings\": {\n    \"key_0\": 7976.509630346272,\n    \"key_1\": \"string\",\n    \"key_2\": 6673.702525283238\n  },\n  \"created_at\": \"1998-01-01T01:16:42.155Z\",\n  \"updated_at\": \"2018-11-09T23:17:00.166Z\",\n  \"options\": {\n    \"requests_per_second\": 6448\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"settings_type\": \"complex\",\n  \"created_by_ls_user_id\": \"6833b5a5-cf9c-0972-831b-5299994d47f0\",\n  \"updated_by_ls_user_id\": \"672a5de7-1b9d-6204-372a-6f19f9436ae1\",\n  \"available_in_playground\": true,\n  \"available_in_evaluators\": true,\n  \"available_in_agent_builder\": false,\n  \"available_in_polly\": false,\n  \"available_in_insights_heavy\": false,\n  \"available_in_insights_light\": false,\n  \"available_in_issues_agent_heavy\": false,\n  \"available_in_issues_agent_light\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58f6a5c2-2ed4-4757-9691-fc44bbf54246",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"settings\": {\n    \"key_0\": true,\n    \"key_1\": 6642\n  },\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"options\": {\n    \"requests_per_second\": 8476\n  },\n  \"settings_type\": \"complex\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d760c2cc-88ba-481d-ac83-a49d6f1c4869",
+          "name": "Get Playground Settings",
+          "request": {
+            "name": "Get Playground Settings",
+            "description": {
+              "content": "Get a single playground settings by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "playground-settings",
+                ":playground_settings_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "playground_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "efdf5fe8-21a0-4373-af85-e12a07989fb7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings",
+                    ":playground_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playground_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9d037ed2-431b-bca7-2b69-030416046cc8\",\n  \"settings\": {\n    \"key_0\": 7976.509630346272,\n    \"key_1\": \"string\",\n    \"key_2\": 6673.702525283238\n  },\n  \"created_at\": \"1998-01-01T01:16:42.155Z\",\n  \"updated_at\": \"2018-11-09T23:17:00.166Z\",\n  \"options\": {\n    \"requests_per_second\": 6448\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"settings_type\": \"complex\",\n  \"created_by_ls_user_id\": \"6833b5a5-cf9c-0972-831b-5299994d47f0\",\n  \"updated_by_ls_user_id\": \"672a5de7-1b9d-6204-372a-6f19f9436ae1\",\n  \"available_in_playground\": true,\n  \"available_in_evaluators\": true,\n  \"available_in_agent_builder\": false,\n  \"available_in_polly\": false,\n  \"available_in_insights_heavy\": false,\n  \"available_in_insights_light\": false,\n  \"available_in_issues_agent_heavy\": false,\n  \"available_in_issues_agent_light\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e3090f3-7133-4ce9-820a-3c09c7cae1a7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings",
+                    ":playground_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playground_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eab4857f-e7e3-4dd5-a6ed-704f66d5aeaa",
+          "name": "Update Playground Settings",
+          "request": {
+            "name": "Update Playground Settings",
+            "description": {
+              "content": "Update playground settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "playground-settings",
+                ":playground_settings_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "playground_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": {\n    \"key_0\": false,\n    \"key_1\": 4412.305865469895,\n    \"key_2\": \"string\"\n  },\n  \"options\": {\n    \"requests_per_second\": \"<integer>\"\n  },\n  \"available_in_playground\": \"<boolean>\",\n  \"available_in_evaluators\": \"<boolean>\",\n  \"available_in_agent_builder\": \"<boolean>\",\n  \"available_in_polly\": \"<boolean>\",\n  \"available_in_insights_heavy\": \"<boolean>\",\n  \"available_in_insights_light\": \"<boolean>\",\n  \"available_in_issues_agent_heavy\": \"<boolean>\",\n  \"available_in_issues_agent_light\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9db13880-cf75-419a-b3a1-5f73837c77aa",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings",
+                    ":playground_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playground_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": false\n  },\n  \"options\": {\n    \"requests_per_second\": 4180\n  },\n  \"available_in_playground\": \"<boolean>\",\n  \"available_in_evaluators\": \"<boolean>\",\n  \"available_in_agent_builder\": \"<boolean>\",\n  \"available_in_polly\": \"<boolean>\",\n  \"available_in_insights_heavy\": \"<boolean>\",\n  \"available_in_insights_light\": \"<boolean>\",\n  \"available_in_issues_agent_heavy\": \"<boolean>\",\n  \"available_in_issues_agent_light\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9d037ed2-431b-bca7-2b69-030416046cc8\",\n  \"settings\": {\n    \"key_0\": 7976.509630346272,\n    \"key_1\": \"string\",\n    \"key_2\": 6673.702525283238\n  },\n  \"created_at\": \"1998-01-01T01:16:42.155Z\",\n  \"updated_at\": \"2018-11-09T23:17:00.166Z\",\n  \"options\": {\n    \"requests_per_second\": 6448\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"settings_type\": \"complex\",\n  \"created_by_ls_user_id\": \"6833b5a5-cf9c-0972-831b-5299994d47f0\",\n  \"updated_by_ls_user_id\": \"672a5de7-1b9d-6204-372a-6f19f9436ae1\",\n  \"available_in_playground\": true,\n  \"available_in_evaluators\": true,\n  \"available_in_agent_builder\": false,\n  \"available_in_polly\": false,\n  \"available_in_insights_heavy\": false,\n  \"available_in_insights_light\": false,\n  \"available_in_issues_agent_heavy\": false,\n  \"available_in_issues_agent_light\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beaf6492-27f7-457a-8be4-e432dfaa5273",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings",
+                    ":playground_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playground_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": false\n  },\n  \"options\": {\n    \"requests_per_second\": 4180\n  },\n  \"available_in_playground\": \"<boolean>\",\n  \"available_in_evaluators\": \"<boolean>\",\n  \"available_in_agent_builder\": \"<boolean>\",\n  \"available_in_polly\": \"<boolean>\",\n  \"available_in_insights_heavy\": \"<boolean>\",\n  \"available_in_insights_light\": \"<boolean>\",\n  \"available_in_issues_agent_heavy\": \"<boolean>\",\n  \"available_in_issues_agent_light\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c9f14da-0806-43de-8ec7-7c3d38551d29",
+          "name": "Delete Playground Settings",
+          "request": {
+            "name": "Delete Playground Settings",
+            "description": {
+              "content": "Delete playground settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "playground-settings",
+                ":playground_settings_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "playground_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "988844e1-86a5-428b-b3d3-b5a9f65540d5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings",
+                    ":playground_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playground_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c426503-eaaf-4f4f-87a7-e034198ecc72",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "playground-settings",
+                    ":playground_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playground_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d3ce39e-1aa5-4921-b958-53e2978c4ead",
+    "name": "LangSmith access_policies playground-settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

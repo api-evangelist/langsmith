@@ -1,0 +1,344 @@
+{
+  "item": [
+    {
+      "id": "6fec641a-81be-496c-923b-08f847e9f3c1",
+      "name": "prompts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46e008ab-be51-4a42-9cd4-8882b93df011",
+          "name": "Invoke Prompt",
+          "request": {
+            "name": "Invoke Prompt",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                "invoke_prompt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    \"<array>\",\n    \"<array>\"\n  ],\n  \"template_format\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": 5228.212186105199\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b149193-5be0-457d-8f3d-d32ef6d7fe9a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prompts",
+                    "invoke_prompt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<array>\",\n    \"<array>\"\n  ],\n  \"template_format\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": 1176.3271388648056\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4924a9a6-3df8-4632-a8b0-0580dd839cbd",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prompts",
+                    "invoke_prompt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<array>\",\n    \"<array>\"\n  ],\n  \"template_format\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": 1176.3271388648056\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f62b9251-ca9e-48fb-a0bb-d4e61fb6c7c1",
+          "name": "Prompt Canvas",
+          "request": {
+            "name": "Prompt Canvas",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prompts",
+                "canvas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"additional_kwargs\": {\n        \"key_0\": 9956,\n        \"key_1\": 6415.389135428886,\n        \"key_2\": 3905.6126178664895\n      },\n      \"response_metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"type\": \"ai\",\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"name\": \"<string>\",\n          \"args\": {\n            \"key_0\": 4138.966723210694,\n            \"key_1\": \"string\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"args\": {\n            \"key_0\": false,\n            \"key_1\": 6028.086344826448,\n            \"key_2\": true\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"invalid_tool_calls\": [\n        {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"args\": \"<string>\",\n          \"error\": \"<string>\",\n          \"index\": \"<integer>\",\n          \"extras\": {\n            \"key_0\": false,\n            \"key_1\": 8388\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"args\": \"<string>\",\n          \"error\": \"<string>\",\n          \"index\": \"<integer>\",\n          \"extras\": {\n            \"key_0\": 9225,\n            \"key_1\": true\n          }\n        }\n      ],\n      \"usage_metadata\": {\n        \"input_tokens\": \"<integer>\",\n        \"output_tokens\": \"<integer>\",\n        \"total_tokens\": \"<integer>\",\n        \"input_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_creation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_read\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": false,\n          \"key_1\": false,\n          \"key_2\": \"string\",\n          \"key_3\": 3257\n        },\n        \"output_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"reasoning\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"content\": \"<string>\",\n      \"additional_kwargs\": {\n        \"key_0\": false,\n        \"key_1\": 9578,\n        \"key_2\": 8411.612425936388,\n        \"key_3\": true\n      },\n      \"response_metadata\": {\n        \"key_0\": 6034.310274215901,\n        \"key_1\": true\n      },\n      \"type\": \"ai\",\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"name\": \"<string>\",\n          \"args\": {\n            \"key_0\": 5187.267152782432,\n            \"key_1\": 739.512944929579\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"args\": {\n            \"key_0\": \"string\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"invalid_tool_calls\": [\n        {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"args\": \"<string>\",\n          \"error\": \"<string>\",\n          \"index\": \"<integer>\",\n          \"extras\": {\n            \"key_0\": 9485.644244613204,\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"args\": \"<string>\",\n          \"error\": \"<string>\",\n          \"index\": \"<integer>\",\n          \"extras\": {\n            \"key_0\": true\n          }\n        }\n      ],\n      \"usage_metadata\": {\n        \"input_tokens\": \"<integer>\",\n        \"output_tokens\": \"<integer>\",\n        \"total_tokens\": \"<integer>\",\n        \"input_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_creation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_read\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": \"string\",\n          \"key_1\": true,\n          \"key_2\": 7358\n        },\n        \"output_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"reasoning\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": 6579,\n          \"key_1\": \"string\"\n        }\n      }\n    }\n  ],\n  \"template_format\": \"<string>\",\n  \"secrets\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"highlighted\": {\n    \"prompt_chunk_start_index\": \"<integer>\",\n    \"prompt_chunk_end_index\": \"<integer>\",\n    \"prompt_chunk\": \"<string>\",\n    \"highlight_text\": \"<string>\"\n  },\n  \"artifact\": {\n    \"id\": \"<string>\",\n    \"contents\": [\n      {\n        \"index\": \"<integer>\",\n        \"content\": \"<string>\"\n      },\n      {\n        \"index\": \"<integer>\",\n        \"content\": \"<string>\"\n      }\n    ],\n    \"current_content_index\": \"<integer>\"\n  },\n  \"artifact_length\": \"<string>\",\n  \"reading_level\": \"<string>\",\n  \"custom_action\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8fa520b-96a7-41f1-a68e-e3a70c8a2354",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prompts",
+                    "canvas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"content\": \"string\",\n      \"additional_kwargs\": {\n        \"key_0\": 1936\n      },\n      \"response_metadata\": {\n        \"key_0\": 8234\n      },\n      \"type\": \"ai\",\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"tool_calls\": [\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": 6568,\n            \"key_1\": 9837\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": \"string\",\n            \"key_1\": false\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"invalid_tool_calls\": [\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 1207,\n          \"extras\": {\n            \"key_0\": 1753.1677801681699\n          }\n        },\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 4068,\n          \"extras\": {\n            \"key_0\": 2288\n          }\n        }\n      ],\n      \"usage_metadata\": {\n        \"input_tokens\": 3750,\n        \"output_tokens\": 2421,\n        \"total_tokens\": 9320,\n        \"input_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_creation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_read\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": 5686,\n          \"key_1\": true\n        },\n        \"output_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"reasoning\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"content\": \"string\",\n      \"additional_kwargs\": {\n        \"key_0\": 7315.424971659414\n      },\n      \"response_metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"type\": \"ai\",\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"tool_calls\": [\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": 6947,\n            \"key_1\": true\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": 2074,\n            \"key_1\": \"string\"\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"invalid_tool_calls\": [\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 3443,\n          \"extras\": {\n            \"key_0\": \"string\",\n            \"key_1\": 155.2606064287121,\n            \"key_2\": 7038.140377850002\n          }\n        },\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 6575,\n          \"extras\": {\n            \"key_0\": 1154\n          }\n        }\n      ],\n      \"usage_metadata\": {\n        \"input_tokens\": 9428,\n        \"output_tokens\": 7927,\n        \"total_tokens\": 1844,\n        \"input_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_creation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_read\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": 8583.889479547845\n        },\n        \"output_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"reasoning\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"template_format\": \"<string>\",\n  \"secrets\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"highlighted\": {\n    \"prompt_chunk_start_index\": 9836,\n    \"prompt_chunk_end_index\": 3502,\n    \"prompt_chunk\": \"string\",\n    \"highlight_text\": \"string\"\n  },\n  \"artifact\": {\n    \"id\": \"string\",\n    \"contents\": [\n      {\n        \"index\": 6460,\n        \"content\": \"string\"\n      },\n      {\n        \"index\": 5239,\n        \"content\": \"string\"\n      }\n    ],\n    \"current_content_index\": 8572\n  },\n  \"artifact_length\": \"<string>\",\n  \"reading_level\": \"<string>\",\n  \"custom_action\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97838f83-cbd5-41f6-8419-ec0d1add1e68",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prompts",
+                    "canvas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"content\": \"string\",\n      \"additional_kwargs\": {\n        \"key_0\": 1936\n      },\n      \"response_metadata\": {\n        \"key_0\": 8234\n      },\n      \"type\": \"ai\",\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"tool_calls\": [\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": 6568,\n            \"key_1\": 9837\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": \"string\",\n            \"key_1\": false\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"invalid_tool_calls\": [\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 1207,\n          \"extras\": {\n            \"key_0\": 1753.1677801681699\n          }\n        },\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 4068,\n          \"extras\": {\n            \"key_0\": 2288\n          }\n        }\n      ],\n      \"usage_metadata\": {\n        \"input_tokens\": 3750,\n        \"output_tokens\": 2421,\n        \"total_tokens\": 9320,\n        \"input_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_creation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_read\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": 5686,\n          \"key_1\": true\n        },\n        \"output_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"reasoning\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"content\": \"string\",\n      \"additional_kwargs\": {\n        \"key_0\": 7315.424971659414\n      },\n      \"response_metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"type\": \"ai\",\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"tool_calls\": [\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": 6947,\n            \"key_1\": true\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"args\": {\n            \"key_0\": 2074,\n            \"key_1\": \"string\"\n          },\n          \"id\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"invalid_tool_calls\": [\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 3443,\n          \"extras\": {\n            \"key_0\": \"string\",\n            \"key_1\": 155.2606064287121,\n            \"key_2\": 7038.140377850002\n          }\n        },\n        {\n          \"type\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"args\": \"string\",\n          \"error\": \"string\",\n          \"index\": 6575,\n          \"extras\": {\n            \"key_0\": 1154\n          }\n        }\n      ],\n      \"usage_metadata\": {\n        \"input_tokens\": 9428,\n        \"output_tokens\": 7927,\n        \"total_tokens\": 1844,\n        \"input_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_creation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cache_read\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_0\": 8583.889479547845\n        },\n        \"output_token_details\": {\n          \"audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"reasoning\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"template_format\": \"<string>\",\n  \"secrets\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"highlighted\": {\n    \"prompt_chunk_start_index\": 9836,\n    \"prompt_chunk_end_index\": 3502,\n    \"prompt_chunk\": \"string\",\n    \"highlight_text\": \"string\"\n  },\n  \"artifact\": {\n    \"id\": \"string\",\n    \"contents\": [\n      {\n        \"index\": 6460,\n        \"content\": \"string\"\n      },\n      {\n        \"index\": 5239,\n        \"content\": \"string\"\n      }\n    ],\n    \"current_content_index\": 8572\n  },\n  \"artifact_length\": \"<string>\",\n  \"reading_level\": \"<string>\",\n  \"custom_action\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e422d2e7-b400-4050-a8f8-c5ec2ac2e951",
+    "name": "LangSmith access_policies prompts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

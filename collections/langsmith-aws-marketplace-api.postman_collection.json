@@ -1,0 +1,224 @@
+{
+  "item": [
+    {
+      "id": "90430bf7-c8d7-4524-bb98-64b79d6f6a7a",
+      "name": "aws_marketplace",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54d20a7a-4e8e-4ebc-97cf-edff72b8f2ae",
+          "name": "AWS Marketplace fulfillment URL registration",
+          "request": {
+            "name": "AWS Marketplace fulfillment URL registration",
+            "description": {
+              "content": "Receives the x-amzn-marketplace-token posted by AWS Marketplace when a customer clicks \"Set Up Account\", resolves the customer identity, fetches entitlements, stores both in the DB, and redirects to the thank-you page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "aws-marketplace",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "x-amzn-marketplace-token",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Registration token from AWS Marketplace"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "42dc28d5-5c98-451f-9b0b-57364a845220",
+              "name": "Redirect to thank-you page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aws-marketplace",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Registration token from AWS Marketplace",
+                        "type": "text/plain"
+                      },
+                      "key": "x-amzn-marketplace-token",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "See Other",
+              "code": 303,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58584b2b-5258-4383-9a38-e627d4f23aa1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aws-marketplace",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Registration token from AWS Marketplace",
+                        "type": "text/plain"
+                      },
+                      "key": "x-amzn-marketplace-token",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dc8ba09-08e6-4592-a7eb-5c7f2612dc5e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aws-marketplace",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Registration token from AWS Marketplace",
+                        "type": "text/plain"
+                      },
+                      "key": "x-amzn-marketplace-token",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b44e3a98-1623-4024-9d8f-d3b4ed108d77",
+    "name": "LangSmith access_policies aws_marketplace API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

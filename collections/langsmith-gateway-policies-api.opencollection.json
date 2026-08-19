@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies gateway-policies API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "gateway-policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List gateway policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/platform/gateway-policies",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns every non-deleted gateway policy in the calling\norganization, sorted by `priority` ASC then `created_at` DESC.\nEach spend-cap row includes `current_spend_usd` — the spend\naccumulated in the policy's active window. This is the\nprimary cost-tracking surface for the LLM Gateway: dashboards\nand alerts read per-policy spend off this response. Disabled\nspend-cap policies still surface `current_spend_usd` so\nadmins can see what would have been enforced."
+        },
+        {
+          "info": {
+            "name": "Create a gateway policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/platform/gateway-policies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a `spend_cap`, `default_spend_cap`, or `guard` policy\nfor the calling organization. If a non-deleted policy in the\nsame family already exists with set-equal `subject_matchers`,\nthe existing row is upserted (mutable fields overwritten,\n`id` preserved) — including takeover of materialized\ndefault-spend-cap children."
+        },
+        {
+          "info": {
+            "name": "Get a gateway policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/platform/gateway-policies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Policy ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single gateway policy by id. Spend-cap rows include\n`current_spend_usd` for the active window so callers can read\nper-policy cost without a separate endpoint."
+        },
+        {
+          "info": {
+            "name": "Update a gateway policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/platform/gateway-policies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Policy ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates a gateway policy. Only fields present in the\nrequest body are applied; absent fields are left unchanged.\nEditing a `default_spend_cap` cascades the new\nconfig/action/enabled/priority onto every attached child so\nthe template stays the source of truth across rollouts."
+        },
+        {
+          "info": {
+            "name": "Delete a gateway policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/platform/gateway-policies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Policy ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Soft-deletes a gateway policy. Deleting a `default_spend_cap`\ncascade-soft-deletes every attached child in the same\ntransaction, so the admin wipes a template and its rollouts\nin a single call. Spend counters for the deleted policy are\nleft to expire naturally — the policy id is never reused,\nso any residual counter is unreachable."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

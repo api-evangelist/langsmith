@@ -1,0 +1,365 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies fleet auth API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fleet auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List an agent's connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/auth-agents/:agent_id/connections",
+            "params": [
+              {
+                "name": "agent_id",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the connection tokens granted to a specific agent."
+        },
+        {
+          "info": {
+            "name": "Grant a connection token to an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/auth-agents/:agent_id/connections",
+            "params": [
+              {
+                "name": "agent_id",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Associates an existing connection token with an agent so the agent can act with that token."
+        },
+        {
+          "info": {
+            "name": "Revoke an agent's connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/fleet/auth-agents/:agent_id/connections/:connection_id",
+            "params": [
+              {
+                "name": "agent_id",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path",
+                "description": "Connection ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a single connection from an agent. The underlying token is not revoked."
+        },
+        {
+          "info": {
+            "name": "List OAuth providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/auth-providers",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the OAuth providers configured for your organization. Each provider defines how a third-party service (GitHub, Google, Slack, etc.) authorizes connections."
+        },
+        {
+          "info": {
+            "name": "Register an OAuth provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/auth-providers",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Registers an OAuth provider configuration for your organization. End users can then start authorization sessions against this provider."
+        },
+        {
+          "info": {
+            "name": "Discover and register an OAuth provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/auth-providers/discover",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Auto-discovers an OAuth provider's metadata from an MCP server URL and registers it for your organization in one step."
+        },
+        {
+          "info": {
+            "name": "Get an OAuth provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/auth-providers/:provider_id",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path",
+                "description": "Provider ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single OAuth provider by ID."
+        },
+        {
+          "info": {
+            "name": "Update an OAuth provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/fleet/auth-providers/:provider_id",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path",
+                "description": "Provider ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an OAuth provider's configuration. Sent fields replace the stored values; absent fields are left unchanged."
+        },
+        {
+          "info": {
+            "name": "Delete an OAuth provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/fleet/auth-providers/:provider_id",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path",
+                "description": "Provider ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes an OAuth provider. Tokens previously issued for this provider are revoked."
+        },
+        {
+          "info": {
+            "name": "Start an authorization session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/auth-sessions",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Initiates an OAuth flow for the caller. If the user is already authorized, returns a completed session that references an existing token. Otherwise, returns a pending session containing a verification URL the user must visit to complete authorization."
+        },
+        {
+          "info": {
+            "name": "Get an authorization session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/auth-sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path",
+                "description": "Authorization session ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the current status of an in-flight authorization session. Poll until status is COMPLETED, or the session expires."
+        },
+        {
+          "info": {
+            "name": "List your connection tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/auth-tokens",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by provider ID"
+              },
+              {
+                "name": "agent_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by agent ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the active OAuth tokens belonging to the caller. Optionally filter by provider or agent."
+        },
+        {
+          "info": {
+            "name": "Revoke connection tokens by filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/auth-tokens/revoke",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revokes the caller's connection tokens matching the body filter. Requires at least provider_id; rejects empty filters to prevent accidental mass revocation."
+        },
+        {
+          "info": {
+            "name": "Update a connection token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/fleet/auth-tokens/:token_id",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "Token ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a token's metadata such as label or default flag."
+        },
+        {
+          "info": {
+            "name": "Revoke a connection token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/fleet/auth-tokens/:token_id",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "Token ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Revokes a single connection token by ID. The user is disconnected from the corresponding service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

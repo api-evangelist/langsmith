@@ -1,0 +1,4047 @@
+{
+  "item": [
+    {
+      "id": "75f51c60-dbc7-4a6a-8a92-879d953ecbc0",
+      "name": "examples",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38a23813-ad1d-434f-9543-58a2923c6e78",
+          "name": "Count Examples",
+          "request": {
+            "name": "Count Examples",
+            "description": {
+              "content": "Count all examples by query params",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "as_of",
+                  "value": "<dateTime>",
+                  "description": "Only modifications made on or before this time are included. If None, the latest version of the dataset is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "full_text_contains",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "full_text_contains",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "splits",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "splits",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22684baf-c3bc-4757-a2fe-dad03f52ffc9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "as_of",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "6951",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "329befa3-4653-4992-9e08-674373a0f0f7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "as_of",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ced4e040-8ad1-4747-9048-2233d622893e",
+          "name": "Read Example",
+          "request": {
+            "name": "Read Example",
+            "description": {
+              "content": "Get a specific example.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                ":example_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "as_of",
+                  "value": "<dateTime>",
+                  "description": "Only modifications made on or before this time are included. If None, the latest version of the dataset is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "example_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2caae821-7cb4-464b-a0ce-d5e24b1c4d7f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    ":example_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "as_of",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "example_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset_id\": \"5c3239dd-5c88-ddbd-5ad7-c2f56e9da5f5\",\n  \"inputs\": {\n    \"key_0\": 1417.0455621015499\n  },\n  \"id\": \"211be647-dcf3-2e64-e690-8f762e593836\",\n  \"name\": \"string\",\n  \"outputs\": {\n    \"key_0\": 4948.977069029476\n  },\n  \"source_run_id\": \"502b5383-73ba-0653-3af1-4179d084be38\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": 7959.789618355048,\n    \"key_2\": 2330.9355350379456\n  },\n  \"created_at\": \"1951-08-27T10:28:01.671Z\",\n  \"modified_at\": \"1949-04-21T00:59:55.348Z\",\n  \"attachment_urls\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa8a82d1-7356-4e5b-af46-8c1d2cdae77a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    ":example_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "as_of",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "example_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b02eb449-26f7-4d86-89b6-cdc3b9c35f1d",
+          "name": "Update Example",
+          "request": {
+            "name": "Update Example",
+            "description": {
+              "content": "Update a specific example.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                ":example_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "example_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"inputs\": {\n    \"key_0\": 9897.238348406532\n  },\n  \"outputs\": {\n    \"key_0\": 7726.597969473756,\n    \"key_1\": 8560.302629827182\n  },\n  \"attachments_operations\": {\n    \"rename\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"retain\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": true\n  },\n  \"split\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"overwrite\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9299d5b7-d26c-4d8a-b88c-09d0a8df54df",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    ":example_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "example_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"inputs\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"outputs\": {\n    \"key_0\": true,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\",\n    \"key_4\": false\n  },\n  \"attachments_operations\": {\n    \"rename\": {\n      \"key_0\": \"string\"\n    },\n    \"retain\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"split\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"overwrite\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "284f6222-ed52-4b5c-80e9-5e6676ef2bd4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    ":example_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "example_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"inputs\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"outputs\": {\n    \"key_0\": true,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\",\n    \"key_4\": false\n  },\n  \"attachments_operations\": {\n    \"rename\": {\n      \"key_0\": \"string\"\n    },\n    \"retain\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"split\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"overwrite\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6e983e1-6c33-42c6-9faa-c2f298136ab9",
+          "name": "Delete Example",
+          "request": {
+            "name": "Delete Example",
+            "description": {
+              "content": "Soft delete an example. Only deletes the example in the 'latest' version of the dataset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                ":example_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "example_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "891960bb-4683-4221-9b75-1726dd02bea9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    ":example_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "example_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6449b444-816e-45bc-a75c-c6294d10f9f0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    ":example_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "example_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9ddc4cc-70d6-4921-9168-bddc686f9021",
+          "name": "Read Examples",
+          "request": {
+            "name": "Read Examples",
+            "description": {
+              "content": "Get all examples by query params",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "as_of",
+                  "value": "<dateTime>",
+                  "description": "Only modifications made on or before this time are included. If None, the latest version of the dataset is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "full_text_contains",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "full_text_contains",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "splits",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "splits",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "recent"
+                },
+                {
+                  "disabled": false,
+                  "key": "random_seed",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "id"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "created_at"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "modified_at"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "name"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "dataset_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "source_run_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "metadata"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "inputs"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "outputs"
+                },
+                {
+                  "disabled": false,
+                  "key": "descending",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c5eca8a-de54-4e9d-a9d6-1e557d4c9dfe",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "as_of",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "order",
+                      "value": "recent"
+                    },
+                    {
+                      "key": "random_seed",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "select",
+                      "value": "id"
+                    },
+                    {
+                      "key": "select",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "select",
+                      "value": "modified_at"
+                    },
+                    {
+                      "key": "select",
+                      "value": "name"
+                    },
+                    {
+                      "key": "select",
+                      "value": "dataset_id"
+                    },
+                    {
+                      "key": "select",
+                      "value": "source_run_id"
+                    },
+                    {
+                      "key": "select",
+                      "value": "metadata"
+                    },
+                    {
+                      "key": "select",
+                      "value": "inputs"
+                    },
+                    {
+                      "key": "select",
+                      "value": "outputs"
+                    },
+                    {
+                      "key": "descending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dataset_id\": \"617a164e-84be-a47b-92a2-72933200e749\",\n    \"inputs\": {\n      \"key_0\": \"string\",\n      \"key_1\": 8969.915169482314\n    },\n    \"id\": \"47377152-e423-ef79-ba98-4aa56e432c4a\",\n    \"name\": \"string\",\n    \"outputs\": {\n      \"key_0\": 2903,\n      \"key_1\": true,\n      \"key_2\": false\n    },\n    \"source_run_id\": \"e170d58a-8c7e-dbd4-9d2b-2ca69a977342\",\n    \"metadata\": {\n      \"key_0\": 7518,\n      \"key_1\": false,\n      \"key_2\": 996.1805549747827,\n      \"key_3\": true\n    },\n    \"created_at\": \"2008-12-23T10:09:49.711Z\",\n    \"modified_at\": \"1974-04-13T22:18:42.003Z\",\n    \"attachment_urls\": {\n      \"key_0\": true\n    }\n  },\n  {\n    \"dataset_id\": \"8481bcb7-28c8-fc54-2636-675921d16f6b\",\n    \"inputs\": {\n      \"key_0\": \"string\"\n    },\n    \"id\": \"c700398c-c5e9-20fa-d67a-ccf070851f1e\",\n    \"name\": \"string\",\n    \"outputs\": {\n      \"key_0\": 5928,\n      \"key_1\": false,\n      \"key_2\": 6131\n    },\n    \"source_run_id\": \"03a0de76-42b2-5478-eb95-aa0a31582a76\",\n    \"metadata\": {\n      \"key_0\": 5392,\n      \"key_1\": \"string\"\n    },\n    \"created_at\": \"2005-03-12T04:23:44.150Z\",\n    \"modified_at\": \"1948-12-24T05:09:31.882Z\",\n    \"attachment_urls\": {\n      \"key_0\": 5810.667077458147,\n      \"key_1\": 9410\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21e24ecd-05fa-4519-9742-c61b062b1317",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "as_of",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "full_text_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "splits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataset",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "order",
+                      "value": "recent"
+                    },
+                    {
+                      "key": "random_seed",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "select",
+                      "value": "id"
+                    },
+                    {
+                      "key": "select",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "select",
+                      "value": "modified_at"
+                    },
+                    {
+                      "key": "select",
+                      "value": "name"
+                    },
+                    {
+                      "key": "select",
+                      "value": "dataset_id"
+                    },
+                    {
+                      "key": "select",
+                      "value": "source_run_id"
+                    },
+                    {
+                      "key": "select",
+                      "value": "metadata"
+                    },
+                    {
+                      "key": "select",
+                      "value": "inputs"
+                    },
+                    {
+                      "key": "select",
+                      "value": "outputs"
+                    },
+                    {
+                      "key": "descending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ed97f9f-1148-486a-9b39-64dbc2b134a0",
+          "name": "Create Example",
+          "request": {
+            "name": "Create Example",
+            "description": {
+              "content": "Create a new example.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"outputs\": {\n    \"key_0\": true,\n    \"key_1\": 6552\n  },\n  \"source_run_id\": \"<uuid>\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": 1927.0758039981206,\n    \"key_2\": \"string\"\n  },\n  \"inputs\": {\n    \"key_0\": false\n  },\n  \"split\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<uuid>\",\n  \"use_source_run_io\": false,\n  \"use_legacy_message_format\": false,\n  \"created_at\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "916004d1-951a-4958-81bd-77020f5c76f6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"outputs\": {\n    \"key_0\": \"string\"\n  },\n  \"source_run_id\": \"<uuid>\",\n  \"metadata\": {\n    \"key_0\": 8476\n  },\n  \"inputs\": {\n    \"key_0\": \"string\",\n    \"key_1\": 6694.176675288356\n  },\n  \"split\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<uuid>\",\n  \"use_source_run_io\": false,\n  \"use_legacy_message_format\": false,\n  \"created_at\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset_id\": \"5c3239dd-5c88-ddbd-5ad7-c2f56e9da5f5\",\n  \"inputs\": {\n    \"key_0\": 1417.0455621015499\n  },\n  \"id\": \"211be647-dcf3-2e64-e690-8f762e593836\",\n  \"name\": \"string\",\n  \"outputs\": {\n    \"key_0\": 4948.977069029476\n  },\n  \"source_run_id\": \"502b5383-73ba-0653-3af1-4179d084be38\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": 7959.789618355048,\n    \"key_2\": 2330.9355350379456\n  },\n  \"created_at\": \"1951-08-27T10:28:01.671Z\",\n  \"modified_at\": \"1949-04-21T00:59:55.348Z\",\n  \"attachment_urls\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a4d8aae-2506-4edc-a9c1-f15a190f31c7",
+          "name": "Delete Examples",
+          "request": {
+            "name": "Delete Examples",
+            "description": {
+              "content": "Soft delete examples. Only deletes the examples in the 'latest' version of the dataset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "example_ids",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "example_ids",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "087ab0a5-339c-42c8-a4f1-ec98bba64745",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "example_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "example_ids",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "125aa1b4-c914-4064-ac81-513215c2a8c2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "example_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "example_ids",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3630e1fc-24eb-4d2b-8a08-757523545e20",
+          "name": "Create Examples",
+          "request": {
+            "name": "Create Examples",
+            "description": {
+              "content": "Create bulk examples.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"dataset_id\": \"<uuid>\",\n    \"outputs\": {\n      \"key_0\": 8217\n    },\n    \"source_run_id\": \"<uuid>\",\n    \"metadata\": {\n      \"key_0\": 999.1341484163107,\n      \"key_1\": \"string\",\n      \"key_2\": false\n    },\n    \"inputs\": {\n      \"key_0\": 5245\n    },\n    \"split\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<uuid>\",\n    \"use_source_run_io\": false,\n    \"use_legacy_message_format\": false,\n    \"created_at\": \"<string>\"\n  },\n  {\n    \"dataset_id\": \"<uuid>\",\n    \"outputs\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": 9573\n    },\n    \"source_run_id\": \"<uuid>\",\n    \"metadata\": {\n      \"key_0\": 401.17552596584784,\n      \"key_1\": 8493.901420186154,\n      \"key_2\": true\n    },\n    \"inputs\": {\n      \"key_0\": 1611,\n      \"key_1\": \"string\"\n    },\n    \"split\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<uuid>\",\n    \"use_source_run_io\": false,\n    \"use_legacy_message_format\": false,\n    \"created_at\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bce915b2-6172-4d65-b7c2-e58c32185036",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"dataset_id\": \"<uuid>\",\n    \"outputs\": {\n      \"key_0\": true,\n      \"key_1\": false\n    },\n    \"source_run_id\": \"<uuid>\",\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"inputs\": {\n      \"key_0\": 1341\n    },\n    \"split\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<uuid>\",\n    \"use_source_run_io\": false,\n    \"use_legacy_message_format\": false,\n    \"created_at\": \"<string>\"\n  },\n  {\n    \"dataset_id\": \"<uuid>\",\n    \"outputs\": {\n      \"key_0\": \"string\",\n      \"key_1\": 7746.41958722062\n    },\n    \"source_run_id\": \"<uuid>\",\n    \"metadata\": {\n      \"key_0\": 2069.9366496675784,\n      \"key_1\": \"string\"\n    },\n    \"inputs\": {\n      \"key_0\": 6586.179026077094,\n      \"key_1\": 9267.965780918448,\n      \"key_2\": \"string\"\n    },\n    \"split\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<uuid>\",\n    \"use_source_run_io\": false,\n    \"use_legacy_message_format\": false,\n    \"created_at\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dataset_id\": \"e213ebb0-8678-caa6-307a-5e91031e8759\",\n    \"inputs\": {\n      \"key_0\": \"string\",\n      \"key_1\": true,\n      \"key_2\": \"string\",\n      \"key_3\": 5006.507802905779,\n      \"key_4\": false\n    },\n    \"id\": \"1043c2e0-3c78-2478-9ce2-e21849e034bb\",\n    \"name\": \"string\",\n    \"outputs\": {\n      \"key_0\": \"string\"\n    },\n    \"source_run_id\": \"3b89bffa-d435-11fb-04ec-35f7911323dd\",\n    \"metadata\": {\n      \"key_0\": 5332.113134493972\n    },\n    \"created_at\": \"1964-12-17T11:22:54.834Z\",\n    \"modified_at\": \"1982-10-07T22:00:34.987Z\",\n    \"attachment_urls\": {\n      \"key_0\": \"string\",\n      \"key_1\": 2110.2102794342113\n    }\n  },\n  {\n    \"dataset_id\": \"f196e53c-2914-670f-59d8-8e10fd589699\",\n    \"inputs\": {\n      \"key_0\": \"string\",\n      \"key_1\": 85\n    },\n    \"id\": \"e1d78429-3041-6596-54be-e53636a0f9b4\",\n    \"name\": \"string\",\n    \"outputs\": {\n      \"key_0\": false\n    },\n    \"source_run_id\": \"1a45e127-57ec-81ba-9a25-b1163e00bb2a\",\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": 2183\n    },\n    \"created_at\": \"1951-02-05T04:50:30.875Z\",\n    \"modified_at\": \"1953-10-24T13:59:09.246Z\",\n    \"attachment_urls\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "299fae01-dbd9-4abf-b9a5-ae83256fa79f",
+          "name": "Legacy Update Examples",
+          "request": {
+            "name": "Legacy Update Examples",
+            "description": {
+              "content": "Legacy update examples in bulk. For update involving attachments, use PATCH /v1/platform/datasets/{dataset_id}/examples instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"dataset_id\": \"<uuid>\",\n    \"inputs\": {\n      \"key_0\": 6293,\n      \"key_1\": true\n    },\n    \"outputs\": {\n      \"key_0\": \"string\",\n      \"key_1\": false\n    },\n    \"attachments_operations\": {\n      \"rename\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"retain\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": 3664,\n      \"key_1\": true\n    },\n    \"split\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"overwrite\": false\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"dataset_id\": \"<uuid>\",\n    \"inputs\": {\n      \"key_0\": 3038\n    },\n    \"outputs\": {\n      \"key_0\": \"string\"\n    },\n    \"attachments_operations\": {\n      \"rename\": {\n        \"key_0\": \"<string>\"\n      },\n      \"retain\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": 9247,\n      \"key_1\": \"string\",\n      \"key_2\": 4807.638543137999\n    },\n    \"split\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"overwrite\": false\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6cf00e03-e1db-4320-a176-9effd72a224e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"bf66fb6c-8111-a6fa-92e6-26878622678e\",\n    \"dataset_id\": \"07ba73a4-0c29-74e6-bc05-2fe7aa9d65e7\",\n    \"inputs\": {\n      \"key_0\": \"string\"\n    },\n    \"outputs\": {\n      \"key_0\": \"string\"\n    },\n    \"attachments_operations\": {\n      \"rename\": {\n        \"key_0\": \"string\"\n      },\n      \"retain\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": true,\n      \"key_1\": 4113.451102411626,\n      \"key_2\": 2394,\n      \"key_3\": 4247.144789929414\n    },\n    \"split\": [\n      \"string\",\n      \"string\"\n    ],\n    \"overwrite\": false\n  },\n  {\n    \"id\": \"42b9a5d1-46ad-327f-77e2-26d8a48ecfff\",\n    \"dataset_id\": \"db91cfba-27ab-eea2-d0cf-0ead6d3e2ffb\",\n    \"inputs\": {\n      \"key_0\": 3962.077410643028\n    },\n    \"outputs\": {\n      \"key_0\": 5097,\n      \"key_1\": 8419.776785513546,\n      \"key_2\": true\n    },\n    \"attachments_operations\": {\n      \"rename\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"retain\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": 7839,\n      \"key_1\": \"string\"\n    },\n    \"split\": [\n      \"string\",\n      \"string\"\n    ],\n    \"overwrite\": false\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "158d5e8f-1d61-47ff-a42a-4fb19b081481",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"bf66fb6c-8111-a6fa-92e6-26878622678e\",\n    \"dataset_id\": \"07ba73a4-0c29-74e6-bc05-2fe7aa9d65e7\",\n    \"inputs\": {\n      \"key_0\": \"string\"\n    },\n    \"outputs\": {\n      \"key_0\": \"string\"\n    },\n    \"attachments_operations\": {\n      \"rename\": {\n        \"key_0\": \"string\"\n      },\n      \"retain\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": true,\n      \"key_1\": 4113.451102411626,\n      \"key_2\": 2394,\n      \"key_3\": 4247.144789929414\n    },\n    \"split\": [\n      \"string\",\n      \"string\"\n    ],\n    \"overwrite\": false\n  },\n  {\n    \"id\": \"42b9a5d1-46ad-327f-77e2-26d8a48ecfff\",\n    \"dataset_id\": \"db91cfba-27ab-eea2-d0cf-0ead6d3e2ffb\",\n    \"inputs\": {\n      \"key_0\": 3962.077410643028\n    },\n    \"outputs\": {\n      \"key_0\": 5097,\n      \"key_1\": 8419.776785513546,\n      \"key_2\": true\n    },\n    \"attachments_operations\": {\n      \"rename\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"retain\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": 7839,\n      \"key_1\": \"string\"\n    },\n    \"split\": [\n      \"string\",\n      \"string\"\n    ],\n    \"overwrite\": false\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edf0226f-6afb-4f39-9d35-ad90d6f67f6d",
+          "name": "Upload Examples From Csv",
+          "request": {
+            "name": "Upload Examples From Csv",
+            "description": {
+              "content": "Upload examples from a CSV file.\n\nNote: For non-csv upload, please use\nthe POST /v1/platform/datasets/{dataset_id}/examples endpoint which provides more efficient upload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                "upload",
+                ":dataset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "input_keys",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "output_keys",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "metadata_keys",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "07923b8f-384e-440e-86d6-b45b5caed922",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "upload",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "input_keys",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "output_keys",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata_keys",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dataset_id\": \"ebfb3e0e-7bdd-18a5-0076-80f5b5ad40e3\",\n    \"inputs\": {\n      \"key_0\": 7536\n    },\n    \"id\": \"e5a6f52c-cf65-c6dd-be88-1353ace57200\",\n    \"name\": \"string\",\n    \"outputs\": {\n      \"key_0\": 7933.991428742012\n    },\n    \"source_run_id\": \"4db6b0c2-9b29-445f-aa68-afd2570af3d0\",\n    \"metadata\": {\n      \"key_0\": 6277\n    },\n    \"created_at\": \"1991-04-12T20:33:25.696Z\",\n    \"modified_at\": \"2004-04-02T09:31:26.555Z\",\n    \"attachment_urls\": {\n      \"key_0\": 1595\n    }\n  },\n  {\n    \"dataset_id\": \"23fc58d6-c994-3ffe-4e37-e61336f7e443\",\n    \"inputs\": {\n      \"key_0\": false,\n      \"key_1\": true,\n      \"key_2\": 6544.208447250817,\n      \"key_3\": 9281.573459067336\n    },\n    \"id\": \"7f5a8b16-39bb-cd9f-0f70-d238d5d49a65\",\n    \"name\": \"string\",\n    \"outputs\": {\n      \"key_0\": false,\n      \"key_1\": true\n    },\n    \"source_run_id\": \"0892ba20-908f-a5bd-b77f-8b0b23a13651\",\n    \"metadata\": {\n      \"key_0\": 9973.038239263306\n    },\n    \"created_at\": \"1958-08-08T19:32:52.377Z\",\n    \"modified_at\": \"2020-07-26T21:34:29.366Z\",\n    \"attachment_urls\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c55b2fe-0d0b-4093-8c6d-8b6ee271aba6",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "upload",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "input_keys",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "output_keys",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata_keys",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b37db09a-5a48-4641-8360-0d1d4804c7d6",
+          "name": "Validate Example",
+          "request": {
+            "name": "Validate Example",
+            "description": {
+              "content": "Validate an example.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "79e060ac-d13f-4a43-91e1-7a3d2fa042b7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset_id\": \"bb22c39b-883b-f659-3624-41526b404954\",\n  \"inputs\": {\n    \"key_0\": \"string\",\n    \"key_1\": 7744\n  },\n  \"outputs\": {\n    \"key_0\": true,\n    \"key_1\": false,\n    \"key_2\": 6380\n  },\n  \"created_at\": \"2013-11-17T15:26:10.280Z\",\n  \"metadata\": {\n    \"key_0\": 1983\n  },\n  \"source_run_id\": \"e97023ef-9682-aa82-7c64-a8897f8aa8f4\",\n  \"split\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id\": \"ee2f5b2b-ec70-242a-15bb-067006205697\",\n  \"use_source_run_io\": false,\n  \"overwrite\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcc209db-d43f-4151-aa62-3c511bdd41c2",
+          "name": "Validate Examples",
+          "request": {
+            "name": "Validate Examples",
+            "description": {
+              "content": "Validate examples in bulk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "examples",
+                "validate",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0d374d48-35cc-403f-8bbf-baa030cf0c78",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "examples",
+                    "validate",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dataset_id\": \"e8911c9c-7094-80fd-7359-96e9b2e932e5\",\n    \"inputs\": {\n      \"key_0\": 2876\n    },\n    \"outputs\": {\n      \"key_0\": false,\n      \"key_1\": false\n    },\n    \"created_at\": \"1954-02-03T13:38:10.712Z\",\n    \"metadata\": {\n      \"key_0\": 548\n    },\n    \"source_run_id\": \"c42a650b-a3bf-f4cf-b8df-4f5e2f90c108\",\n    \"split\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": \"7c889218-8b2c-7880-e2cf-b30aaa71e47d\",\n    \"use_source_run_io\": false,\n    \"overwrite\": false\n  },\n  {\n    \"dataset_id\": \"f82724bd-4309-0189-9af3-a6bb75e359e7\",\n    \"inputs\": {\n      \"key_0\": 1180,\n      \"key_1\": \"string\"\n    },\n    \"outputs\": {\n      \"key_0\": true,\n      \"key_1\": 8850.982166176931\n    },\n    \"created_at\": \"1951-03-03T05:13:14.455Z\",\n    \"metadata\": {\n      \"key_0\": true,\n      \"key_1\": false\n    },\n    \"source_run_id\": \"096ff47d-0d95-cefd-7d22-6b6e1fe96127\",\n    \"split\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": \"57aed1e9-2b2f-f1e9-7543-13842bc459c3\",\n    \"use_source_run_io\": false,\n    \"overwrite\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34831d7e-e195-4977-9ebb-c56325cdf0b4",
+          "name": "Hard Delete Examples",
+          "request": {
+            "name": "Hard Delete Examples",
+            "description": {
+              "content": "This endpoint hard deletes *all* versions of a dataset example(s).\nDeletion is performed by setting inputs, outputs, and metadata to null and deleting attachment files while keeping the example ID, dataset ID, and creation timestamp.\nIMPORTANT: attachment files can take up to 7 days to be deleted. inputs, outputs and metadata are nullified immediately.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "platform",
+                "datasets",
+                "examples",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example_ids\": [\n    \"<string>\"\n  ],\n  \"hard_delete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e55bf34e-65a0-422e-8303-8dfcc4cc2dee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    "examples",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"example_ids\": [\n    \"<string>\"\n  ],\n  \"hard_delete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1,\n  \"example_ids\": [\n    \"[\\\"123e4567-e89b-12d3-a456-426614174000\\\"]\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe4fcc32-bf1c-4477-861c-3899ed5ec4fd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    "examples",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"example_ids\": [\n    \"<string>\"\n  ],\n  \"hard_delete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bddc5e71-6845-44bf-9f81-f03e7dd48b9e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    "examples",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"example_ids\": [\n    \"<string>\"\n  ],\n  \"hard_delete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "780f4820-3eef-41c3-86a1-5a279b72d780",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    "examples",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"example_ids\": [\n    \"<string>\"\n  ],\n  \"hard_delete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bedc2a9-aa1f-47f3-a508-ded2ee06ec79",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    "examples",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"example_ids\": [\n    \"<string>\"\n  ],\n  \"hard_delete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "411424c5-8728-410e-82fa-55daac642e1c",
+          "name": "Upload Examples",
+          "request": {
+            "name": "Upload Examples",
+            "description": {
+              "content": "This endpoint allows clients to upload examples to a specified dataset by sending a multipart/form-data POST request.\nEach form part contains either JSON-encoded data or binary attachment files associated with an example.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "platform",
+                "datasets",
+                ":dataset_id",
+                "examples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) Dataset ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "{example_id}",
+                  "type": "file",
+                  "description": "(Required) The Example info as JSON. Can have fields 'metadata', 'split', 'use_source_run_io', 'source_run_id', 'created_at', 'modified_at'"
+                },
+                {
+                  "key": "{example_id}.inputs",
+                  "type": "file",
+                  "description": "(Required) The Example inputs as JSON"
+                },
+                {
+                  "key": "{example_id}.outputs",
+                  "type": "file",
+                  "description": "THe Example outputs as JSON"
+                },
+                {
+                  "key": "{example_id}.attachments.{name}",
+                  "type": "file",
+                  "description": "File attachment named {name}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02c0a152-db20-4c48-925d-127d480661ec",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example info as JSON. Can have fields 'metadata', 'split', 'use_source_run_io', 'source_run_id', 'created_at', 'modified_at'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "THe Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "File attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"as_of\": \"2024-01-21T10:00:00.123456Z\",\n  \"count\": 1,\n  \"example_ids\": [\n    \"[\\\"123e4567-e89b-12d3-a456-426614174000\\\"]\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a617514-c89b-42ae-9b67-3e3de23296bd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example info as JSON. Can have fields 'metadata', 'split', 'use_source_run_io', 'source_run_id', 'created_at', 'modified_at'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "THe Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "File attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6cd4ba2-526e-408a-a427-62f83d674918",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example info as JSON. Can have fields 'metadata', 'split', 'use_source_run_io', 'source_run_id', 'created_at', 'modified_at'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "THe Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "File attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d1204c8-a0c7-4064-95b6-72a7cf552055",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example info as JSON. Can have fields 'metadata', 'split', 'use_source_run_io', 'source_run_id', 'created_at', 'modified_at'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "THe Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "File attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d0f18fd-e9f1-456d-bad8-402e5ad52f78",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example info as JSON. Can have fields 'metadata', 'split', 'use_source_run_io', 'source_run_id', 'created_at', 'modified_at'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "THe Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "File attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bf7bbc9-00d3-4f29-8b52-4d35a00b1f3c",
+          "name": "Update Examples",
+          "request": {
+            "name": "Update Examples",
+            "description": {
+              "content": "This endpoint allows clients to update existing examples in a specified dataset by sending a multipart/form-data PATCH request.\nEach form part contains either JSON-encoded data or binary attachment files to update an example.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "platform",
+                "datasets",
+                ":dataset_id",
+                "examples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) Dataset ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "{example_id}",
+                  "type": "file",
+                  "description": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'"
+                },
+                {
+                  "key": "{example_id}.inputs",
+                  "type": "file",
+                  "description": "The updated Example inputs as JSON"
+                },
+                {
+                  "key": "{example_id}.outputs",
+                  "type": "file",
+                  "description": "The updated Example outputs as JSON"
+                },
+                {
+                  "key": "{example_id}.attachments_operations",
+                  "type": "file",
+                  "description": "JSON describing attachment operations (retain, rename)"
+                },
+                {
+                  "key": "{example_id}.attachment.{name}",
+                  "type": "file",
+                  "description": "New file attachment named {name}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7c2543aa-9612-4d80-9e26-bbd752ace568",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON describing attachment operations (retain, rename)",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments_operations",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "New file attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachment.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"as_of\": \"2024-01-21T10:00:00.123456Z\",\n  \"count\": 1,\n  \"example_ids\": [\n    \"[\\\"123e4567-e89b-12d3-a456-426614174000\\\"]\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76f9e7f4-455b-4fee-8d23-7c2298c505f3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON describing attachment operations (retain, rename)",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments_operations",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "New file attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachment.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "067a285d-9ea4-4daf-9a8d-31070935c891",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON describing attachment operations (retain, rename)",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments_operations",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "New file attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachment.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b2a4adc-5897-4e79-9cf1-f823782e0677",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON describing attachment operations (retain, rename)",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments_operations",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "New file attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachment.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32faff9b-affd-4405-9ce5-4abcf7c28907",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON describing attachment operations (retain, rename)",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments_operations",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "New file attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachment.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f3a59ae-0dfa-4bc6-8279-5d7e33ed0184",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "platform",
+                    "datasets",
+                    ":dataset_id",
+                    "examples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) Dataset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Example update info as JSON. Can have fields 'metadata', 'split'",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example inputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.inputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The updated Example outputs as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.outputs",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON describing attachment operations (retain, rename)",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachments_operations",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "New file attachment named {name}",
+                        "type": "text/plain"
+                      },
+                      "key": "{example_id}.attachment.{name}",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"details\": \"{\\\"field\\\":\\\"dataset_id\\\",\\\"reason\\\":\\\"required\\\"}\",\n  \"error\": \"Invalid request: missing required fields\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d3b847ba-0a3f-4b7f-b403-1ffefee81d25",
+    "name": "LangSmith access_policies examples API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

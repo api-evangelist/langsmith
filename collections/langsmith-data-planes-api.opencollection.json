@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies data_planes API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "data_planes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data planes for the current organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/orgs/current/data-planes",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns up to 50 data planes owned by the caller's organization. Sorted status priority (active first), then newest first. Requires BYOC to be enabled for the org."
+        },
+        {
+          "info": {
+            "name": "Create a new data plane",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/orgs/current/data-planes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Provisions a new data plane shell. Persists the rendered data plane spec, and returns 202 with the data plane in status=requested. Requires BYOC enabled org and org admin."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

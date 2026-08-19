@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies skills API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "skills",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List skills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/skills",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (default 20, max 100)"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Opaque pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the skills in the caller's workspace, paginated."
+        },
+        {
+          "info": {
+            "name": "Create a skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/fleet/skills",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a workspace skill with the supplied file tree. Atomic:\nif the file commit fails, no repo is created."
+        },
+        {
+          "info": {
+            "name": "Get a skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet/skills/:skillID",
+            "params": [
+              {
+                "name": "skillID",
+                "value": "",
+                "type": "path",
+                "description": "Skill ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the specified skill, including its full file tree."
+        },
+        {
+          "info": {
+            "name": "Replace a skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/fleet/skills/:skillID",
+            "params": [
+              {
+                "name": "skillID",
+                "value": "",
+                "type": "path",
+                "description": "Skill ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Replaces the skill's file tree in full. Any file present in the\ncurrent skill but absent from the request body is deleted. The\ncall is atomic; on validation failure no changes are applied."
+        },
+        {
+          "info": {
+            "name": "Delete a skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/fleet/skills/:skillID",
+            "params": [
+              {
+                "name": "skillID",
+                "value": "",
+                "type": "path",
+                "description": "Skill ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes the skill and all of its files. Idempotent: deleting an\nalready-deleted skill returns 204."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

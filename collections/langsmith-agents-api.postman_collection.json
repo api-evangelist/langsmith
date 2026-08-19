@@ -1,0 +1,1444 @@
+{
+  "item": [
+    {
+      "id": "44462840-585b-498c-a2a6-842737ee0bec",
+      "name": "agents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "253e3f9d-2612-445f-841b-566e0bc3ce61",
+          "name": "List agents",
+          "request": {
+            "name": "List agents",
+            "description": {
+              "content": "Returns the agents accessible to the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fleet",
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e29603f-8575-4026-ab40-bbee670b5323",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agents\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6c15428-d9d4-44fc-937f-cf6e78fa6d33",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20008d22-b794-4fad-9615-3d26da653d3e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c947c92-4aeb-44ba-93b2-fa68f0b9dcc3",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f736dea-a396-4c42-9d24-125e26661b70",
+          "name": "Create an agent",
+          "request": {
+            "name": "Create an agent",
+            "description": {
+              "content": "Creates an agent with optional initial file tree. Validation runs\nbefore any write; the call is atomic. Default response omits the\nfull file tree — pass ?include=files to echo it back.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fleet",
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated includes. Supported: files"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"<string>\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"triggers_paused\": \"<boolean>\",\n      \"user_email\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"user_timezone\": \"<string>\"\n    }\n  },\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"<string>\"\n    },\n    \"key_1\": {\n      \"content\": \"<string>\"\n    }\n  },\n  \"graph_id\": \"<string>\",\n  \"metadata\": {\n    \"agent_type\": \"<string>\",\n    \"agent_version\": \"<string>\",\n    \"icon\": \"<string>\",\n    \"icon_color\": \"<string>\",\n    \"shared_read_users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shared_run_users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shared_update_users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tenant_access_level\": \"<string>\",\n    \"visibility_scope\": \"<string>\"\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00f13be8-729d-4517-a231-44ab9a46e6b4",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": false,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"<string>\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assistant_id\": \"string\",\n  \"commit_hash\": \"string\",\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"created_at\": \"string\",\n  \"description\": \"string\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    },\n    \"key_2\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"string\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"string\",\n  \"owner_id\": \"string\",\n  \"updated_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c09bcb33-ca8a-40a1-9dab-ce3cf98b7b97",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": false,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"<string>\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33903dad-2602-4aa4-bb57-b942f5e7600e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": false,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"<string>\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd7c96ed-a87f-47b4-905b-51ce92a3d039",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": false,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"<string>\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4f7dddb-1802-419a-80b7-9b859e83b243",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": false,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"<string>\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa784be1-7d6f-4116-93a8-0cdba8bdf423",
+          "name": "Get an agent",
+          "request": {
+            "name": "Get an agent",
+            "description": {
+              "content": "Returns the specified agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fleet",
+                "agents",
+                ":agentID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentID",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b84a401c-8aa5-4599-96d7-9bef78bd5bf3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d8b6278-c84c-4517-a0dc-f21d2dead6e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54edbd9c-204b-4c96-9a05-31bf2a721463",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6190dc6-12bc-4598-ab70-55fd9bd43e51",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0aec53ae-1453-4238-b3d8-a6080f42524a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9e58496-04f3-4d1c-9b2f-8be53eb9c53c",
+          "name": "Update an agent",
+          "request": {
+            "name": "Update an agent",
+            "description": {
+              "content": "Updates the specified agent. All request fields are optional;\nomitted fields are left unchanged. When a top-level field is\nprovided, it replaces the existing value in full. Entries under\n`files` are created or replaced by path; paths listed in\n`deleted_paths` are removed. The call is atomic: if any entry\nfails validation, no changes are applied. The file tree is\nomitted from the response by default; pass ?include=files to\ninclude it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fleet",
+                "agents",
+                ":agentID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated includes. Supported: files"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentID",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"<string>\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"triggers_paused\": \"<boolean>\",\n      \"user_email\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"user_timezone\": \"<string>\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"<string>\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"<string>\",\n    \"agent_version\": \"<string>\",\n    \"icon\": \"<string>\",\n    \"icon_color\": \"<string>\",\n    \"shared_read_users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shared_run_users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shared_update_users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tenant_access_level\": \"<string>\",\n    \"visibility_scope\": \"<string>\"\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d4685402-8c2c-43f5-82c4-01a597ae4e19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assistant_id\": \"string\",\n  \"commit_hash\": \"string\",\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"created_at\": \"string\",\n  \"description\": \"string\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    },\n    \"key_2\": {\n      \"content\": \"string\"\n    }\n  },\n  \"graph_id\": \"string\",\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"string\",\n  \"owner_id\": \"string\",\n  \"updated_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "319a53a3-51bd-47a4-90f1-bdf9fb59f6d3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8da544b-4bb8-486b-8057-52ddad8285a0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd8cc77b-3d3c-4f80-902c-54b01e3e24a7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75218b89-abae-424f-9613-364858c8a91e",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bc04d74-8533-47e0-a9a8-797f0f659395",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet",
+                    "agents",
+                    ":agentID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentID",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"configurable\": {\n      \"backend_type\": \"string\",\n      \"llm_model_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"sandbox_proxy_profile_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"triggers_paused\": true,\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"user_timezone\": \"string\"\n    }\n  },\n  \"deleted_paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"files\": {\n    \"key_0\": {\n      \"content\": \"string\"\n    },\n    \"key_1\": {\n      \"content\": \"string\"\n    }\n  },\n  \"metadata\": {\n    \"agent_type\": \"string\",\n    \"agent_version\": \"string\",\n    \"icon\": \"string\",\n    \"icon_color\": \"string\",\n    \"shared_read_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_run_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_update_users\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tenant_access_level\": \"string\",\n    \"visibility_scope\": \"string\"\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"detail\": \"string\",\n  \"status\": 3807,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7871647b-882c-4944-b395-5c0924f18edf",
+    "name": "LangSmith access_policies agents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The LangSmith API is used to programmatically create and manage LangSmith resources.\n\n## Host\nhttps://api.smith.langchain.com\n\n## Authentication\nTo authenticate with the LangSmith API, set the `X-Api-Key` header\nto a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).\n\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LangSmith access_policies gateway API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "gateway",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Proxy Anthropic Messages through the LLM Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/anthropic/v1/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Forwards an Anthropic Messages API request to api.anthropic.com.\nThe gateway injects the workspace's stored ANTHROPIC_API_KEY\nunless the request carries a Claude-Code-style OAuth bearer\n(`Authorization: Bearer sk-ant-oat01-...`), in which case the\nbearer is forwarded as-is and the workspace key is not used.\nSpend-cap and guard policies apply in both modes.\n\nStreaming (`stream: true`) responses are forwarded as\n`text/event-stream` chunks. Non-streaming responses are\nforwarded as `application/json"
+        },
+        {
+          "info": {
+            "name": "Proxy Google Gemini generateContent through the LLM Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/gemini/v1beta/models/:model",
+            "params": [
+              {
+                "name": "model",
+                "value": "",
+                "type": "path",
+                "description": "Model + action, e.g. `gemini-2.0-flash:generateContent` or `gemini-2.0-flash:streamGenerateContent`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Forwards a Gemini v1beta `generateContent` or\n`streamGenerateContent` request to\ngenerativelanguage.googleapis.com. The gateway injects the\nworkspace's stored GOOGLE_API_KEY as the `x-goog-api-key`\nheader; any client-supplied `?key=` query parameter is\nstripped before forwarding so the workspace credential is the\nonly one in play. Spend-cap and guard policies apply.\n\n`streamGenerateContent` responses are forwarded as\n`text/event-stream`; `generateContent` responses are\nforwarded as `application/"
+        },
+        {
+          "info": {
+            "name": "Proxy OpenAI Chat Completions through the LLM Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/openai/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Forwards an OpenAI Chat Completions request to api.openai.com.\nThe request body is the unmodified OpenAI request shape; the\ngateway injects the workspace's stored OPENAI_API_KEY, applies\nspend-cap and guard policies, and emits a LangSmith trace span\nfor the call.\n\nStreaming (`stream: true`) responses are forwarded as\n`text/event-stream` chunks. Non-streaming responses are\nforwarded as `application/json`."
+        },
+        {
+          "info": {
+            "name": "Proxy OpenAI Responses through the LLM Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/openai/v1/responses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Forwards an OpenAI Responses API request to api.openai.com.\nSame auth, policy, and tracing semantics as Chat Completions —\nthe workspace's OPENAI_API_KEY is injected by the gateway and\nthe request body is forwarded verbatim."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
