@@ -6,6 +6,18 @@ description: >-
   LangSmith is the observability, debugging, and evaluation platform for LLM applications, built by LangChain. The
   LangSmith API exposes tracing, dataset management, evaluation, prompt-hub, and Fleet agent functionality for AI
   engineering teams.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -2033,6 +2045,9 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 common:
+  - type: CapabilityMap
+    url: capabilities/langsmith-capability-edges.yml
+    name: LangSmith Business Capability Map
   - type: AgenticAccess
     url: agentic-access/langsmith-agentic-access.yml
   - type: DomainSecurity
