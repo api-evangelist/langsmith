@@ -53,7 +53,8 @@ apis:
   description: The access_policies API from LangSmith — 3 operation(s) for access_policies.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
-  tags: []
+  tags:
+  - Access Policies
   tags_raw:
   - access_policies
   properties:
@@ -81,7 +82,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - ace
+  - ACE
   tags_raw:
   - ace
   properties:
@@ -136,7 +137,8 @@ apis:
   description: The alert_rules API from LangSmith — 3 operation(s) for alert_rules.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
-  tags: []
+  tags:
+  - Alert Rules
   tags_raw:
   - alert_rules
   properties:
@@ -164,7 +166,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - annotation-queues
+  - Annotation Queues
   tags_raw:
   - annotation-queues
   properties:
@@ -220,7 +222,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - audit-logs
+  - Audit Logs
   tags_raw:
   - audit-logs
   properties:
@@ -275,7 +277,8 @@ apis:
   description: The aws_marketplace API from LangSmith — 1 operation(s) for aws_marketplace.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
-  tags: []
+  tags:
+  - AWS Marketplace
   tags_raw:
   - aws_marketplace
   properties:
@@ -439,7 +442,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - commits
+  - Commits
   tags_raw:
   - commits
   properties:
@@ -466,7 +469,8 @@ apis:
   description: The data_planes API from LangSmith — 1 operation(s) for data_planes.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
-  tags: []
+  tags:
+  - Dataplanes
   tags_raw:
   - data_planes
   properties:
@@ -550,7 +554,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - evaluators
+  - Evaluators
   tags_raw:
   - evaluators
   properties:
@@ -578,7 +582,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - examples
+  - Examples
   tags_raw:
   - examples
   properties:
@@ -1063,7 +1067,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - likes
+  - Likes
   tags_raw:
   - likes
   properties:
@@ -1228,7 +1232,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - nps
+  - NPS
   tags_raw:
   - nps
   properties:
@@ -1364,7 +1368,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - orgs
+  - Organization
   tags_raw:
   - orgs
   properties:
@@ -1526,7 +1530,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - repos
+  - Repos
   tags_raw:
   - repos
   properties:
@@ -1554,7 +1558,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - run
+  - Run
   tags_raw:
   - run
   properties:
@@ -1582,7 +1586,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - runs
+  - Runs
   tags_raw:
   - runs
   properties:
@@ -1610,7 +1614,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - sandboxes
+  - Sandboxes
   tags_raw:
   - sandboxes
   properties:
@@ -1690,7 +1694,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - service-accounts
+  - Service Accounts
   tags_raw:
   - service-accounts
   properties:
@@ -1856,7 +1860,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - tenant
+  - Tenant
   tags_raw:
   - tenant
   properties:
