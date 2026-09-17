@@ -1255,34 +1255,6 @@ apis:
     url: https://docs.langchain.com/langsmith/annotation-queues
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
-- aid: langsmith:langsmith-oauth-api
-  name: LangSmith oauth API
-  description: The oauth API from LangSmith — 8 operation(s) for oauth.
-  humanURL: https://docs.langchain.com/langsmith/tracing
-  baseURL: https://api.smith.langchain.com
-  tags:
-  - Authentication
-  tags_raw:
-  - oauth
-  properties:
-  - type: OpenAPI
-    url: openapi/langsmith-oauth-api-openapi.yml
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith
-  - type: APIReference
-    url: https://docs.langchain.com/langsmith/tracing
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith/datasets
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith/evaluation
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith/prompt-hub
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith/feedback
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith/annotation-queues
-  - type: Documentation
-    url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-ok-api
   name: LangSmith Ok API
   description: The Ok API from LangSmith — 1 operation(s) for ok.
@@ -2029,6 +2001,32 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/langsmith-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith
+  - type: APIReference
+    url: https://docs.langchain.com/langsmith/tracing
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/datasets
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/evaluation
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/prompt-hub
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/feedback
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/annotation-queues
+  - type: Documentation
+    url: https://docs.langchain.com/langsmith/deployments
+- aid: langsmith:langsmith-oauth-api
+  name: LangSmith OAUTH API
+  description: The oauth API from LangSmith — 8 operation(s) for oauth.
+  humanURL: https://docs.langchain.com/langsmith/tracing
+  baseURL: https://api.smith.langchain.com
+  tags:
+  - oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/langsmith-oauth-api-openapi.yml
   - type: Documentation
     url: https://docs.langchain.com/langsmith
   - type: APIReference
