@@ -37,7 +37,7 @@ tags:
   - Artificial Intelligence
   - LLM
   - Observability
-  - Evaluations
+  - Evaluation
   - LangChain
 tags_raw:
   - AI
@@ -583,7 +583,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - Examples
+  - Example
   tags_raw:
   - examples
   properties:
@@ -931,7 +931,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - Gateway
+  - Gateways
   tags_raw:
   - gateway
   properties:
@@ -1587,7 +1587,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - Sandboxes
+  - Sandbox
   tags_raw:
   - sandboxes
   properties:
@@ -1833,7 +1833,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - Tenant
+  - Tenants
   tags_raw:
   - tenant
   properties:
@@ -1995,7 +1995,7 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
-  - Workspaces
+  - Workspace
   tags_raw:
   - workspaces
   properties:
@@ -2023,6 +2023,8 @@ apis:
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
   tags:
+  - Authentication
+  tags_raw:
   - oauth
   properties:
   - type: OpenAPI
