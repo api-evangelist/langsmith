@@ -1,156 +1,58 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: LangSmith
-providerId: langsmith
-created: '2026-05-08'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-08, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-08'
-reconciled: true
-tags:
-- AI
-- LLM
-- Observability
-- Evaluations
-- LangChain
-- Plans
-description: LangSmith plans and pricing reconciled against the LangChain pricing page. LangSmith
-  is sold as part of the broader LangChain platform, and pricing is per-seat plus pay-as-you-go
-  trace and Fleet (agent deployment) consumption.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.langchain.com/pricing
 sources:
 - https://www.langchain.com/pricing
-- https://docs.langchain.com/langsmith
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120317
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: tiered-subscription
+published: true
+note: Tiered seat subscription plus usage metering in LCUs/LSUs; deployment metering rates listed (e.g.
+  Runtime Compute · 0.045 LCU / vCPU-hr), Tuned Evaluators Perceived Error · 0.01 LCU/Evaluation Run.
+  Calculator shows an example estimate of $49 / mo.
+plan_count: 5
+currency: USD
 plans:
-- id: langsmith-developer
-  name: Developer
-  type: free
-  description: Free entry tier for individuals, hobby projects, and POCs. Pay-as-you-go for
-    overage traces.
-  entries:
-  - label: Seats
-    name: seats
-    type: flat
-    metric: seat
-    limit: 1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  - label: Base Traces Included
-    name: base_traces_included
-    type: usage
-    metric: trace
-    limit: 5000
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  - label: Fleet Agent Runs
-    name: fleet_agent_runs
-    type: usage
-    metric: run
-    limit: 50
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  elements:
-  - name: Tracing
-  - name: Monitoring
-  - name: Evaluation
-  - name: Prompt Hub
-  - name: Playground
-  - name: Community Support
-- id: langsmith-plus
-  name: Plus
-  type: paid
-  description: Per-seat plan for production teams. Includes unlimited team seats, larger trace
-    allowance, and one development-sized agent deployment.
-  entries:
-  - label: Per-Seat Subscription
-    name: seats
-    type: flat
-    metric: seat
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 39
-    userMultiplied: true
-  - label: Base Traces Included
-    name: base_traces_included
-    type: usage
-    metric: trace
-    limit: 10000
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  - label: Base Traces Overage
-    name: base_traces_overage
-    type: usage
-    metric: trace
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1000
-    price: 2.50
-    userMultiplied: false
-  - label: Fleet Agent Runs Included
-    name: fleet_agent_runs
-    type: usage
-    metric: run
-    limit: 500
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  - label: Production Deployment Uptime
-    name: deployment_uptime
-    type: usage
-    metric: minute
-    limit: -1
-    timeFrame: usage
-    geo: global
-    unit: 1
-    price: 0.0036
-    userMultiplied: false
-  elements:
-  - name: Email Support
-  - name: Unlimited Team Seats
-  - name: 1 Free Development-Sized Deployment
-  - name: Up to 3 Workspaces
-  - name: Unlimited Fleet Agents
-- id: langsmith-enterprise
-  name: Enterprise
-  type: enterprise
-  description: Custom contract pricing for large organizations. Includes hybrid/self-hosted
-    deployment, SSO, dedicated support, and custom limits.
-  entries:
-  - label: Contract
-    name: contract
-    type: flat
-    metric: contract
-    limit: -1
-    timeFrame: annual
-    geo: global
-    unit: 1
-    price: contact sales
-    userMultiplied: false
-  elements:
-  - name: All Plus Features
-  - name: Hybrid and Self-Hosted Hosting
-  - name: Custom SSO and RBAC
-  - name: Dedicated Support and SLAs
-  - name: Team Training
-  - name: Custom Trace Limits and Fleet Packages
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+- name: Developer
+  price_text: $0 / seat per month
+  price: 0
+  currency: USD
+  period: month
+  unit: seat
+  included_quota: Up to 5k base traces / mo, then pay-as-you-go; Community support; 1 seat; Includes 5
+    LCU of Fleet usage / mo for free; Includes 5 LCU & 1 LSU of Sandbox usage / mo for free
+  overage: then pay as you go
+- name: Plus
+  price_text: $39 / seat per month
+  price: 39
+  currency: USD
+  period: month
+  unit: seat
+  included_quota: Up to 10k base traces / mo, then pay-as-you-go; Access to Deployment, Engine, and more;
+    Add unlimited seats; 1 free Serverless (Small) deployment; Includes 25 LCU of Fleet usage / mo
+  overage: then pay as you go
+- name: Enterprise
+  price_text: Custom pricing
+  period: none
+  included_quota: Self-hosted and hybrid deployment options; Custom SSO, ABAC, RBAC; Support SLA; Custom
+    seats and workspaces
+  overage: then pay as you go
+- name: LCU (LangChain Compute Unit)
+  price_text: $1.50 / LCU
+  price: 1.5
+  currency: USD
+  period: per-use
+  unit: LCU
+- name: LSU (LangChain Storage Unit)
+  price_text: $1.00 / LSU
+  price: 1.0
+  currency: USD
+  period: per-use
+  unit: LSU
+rate_limit_statements:
+- See hourly trace ingestion and trace event limits here .
+- Limited to 10 Sandboxes.
