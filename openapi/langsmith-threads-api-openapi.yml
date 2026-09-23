@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LangSmith access_policies threads API
+  title: LangSmith Threads API
   description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
 
 
@@ -13,15 +13,12 @@ info:
 
     To authenticate with the LangSmith API, set the `X-Api-Key` header
 
-    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
-
-
-    '
+    to a valid LangSmith API key.'
   version: 0.1.0
 servers:
 - url: /
 tags:
-- name: threads
+- name: Threads
 paths:
   /v2/threads/query:
     post:
@@ -36,7 +33,7 @@ paths:
 
         Returns threads matching the given time range and optional filter.'
       tags:
-      - threads
+      - Threads
       summary: Query Threads
       parameters: []
       responses:
@@ -100,6 +97,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/threads.QueryThreadsRequestBody'
+      operationId: postV2ThreadsQuery
+      x-operation-id-source: derived
   /v2/threads/{thread_id}/traces:
     get:
       security:
@@ -111,7 +110,7 @@ paths:
 
         Retrieve all traces belonging to a specific thread within a project.'
       tags:
-      - threads
+      - Threads
       summary: Query Thread Traces
       parameters:
       - description: Thread ID
@@ -244,12 +243,77 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/shared.ProblemDetails'
+      operationId: getV2ThreadsByThreadIdTraces
+      x-operation-id-source: derived
 components:
   schemas:
-    query.RunFeedbackStats:
+    threads.QueryThreadTracesResponseBody:
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/query.RunFeedbackStat'
+      properties:
+        has_more:
+          description: '`has_more` is true when another page of traces exists after this one.'
+          type: boolean
+          example: true
+        items:
+          description: '`items` is the page of root traces in this thread. Which properties are populated on each trace depends on the `selects` query parameter.'
+          type: array
+          items:
+            $ref: '#/components/schemas/threads.ThreadTraceListItem'
+        next_cursor:
+          description: '`next_cursor` is the opaque cursor to pass as `cursor` on the next request when `has_more` is true. Omitted on the final page.'
+          type: string
+          example: eyJydW5zX2N1cnNvciI6Imx0KGN1cnNvciwiLi4uIikifQ==
+    threads.QueryThreadsRequestBody:
+      type: object
+      properties:
+        cursor:
+          description: '`cursor` is the opaque string from a previous response''s `next_cursor`. Omit on the first request; pass the returned cursor to fetch the next page.'
+          type: string
+        filter:
+          description: '`filter` narrows which threads are returned, using a LangSmith filter expression evaluated against each thread''s root run.
+
+            For example: has(tags, "production") or eq(status, "error").
+
+            See https://docs.langchain.com/langsmith/trace-query-syntax#filter-query-language for syntax.'
+          type: string
+        max_start_time:
+          description: '`max_start_time` is the inclusive upper bound on thread activity (RFC3339 date-time).'
+          type: string
+          format: date-time
+        min_start_time:
+          description: '`min_start_time` is the inclusive lower bound on thread activity (RFC3339 date-time).'
+          type: string
+          format: date-time
+        page_size:
+          description: '`page_size` is the maximum number of threads to return in this response. Defaults to 20 when omitted; must be between 1 and 100 inclusive when set. The response may contain fewer threads than `page_size` even when `has_more` is true.'
+          type: integer
+          default: 20
+          maximum: 100
+          minimum: 1
+          example: 20
+        project_id:
+          description: '`project_id` is the tracing project UUID.'
+          type: string
+          format: uuid
+          example: 0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328
+    query.RunPromptCostDetails:
+      type: object
+      properties:
+        raw:
+          description: '`raw` maps each category name to its estimated USD cost.'
+          type: object
+          additionalProperties:
+            type: number
+            format: float64
+    query.RunCompletionTokenDetails:
+      type: object
+      properties:
+        raw:
+          description: '`raw` maps each category name to its completion-token count.'
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
     threads.ThreadListItem:
       type: object
       properties:
@@ -389,15 +453,57 @@ components:
           additionalProperties:
             type: integer
             format: int64
-    query.RunCompletionTokenDetails:
+    query.RunCompletionCostDetails:
       type: object
       properties:
         raw:
-          description: '`raw` maps each category name to its completion-token count.'
+          description: '`raw` maps each category name to its estimated USD cost.'
+          type: object
+          additionalProperties:
+            type: number
+            format: float64
+    shared.ProblemDetails:
+      description: RFC 7807 problem details returned on V2 API errors.
+      type: object
+      properties:
+        detail:
+          type: string
+        instance:
+          type: string
+        remedy:
+          description: Remedy is a LangSmith extension for user-recoverable errors.
+          type: string
+        status:
+          type: integer
+        title:
+          type: string
+        type:
+          type: string
+    query.RunPromptTokenDetails:
+      type: object
+      properties:
+        raw:
+          description: '`raw` maps each category name to its prompt-token count.'
           type: object
           additionalProperties:
             type: integer
             format: int64
+    threads.QueryThreadsResponseBody:
+      type: object
+      properties:
+        has_more:
+          description: '`has_more` is true when another page of threads exists after this one.'
+          type: boolean
+          example: true
+        items:
+          description: '`items` is the page of thread summaries, sorted by the thread''s most recent activity.'
+          type: array
+          items:
+            $ref: '#/components/schemas/threads.ThreadListItem'
+        next_cursor:
+          description: '`next_cursor` is the opaque cursor to pass as `cursor` on the next request when `has_more` is true. Omitted on the final page.'
+          type: string
+          example: eyJydW5zX2N1cnNvciI6Imx0KGN1cnNvciwiLi4uIikifQ==
     threads.ThreadTraceListItem:
       type: object
       properties:
@@ -478,129 +584,24 @@ components:
           type: string
           format: uuid
           example: 018e4c7e-a9fb-7ef0-a5b6-6ea3a82e9327
-    shared.ProblemDetails:
-      description: RFC 7807 problem details returned on V2 API errors.
+    query.RunFeedbackStats:
       type: object
-      properties:
-        detail:
-          type: string
-        instance:
-          type: string
-        remedy:
-          description: Remedy is a LangSmith extension for user-recoverable errors.
-          type: string
-        status:
-          type: integer
-        title:
-          type: string
-        type:
-          type: string
-    threads.QueryThreadsRequestBody:
-      type: object
-      properties:
-        cursor:
-          description: '`cursor` is the opaque string from a previous response''s `next_cursor`. Omit on the first request; pass the returned cursor to fetch the next page.'
-          type: string
-        filter:
-          description: '`filter` narrows which threads are returned, using a LangSmith filter expression evaluated against each thread''s root run.
-
-            For example: has(tags, "production") or eq(status, "error").
-
-            See https://docs.langchain.com/langsmith/trace-query-syntax#filter-query-language for syntax.'
-          type: string
-        max_start_time:
-          description: '`max_start_time` is the inclusive upper bound on thread activity (RFC3339 date-time).'
-          type: string
-          format: date-time
-        min_start_time:
-          description: '`min_start_time` is the inclusive lower bound on thread activity (RFC3339 date-time).'
-          type: string
-          format: date-time
-        page_size:
-          description: '`page_size` is the maximum number of threads to return in this response. Defaults to 20 when omitted; must be between 1 and 100 inclusive when set. The response may contain fewer threads than `page_size` even when `has_more` is true.'
-          type: integer
-          default: 20
-          maximum: 100
-          minimum: 1
-          example: 20
-        project_id:
-          description: '`project_id` is the tracing project UUID.'
-          type: string
-          format: uuid
-          example: 0190a1b2-c3d4-7ef0-a5b6-6ea3a82e9328
-    query.RunPromptCostDetails:
-      type: object
-      properties:
-        raw:
-          description: '`raw` maps each category name to its estimated USD cost.'
-          type: object
-          additionalProperties:
-            type: number
-            format: float64
-    threads.QueryThreadsResponseBody:
-      type: object
-      properties:
-        has_more:
-          description: '`has_more` is true when another page of threads exists after this one.'
-          type: boolean
-          example: true
-        items:
-          description: '`items` is the page of thread summaries, sorted by the thread''s most recent activity.'
-          type: array
-          items:
-            $ref: '#/components/schemas/threads.ThreadListItem'
-        next_cursor:
-          description: '`next_cursor` is the opaque cursor to pass as `cursor` on the next request when `has_more` is true. Omitted on the final page.'
-          type: string
-          example: eyJydW5zX2N1cnNvciI6Imx0KGN1cnNvciwiLi4uIikifQ==
-    threads.QueryThreadTracesResponseBody:
-      type: object
-      properties:
-        has_more:
-          description: '`has_more` is true when another page of traces exists after this one.'
-          type: boolean
-          example: true
-        items:
-          description: '`items` is the page of root traces in this thread. Which properties are populated on each trace depends on the `selects` query parameter.'
-          type: array
-          items:
-            $ref: '#/components/schemas/threads.ThreadTraceListItem'
-        next_cursor:
-          description: '`next_cursor` is the opaque cursor to pass as `cursor` on the next request when `has_more` is true. Omitted on the final page.'
-          type: string
-          example: eyJydW5zX2N1cnNvciI6Imx0KGN1cnNvciwiLi4uIikifQ==
-    query.RunPromptTokenDetails:
-      type: object
-      properties:
-        raw:
-          description: '`raw` maps each category name to its prompt-token count.'
-          type: object
-          additionalProperties:
-            type: integer
-            format: int64
-    query.RunCompletionCostDetails:
-      type: object
-      properties:
-        raw:
-          description: '`raw` maps each category name to its estimated USD cost.'
-          type: object
-          additionalProperties:
-            type: number
-            format: float64
+      additionalProperties:
+        $ref: '#/components/schemas/query.RunFeedbackStat'
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-Key
-    Tenant ID:
+    Tenant_ID:
       type: apiKey
       in: header
       name: X-Tenant-Id
-    Bearer Auth:
+    Bearer_Auth:
       type: http
       description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
       scheme: bearer
-    Organization ID:
+    Organization_ID:
       type: apiKey
       in: header
       name: X-Organization-Id

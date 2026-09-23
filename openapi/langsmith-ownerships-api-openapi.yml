@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LangSmith access_policies ownerships API
+  title: LangSmith Ownerships API
   description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
 
 
@@ -13,10 +13,7 @@ info:
 
     To authenticate with the LangSmith API, set the `X-Api-Key` header
 
-    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
-
-
-    '
+    to a valid LangSmith API key.'
   version: 0.1.0
 servers:
 - url: /
@@ -154,26 +151,16 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    RemoveRepoOwnerRequest:
+    AddRepoOwnerRequest:
       properties:
-        identity_id:
+        email:
           type: string
-          format: uuid
-          title: Identity Id
+          title: Email
       type: object
       required:
-      - identity_id
-      title: RemoveRepoOwnerRequest
-      description: Request to remove a repo owner.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+      - email
+      title: AddRepoOwnerRequest
+      description: Request to add a repo owner.
     ValidationError:
       properties:
         loc:
@@ -195,16 +182,15 @@ components:
       - msg
       - type
       title: ValidationError
-    AddRepoOwnerRequest:
+    HTTPValidationError:
       properties:
-        email:
-          type: string
-          title: Email
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - email
-      title: AddRepoOwnerRequest
-      description: Request to add a repo owner.
+      title: HTTPValidationError
     ListRepoOwnersResponse:
       properties:
         owners:
@@ -217,6 +203,17 @@ components:
       - owners
       title: ListRepoOwnersResponse
       description: Response for listing repo owners.
+    RemoveRepoOwnerRequest:
+      properties:
+        identity_id:
+          type: string
+          format: uuid
+          title: Identity Id
+      type: object
+      required:
+      - identity_id
+      title: RemoveRepoOwnerRequest
+      description: Request to remove a repo owner.
     RepoOwner:
       properties:
         identity_id:
@@ -258,19 +255,19 @@ components:
 
         outside the repo''s tenant (PII protection).'
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-Key
-    Tenant ID:
+    Tenant_ID:
       type: apiKey
       in: header
       name: X-Tenant-Id
-    Bearer Auth:
+    Bearer_Auth:
       type: http
       description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
       scheme: bearer
-    Organization ID:
+    Organization_ID:
       type: apiKey
       in: header
       name: X-Organization-Id

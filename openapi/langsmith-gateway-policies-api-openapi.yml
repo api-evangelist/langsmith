@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LangSmith access_policies gateway-policies API
+  title: LangSmith Gateway Policies API
   description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
 
 
@@ -13,10 +13,7 @@ info:
 
     To authenticate with the LangSmith API, set the `X-Api-Key` header
 
-    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
-
-
-    '
+    to a valid LangSmith API key.'
   version: 0.1.0
 servers:
 - url: /
@@ -75,6 +72,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/gateway_policies.errorResponse'
       parameters: []
+      operationId: getV1PlatformGatewayPolicies
+      x-operation-id-source: derived
     post:
       security:
       - API Key: []
@@ -138,6 +137,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/gateway_policies.CreateGatewayPolicyRequest'
+      operationId: postV1PlatformGatewayPolicies
+      x-operation-id-source: derived
   /v1/platform/gateway-policies/{id}:
     get:
       security:
@@ -191,6 +192,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/gateway_policies.errorResponse'
+      operationId: getV1PlatformGatewayPoliciesById
+      x-operation-id-source: derived
     delete:
       security:
       - API Key: []
@@ -245,6 +248,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/gateway_policies.errorResponse'
+      operationId: deleteV1PlatformGatewayPoliciesById
+      x-operation-id-source: derived
     patch:
       security:
       - API Key: []
@@ -319,19 +324,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/gateway_policies.UpdateGatewayPolicyRequest'
+      operationId: patchV1PlatformGatewayPoliciesById
+      x-operation-id-source: derived
 components:
   schemas:
+    gateway_policies.errorResponse:
+      type: object
+      properties:
+        error:
+          type: string
     gateway_policies.SubjectMatcher:
       type: object
       properties:
         key:
           type: string
         value:
-          type: string
-    gateway_policies.errorResponse:
-      type: object
-      properties:
-        error:
           type: string
     gateway_policies.CreateGatewayPolicyRequest:
       type: object
@@ -347,6 +354,25 @@ components:
         name:
           type: string
         policy_type:
+          type: string
+        priority:
+          type: integer
+        subject_matchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
+    gateway_policies.UpdateGatewayPolicyRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        config:
+          type: object
+        description:
+          type: string
+        enabled:
+          type: boolean
+        name:
           type: string
         priority:
           type: integer
@@ -409,39 +435,20 @@ components:
           type: string
         updated_at:
           type: string
-    gateway_policies.UpdateGatewayPolicyRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        config:
-          type: object
-        description:
-          type: string
-        enabled:
-          type: boolean
-        name:
-          type: string
-        priority:
-          type: integer
-        subject_matchers:
-          type: array
-          items:
-            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-Key
-    Tenant ID:
+    Tenant_ID:
       type: apiKey
       in: header
       name: X-Tenant-Id
-    Bearer Auth:
+    Bearer_Auth:
       type: http
       description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
       scheme: bearer
-    Organization ID:
+    Organization_ID:
       type: apiKey
       in: header
       name: X-Organization-Id

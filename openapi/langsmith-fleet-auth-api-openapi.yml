@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LangSmith access_policies fleet auth API
+  title: LangSmith fleet auth API
   description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
 
 
@@ -13,10 +13,7 @@ info:
 
     To authenticate with the LangSmith API, set the `X-Api-Key` header
 
-    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
-
-
-    '
+    to a valid LangSmith API key.'
   version: 0.1.0
 servers:
 - url: /
@@ -61,6 +58,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: getV1FleetAuthAgentsByAgentIdConnections
+      x-operation-id-source: derived
     post:
       security:
       - API Key: []
@@ -104,6 +103,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: postV1FleetAuthAgentsByAgentIdConnections
+      x-operation-id-source: derived
   /v1/fleet/auth-agents/{agent_id}/connections/{connection_id}:
     delete:
       security:
@@ -148,6 +149,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: deleteV1FleetAuthAgentsByAgentIdConnectionsByConnectionId
+      x-operation-id-source: derived
   /v1/fleet/auth-providers:
     get:
       security:
@@ -174,6 +177,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
       parameters: []
+      operationId: getV1FleetAuthProviders
+      x-operation-id-source: derived
     post:
       security:
       - API Key: []
@@ -205,6 +210,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
       parameters: []
+      operationId: postV1FleetAuthProviders
+      x-operation-id-source: derived
   /v1/fleet/auth-providers/discover:
     post:
       security:
@@ -237,6 +244,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
       parameters: []
+      operationId: postV1FleetAuthProvidersDiscover
+      x-operation-id-source: derived
   /v1/fleet/auth-providers/{provider_id}:
     get:
       security:
@@ -275,6 +284,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: getV1FleetAuthProvidersByProviderId
+      x-operation-id-source: derived
     delete:
       security:
       - API Key: []
@@ -312,6 +323,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: deleteV1FleetAuthProvidersByProviderId
+      x-operation-id-source: derived
     patch:
       security:
       - API Key: []
@@ -355,6 +368,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: patchV1FleetAuthProvidersByProviderId
+      x-operation-id-source: derived
   /v1/fleet/auth-sessions:
     post:
       security:
@@ -387,6 +402,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
       parameters: []
+      operationId: postV1FleetAuthSessions
+      x-operation-id-source: derived
   /v1/fleet/auth-sessions/{session_id}:
     get:
       security:
@@ -425,6 +442,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: getV1FleetAuthSessionsBySessionId
+      x-operation-id-source: derived
   /v1/fleet/auth-tokens:
     get:
       security:
@@ -463,6 +482,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: getV1FleetAuthTokens
+      x-operation-id-source: derived
   /v1/fleet/auth-tokens/revoke:
     post:
       security:
@@ -495,6 +516,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
       parameters: []
+      operationId: postV1FleetAuthTokensRevoke
+      x-operation-id-source: derived
   /v1/fleet/auth-tokens/{token_id}:
     delete:
       security:
@@ -533,6 +556,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: deleteV1FleetAuthTokensByTokenId
+      x-operation-id-source: derived
     patch:
       security:
       - API Key: []
@@ -576,6 +601,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.errorResponse'
+      operationId: patchV1FleetAuthTokensByTokenId
+      x-operation-id-source: derived
 components:
   schemas:
     auth.errorResponse:
@@ -590,19 +617,19 @@ components:
         type:
           type: string
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-Key
-    Tenant ID:
+    Tenant_ID:
       type: apiKey
       in: header
       name: X-Tenant-Id
-    Bearer Auth:
+    Bearer_Auth:
       type: http
       description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
       scheme: bearer
-    Organization ID:
+    Organization_ID:
       type: apiKey
       in: header
       name: X-Organization-Id

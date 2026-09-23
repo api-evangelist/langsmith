@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LangSmith access_policies prompt-webhooks API
+  title: LangSmith Prompt Webhooks API
   description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
 
 
@@ -13,10 +13,7 @@ info:
 
     To authenticate with the LangSmith API, set the `X-Api-Key` header
 
-    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
-
-
-    '
+    to a valid LangSmith API key.'
   version: 0.1.0
 servers:
 - url: /
@@ -207,45 +204,35 @@ paths:
       - Bearer Auth: []
 components:
   schemas:
-    PromptWebhookPayload:
+    EPromptWebhookTrigger:
+      type: string
+      enum:
+      - commit
+      - tag:create
+      - tag:update
+      title: EPromptWebhookTrigger
+      description: Valid trigger types for prompt webhooks.
+    ValidationError:
       properties:
-        prompt_id:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Prompt Id
-        prompt_name:
+          title: Message
+        type:
           type: string
-          title: Prompt Name
-        manifest:
-          additionalProperties: true
-          type: object
-          title: Manifest
-        commit_hash:
-          type: string
-          title: Commit Hash
-        created_at:
-          type: string
-          title: Created At
-        created_by:
-          type: string
-          title: Created By
-        event:
-          $ref: '#/components/schemas/EPromptWebhookTrigger'
-        tag_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tag Name
+          title: Error Type
       type: object
       required:
-      - prompt_id
-      - prompt_name
-      - manifest
-      - commit_hash
-      - created_at
-      - created_by
-      - event
-      title: PromptWebhookPayload
-      description: Schema for the payload of a prompt webhook.
+      - loc
+      - msg
+      - type
+      title: ValidationError
     PromptWebhookCreate:
       properties:
         url:
@@ -300,27 +287,45 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
+    PromptWebhookPayload:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        prompt_id:
           type: string
-          title: Message
-        type:
+          title: Prompt Id
+        prompt_name:
           type: string
-          title: Error Type
+          title: Prompt Name
+        manifest:
+          additionalProperties: true
+          type: object
+          title: Manifest
+        commit_hash:
+          type: string
+          title: Commit Hash
+        created_at:
+          type: string
+          title: Created At
+        created_by:
+          type: string
+          title: Created By
+        event:
+          $ref: '#/components/schemas/EPromptWebhookTrigger'
+        tag_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tag Name
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - prompt_id
+      - prompt_name
+      - manifest
+      - commit_hash
+      - created_at
+      - created_by
+      - event
+      title: PromptWebhookPayload
+      description: Schema for the payload of a prompt webhook.
     PromptWebhook:
       properties:
         url:
@@ -421,18 +426,6 @@ components:
       type: object
       title: PromptWebhookUpdate
       description: Schema for updating a prompt webhook.
-    PromptWebhookTest:
-      properties:
-        webhook:
-          $ref: '#/components/schemas/PromptWebhookBase'
-        payload:
-          $ref: '#/components/schemas/PromptWebhookPayload'
-      type: object
-      required:
-      - webhook
-      - payload
-      title: PromptWebhookTest
-      description: Schema for testing a prompt webhook.
     PromptWebhookBase:
       properties:
         url:
@@ -472,28 +465,32 @@ components:
       - url
       title: PromptWebhookBase
       description: Base schema for prompt webhooks.
-    EPromptWebhookTrigger:
-      type: string
-      enum:
-      - commit
-      - tag:create
-      - tag:update
-      title: EPromptWebhookTrigger
-      description: Valid trigger types for prompt webhooks.
+    PromptWebhookTest:
+      properties:
+        webhook:
+          $ref: '#/components/schemas/PromptWebhookBase'
+        payload:
+          $ref: '#/components/schemas/PromptWebhookPayload'
+      type: object
+      required:
+      - webhook
+      - payload
+      title: PromptWebhookTest
+      description: Schema for testing a prompt webhook.
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-Key
-    Tenant ID:
+    Tenant_ID:
       type: apiKey
       in: header
       name: X-Tenant-Id
-    Bearer Auth:
+    Bearer_Auth:
       type: http
       description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
       scheme: bearer
-    Organization ID:
+    Organization_ID:
       type: apiKey
       in: header
       name: X-Organization-Id

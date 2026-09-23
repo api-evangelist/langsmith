@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LangSmith access_policies skills API
+  title: LangSmith Skills API
   description: 'The LangSmith API is used to programmatically create and manage LangSmith resources.
 
 
@@ -13,15 +13,12 @@ info:
 
     To authenticate with the LangSmith API, set the `X-Api-Key` header
 
-    to a valid [LangSmith API key](https://docs.langchain.com/langsmith/create-account-api-key#create-an-api-key).
-
-
-    '
+    to a valid LangSmith API key.'
   version: 0.1.0
 servers:
 - url: /
 tags:
-- name: skills
+- name: Skills
 paths:
   /v1/fleet/skills:
     get:
@@ -31,7 +28,7 @@ paths:
       - Bearer Auth: []
       description: Returns the skills in the caller's workspace, paginated.
       tags:
-      - skills
+      - Skills
       summary: List skills
       parameters:
       - description: Items per page (default 20, max 100)
@@ -71,6 +68,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/skills.ErrorResponse'
+      operationId: getV1FleetSkills
+      x-operation-id-source: derived
     post:
       security:
       - API Key: []
@@ -80,7 +79,7 @@ paths:
 
         if the file commit fails, no repo is created.'
       tags:
-      - skills
+      - Skills
       summary: Create a skill
       parameters: []
       responses:
@@ -126,6 +125,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/skills.CreateSkillRequest'
+      operationId: postV1FleetSkills
+      x-operation-id-source: derived
   /v1/fleet/skills/{skillID}:
     get:
       security:
@@ -134,7 +135,7 @@ paths:
       - Bearer Auth: []
       description: Returns the specified skill, including its full file tree.
       tags:
-      - skills
+      - Skills
       summary: Get a skill
       parameters:
       - description: Skill ID
@@ -174,6 +175,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/skills.ErrorResponse'
+      operationId: getV1FleetSkillsBySkillID
+      x-operation-id-source: derived
     put:
       security:
       - API Key: []
@@ -185,7 +188,7 @@ paths:
 
         call is atomic; on validation failure no changes are applied.'
       tags:
-      - skills
+      - Skills
       summary: Replace a skill
       parameters:
       - description: Skill ID
@@ -237,6 +240,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/skills.ReplaceSkillRequest'
+      operationId: putV1FleetSkillsBySkillID
+      x-operation-id-source: derived
     delete:
       security:
       - API Key: []
@@ -246,7 +251,7 @@ paths:
 
         already-deleted skill returns 204.'
       tags:
-      - skills
+      - Skills
       summary: Delete a skill
       parameters:
       - description: Skill ID
@@ -276,42 +281,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/skills.ErrorResponse'
+      operationId: deleteV1FleetSkillsBySkillID
+      x-operation-id-source: derived
 components:
   schemas:
-    skills.ListSkillsResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/skills.Skill'
-        next_cursor:
-          type: string
-    skills.ReplaceSkillRequest:
-      type: object
-      properties:
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/skills.FileEntry'
-        name:
-          type: string
-    skills.FileEntry:
-      type: object
-      properties:
-        content:
-          type: string
-        type:
-          type: string
-    skills.CreateSkillRequest:
-      type: object
-      properties:
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/skills.FileEntry'
-        name:
-          type: string
     skills.Skill:
       type: object
       properties:
@@ -337,6 +310,42 @@ components:
           type: string
         visibility:
           type: string
+    skills.ListSkillsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills.Skill'
+        next_cursor:
+          type: string
+    skills.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+    skills.CreateSkillRequest:
+      type: object
+      properties:
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/skills.FileEntry'
+        name:
+          type: string
+    skills.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+        type:
+          type: string
     skills.SkillOwner:
       type: object
       properties:
@@ -350,31 +359,29 @@ components:
           type: string
         ls_user_id:
           type: string
-    skills.ErrorResponse:
+    skills.ReplaceSkillRequest:
       type: object
       properties:
-        code:
-          type: string
-        detail:
-          type: string
-        status:
-          type: integer
-        type:
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/skills.FileEntry'
+        name:
           type: string
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-Key
-    Tenant ID:
+    Tenant_ID:
       type: apiKey
       in: header
       name: X-Tenant-Id
-    Bearer Auth:
+    Bearer_Auth:
       type: http
       description: Bearer tokens are used to authenticate from the UI. Must also specify x-tenant-id or x-organization-id (for org scoped apis).
       scheme: bearer
-    Organization ID:
+    Organization_ID:
       type: apiKey
       in: header
       name: X-Organization-Id
