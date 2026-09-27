@@ -250,72 +250,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    agents.CreateAgentRequest:
-      type: object
-      properties:
-        config:
-          $ref: '#/components/schemas/agents.AgentConfig'
-        description:
-          type: string
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/agents.FileEntry'
-        graph_id:
-          type: string
-        metadata:
-          $ref: '#/components/schemas/agents.AgentMetadata'
-        name:
-          type: string
-    agents.FileEntry:
-      type: object
-      properties:
-        content:
-          type: string
-    agents.UpdateAgentRequest:
-      type: object
-      properties:
-        config:
-          $ref: '#/components/schemas/agents.AgentConfig'
-        deleted_paths:
-          type: array
-          items:
-            type: string
-        description:
-          type: string
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/agents.FileEntry'
-        metadata:
-          $ref: '#/components/schemas/agents.AgentMetadata'
-        name:
-          type: string
-    agents.AgentConfigurable:
-      type: object
-      properties:
-        backend_type:
-          type: string
-        llm_model_config:
-          type: object
-          additionalProperties: {}
-        sandbox_proxy_profile_ids:
-          type: array
-          items:
-            type: string
-        triggers_paused:
-          type: boolean
-        user_email:
-          type: string
-        user_name:
-          type: string
-        user_timezone:
-          type: string
-    agents.AgentConfig:
-      type: object
-      properties:
-        configurable:
-          $ref: '#/components/schemas/agents.AgentConfigurable'
     agents.AgentMetadata:
       type: object
       properties:
@@ -343,52 +277,36 @@ components:
           type: string
         visibility_scope:
           type: string
-    agents.ErrorResponse:
+    agents.AgentConfig:
       type: object
       properties:
-        code:
-          type: string
-        detail:
-          type: string
-        status:
-          type: integer
-        type:
-          type: string
-    agents.Agent:
+        configurable:
+          $ref: '#/components/schemas/agents.AgentConfigurable'
+    agents.ListAgentsResponse:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        status:
-          type: string
-    agents.UpdateAgentResponse:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/agents.Agent'
+    agents.UpdateAgentRequest:
       type: object
       properties:
-        assistant_id:
-          type: string
-        commit_hash:
-          type: string
         config:
           $ref: '#/components/schemas/agents.AgentConfig'
-        created_at:
-          type: string
+        deleted_paths:
+          type: array
+          items:
+            type: string
         description:
           type: string
         files:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/agents.FileEntry'
-        graph_id:
-          type: string
         metadata:
           $ref: '#/components/schemas/agents.AgentMetadata'
         name:
-          type: string
-        owner_id:
-          type: string
-        updated_at:
           type: string
     agents.CreateAgentResponse:
       type: object
@@ -417,13 +335,95 @@ components:
           type: string
         updated_at:
           type: string
-    agents.ListAgentsResponse:
+    agents.UpdateAgentResponse:
       type: object
       properties:
-        agents:
+        assistant_id:
+          type: string
+        commit_hash:
+          type: string
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        created_at:
+          type: string
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        graph_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+        owner_id:
+          type: string
+        updated_at:
+          type: string
+    agents.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+    agents.Agent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+    agents.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+    agents.CreateAgentRequest:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        graph_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+    agents.AgentConfigurable:
+      type: object
+      properties:
+        backend_type:
+          type: string
+        llm_model_config:
+          type: object
+          additionalProperties: {}
+        sandbox_proxy_profile_ids:
           type: array
           items:
-            $ref: '#/components/schemas/agents.Agent'
+            type: string
+        triggers_paused:
+          type: boolean
+        user_email:
+          type: string
+        user_name:
+          type: string
+        user_timezone:
+          type: string
   securitySchemes:
     API_Key:
       type: apiKey

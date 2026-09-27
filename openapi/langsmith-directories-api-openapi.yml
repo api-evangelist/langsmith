@@ -263,6 +263,11 @@ components:
         files:
           type: object
           additionalProperties: {}
+    directories.CommitResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/directories.CommitInfo'
     directories.CommitInfo:
       type: object
       properties:
@@ -281,11 +286,6 @@ components:
           additionalProperties: {}
         parent_commit:
           type: string
-    directories.CommitResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/directories.CommitInfo'
   securitySchemes:
     API_Key:
       type: apiKey

@@ -39,18 +39,20 @@ tags:
   - Observability
   - Evaluation
   - LangChain
+  - A2A
 tags_raw:
   - AI
   - LLM
   - Observability
   - Evaluations
   - LangChain
+  - A2A
 created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 apis:
 - aid: langsmith:langsmith-access-policies-api
-  name: LangSmith access_policies API
+  name: LangSmith Access Policies API
   description: The access_policies API from LangSmith — 3 operation(s) for access_policies.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -78,7 +80,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-ace-api
-  name: LangSmith ace API
+  name: LangSmith Ace API
   description: The ace API from LangSmith — 1 operation(s) for ace.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -106,7 +108,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-agents-api
-  name: LangSmith agents API
+  name: LangSmith Agents API
   description: The agents API from LangSmith — 2 operation(s) for agents.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -134,7 +136,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-alert-rules-api
-  name: LangSmith alert_rules API
+  name: LangSmith Alert Rules API
   description: The alert_rules API from LangSmith — 3 operation(s) for alert_rules.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -162,7 +164,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-annotation-queues-api
-  name: LangSmith annotation-queues API
+  name: LangSmith Annotation Queues API
   description: The annotation-queues API from LangSmith — 17 operation(s) for annotation-queues.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -190,7 +192,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-api-key-api
-  name: LangSmith api-key API
+  name: LangSmith API Key API
   description: The api-key API from LangSmith — 4 operation(s) for api-key.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -218,7 +220,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-audit-logs-api
-  name: LangSmith audit-logs API
+  name: LangSmith Audit Logs API
   description: The audit-logs API from LangSmith — 1 operation(s) for audit-logs.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -246,7 +248,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-auth-api
-  name: LangSmith auth API
+  name: LangSmith Auth API
   description: The auth API from LangSmith — 7 operation(s) for auth.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -274,7 +276,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-aws-marketplace-api
-  name: LangSmith aws_marketplace API
+  name: LangSmith Aws Marketplace API
   description: The aws_marketplace API from LangSmith — 1 operation(s) for aws_marketplace.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -302,7 +304,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-backfills-api
-  name: LangSmith backfills API
+  name: LangSmith Backfills API
   description: The backfills API from LangSmith — 1 operation(s) for backfills.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -328,7 +330,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-beacon-api
-  name: LangSmith beacon API
+  name: LangSmith Beacon API
   description: The beacon API from LangSmith — 1 operation(s) for beacon.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -356,7 +358,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-bulk-exports-api
-  name: LangSmith bulk-exports API
+  name: LangSmith Bulk Exports API
   description: The bulk-exports API from LangSmith — 7 operation(s) for bulk-exports.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -382,7 +384,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-charts-api
-  name: LangSmith charts API
+  name: LangSmith Charts API
   description: The charts API from LangSmith — 13 operation(s) for charts.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -410,7 +412,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-comments-api
-  name: LangSmith comments API
+  name: LangSmith Comments API
   description: The comments API from LangSmith — 3 operation(s) for comments.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -438,7 +440,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-commits-api
-  name: LangSmith commits API
+  name: LangSmith Commits API
   description: The commits API from LangSmith — 2 operation(s) for commits.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -466,7 +468,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-data-planes-api
-  name: LangSmith data_planes API
+  name: LangSmith Data Planes API
   description: The data_planes API from LangSmith — 1 operation(s) for data_planes.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -494,7 +496,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-datasets-api
-  name: LangSmith datasets API
+  name: LangSmith Datasets API
   description: The datasets API from LangSmith — 28 operation(s) for datasets.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -522,7 +524,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-directories-api
-  name: LangSmith directories API
+  name: LangSmith Directories API
   description: The directories API from LangSmith — 2 operation(s) for directories.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -550,7 +552,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-evaluators-api
-  name: LangSmith evaluators API
+  name: LangSmith Evaluators API
   description: The evaluators API from LangSmith — 2 operation(s) for evaluators.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -578,7 +580,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-examples-api
-  name: LangSmith examples API
+  name: LangSmith Examples API
   description: The examples API from LangSmith — 9 operation(s) for examples.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -606,7 +608,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-experiment-view-overrides-api
-  name: LangSmith experiment-view-overrides API
+  name: LangSmith Experiment View Overrides API
   description: >-
     The experiment-view-overrides API from LangSmith — 2 operation(s) for experiment-view-overrides.
   humanURL: https://docs.langchain.com/langsmith/tracing
@@ -633,7 +635,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-experiments-api
-  name: LangSmith experiments API
+  name: LangSmith Experiments API
   description: The experiments API from LangSmith — 1 operation(s) for experiments.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -661,7 +663,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-features-api
-  name: LangSmith features API
+  name: LangSmith Features API
   description: The features API from LangSmith — 4 operation(s) for features.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -689,7 +691,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-feedback-api
-  name: LangSmith feedback API
+  name: LangSmith Feedback API
   description: The feedback API from LangSmith — 7 operation(s) for feedback.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -717,7 +719,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-feedback-configs-api
-  name: LangSmith feedback-configs API
+  name: LangSmith Feedback Configs API
   description: The feedback-configs API from LangSmith — 1 operation(s) for feedback-configs.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -899,7 +901,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-fleet-webhooks-api
-  name: LangSmith fleet_webhooks API
+  name: LangSmith Fleet Webhooks API
   description: The fleet_webhooks API from LangSmith — 1 operation(s) for fleet_webhooks.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -926,7 +928,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-gateway-api
-  name: LangSmith gateway API
+  name: LangSmith Gateway API
   description: The gateway API from LangSmith — 4 operation(s) for gateway.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -954,7 +956,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-gateway-policies-api
-  name: LangSmith gateway-policies API
+  name: LangSmith Gateway Policies API
   description: The gateway-policies API from LangSmith — 2 operation(s) for gateway-policies.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -980,7 +982,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-hub-environments-api
-  name: LangSmith hub_environments API
+  name: LangSmith Hub Environments API
   description: The hub_environments API from LangSmith — 2 operation(s) for hub_environments.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1007,7 +1009,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-info-api
-  name: LangSmith info API
+  name: LangSmith Info API
   description: The info API from LangSmith — 2 operation(s) for info.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1035,7 +1037,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-integrations-api
-  name: LangSmith integrations API
+  name: LangSmith Integrations API
   description: The integrations API from LangSmith — 1 operation(s) for integrations.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1063,7 +1065,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-likes-api
-  name: LangSmith likes API
+  name: LangSmith Likes API
   description: The likes API from LangSmith — 1 operation(s) for likes.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1091,7 +1093,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-mcp-api
-  name: LangSmith mcp API
+  name: LangSmith MCP API
   description: The mcp API from LangSmith — 2 operation(s) for mcp.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1119,7 +1121,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-mcp-vendors-api
-  name: LangSmith mcp_vendors API
+  name: LangSmith MCP Vendors API
   description: The mcp_vendors API from LangSmith — 6 operation(s) for mcp_vendors.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1146,7 +1148,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-me-api
-  name: LangSmith me API
+  name: LangSmith Me API
   description: The me API from LangSmith — 4 operation(s) for me.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1174,7 +1176,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-metrics-api
-  name: LangSmith metrics API
+  name: LangSmith Metrics API
   description: The metrics API from LangSmith — 1 operation(s) for metrics.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1202,7 +1204,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-model-price-map-api
-  name: LangSmith model-price-map API
+  name: LangSmith Model Price Map API
   description: The model-price-map API from LangSmith — 2 operation(s) for model-price-map.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1228,7 +1230,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-nps-api
-  name: LangSmith nps API
+  name: LangSmith Nps API
   description: The nps API from LangSmith — 1 operation(s) for nps.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1282,7 +1284,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-optimization-jobs-api
-  name: LangSmith optimization-jobs API
+  name: LangSmith Optimization Jobs API
   description: The optimization-jobs API from LangSmith — 4 operation(s) for optimization-jobs.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1336,7 +1338,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-orgs-api
-  name: LangSmith orgs API
+  name: LangSmith Orgs API
   description: The orgs API from LangSmith — 39 operation(s) for orgs.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1364,7 +1366,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-ownerships-api
-  name: LangSmith ownerships API
+  name: LangSmith Ownerships API
   description: The ownerships API from LangSmith — 1 operation(s) for ownerships.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1390,7 +1392,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-playground-settings-api
-  name: LangSmith playground-settings API
+  name: LangSmith Playground Settings API
   description: The playground-settings API from LangSmith — 2 operation(s) for playground-settings.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1416,7 +1418,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-prompt-webhooks-api
-  name: LangSmith prompt-webhooks API
+  name: LangSmith Prompt Webhooks API
   description: The prompt-webhooks API from LangSmith — 3 operation(s) for prompt-webhooks.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1442,7 +1444,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-prompts-api
-  name: LangSmith prompts API
+  name: LangSmith Prompts API
   description: The prompts API from LangSmith — 2 operation(s) for prompts.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1470,7 +1472,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-public-api
-  name: LangSmith public API
+  name: LangSmith Public API
   description: The public API from LangSmith — 20 operation(s) for public.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1498,7 +1500,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-repos-api
-  name: LangSmith repos API
+  name: LangSmith Repos API
   description: The repos API from LangSmith — 5 operation(s) for repos.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1526,7 +1528,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-run-api
-  name: LangSmith run API
+  name: LangSmith Run API
   description: The run API from LangSmith — 19 operation(s) for run.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1554,7 +1556,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-runs-api
-  name: LangSmith runs API
+  name: LangSmith Runs API
   description: The runs API from LangSmith — 7 operation(s) for runs.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1582,7 +1584,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-sandboxes-api
-  name: LangSmith sandboxes API
+  name: LangSmith Sandboxes API
   description: The sandboxes API from LangSmith — 12 operation(s) for sandboxes.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1610,7 +1612,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-sandboxes-internal-api
-  name: LangSmith sandboxes-internal API
+  name: LangSmith Sandboxes Internal API
   description: The sandboxes-internal API from LangSmith — 1 operation(s) for sandboxes-internal.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1662,7 +1664,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-service-accounts-api
-  name: LangSmith service-accounts API
+  name: LangSmith Service Accounts API
   description: The service-accounts API from LangSmith — 2 operation(s) for service-accounts.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1690,7 +1692,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-sessions-api
-  name: LangSmith sessions API
+  name: LangSmith Sessions API
   description: The sessions API from LangSmith — 1 operation(s) for sessions.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1718,7 +1720,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-settings-api
-  name: LangSmith settings API
+  name: LangSmith Settings API
   description: The settings API from LangSmith — 2 operation(s) for settings.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1746,7 +1748,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-skills-api
-  name: LangSmith skills API
+  name: LangSmith Skills API
   description: The skills API from LangSmith — 2 operation(s) for skills.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1774,7 +1776,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-tag-transitions-api
-  name: LangSmith tag-transitions API
+  name: LangSmith Tag Transitions API
   description: The tag-transitions API from LangSmith — 1 operation(s) for tag-transitions.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1800,7 +1802,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-tags-api
-  name: LangSmith tags API
+  name: LangSmith Tags API
   description: The tags API from LangSmith — 2 operation(s) for tags.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1828,7 +1830,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-tenant-api
-  name: LangSmith tenant API
+  name: LangSmith Tenant API
   description: The tenant API from LangSmith — 1 operation(s) for tenant.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1856,7 +1858,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-threads-api
-  name: LangSmith threads API
+  name: LangSmith Threads API
   description: The threads API from LangSmith — 2 operation(s) for threads.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1884,7 +1886,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-tools-api
-  name: LangSmith tools API
+  name: LangSmith Tools API
   description: The tools API from LangSmith — 3 operation(s) for tools.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1912,7 +1914,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-tracer-sessions-api
-  name: LangSmith tracer-sessions API
+  name: LangSmith Tracer Sessions API
   description: The tracer-sessions API from LangSmith — 14 operation(s) for tracer-sessions.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1964,7 +1966,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-usage-limits-api
-  name: LangSmith usage-limits API
+  name: LangSmith Usage Limits API
   description: The usage-limits API from LangSmith — 3 operation(s) for usage-limits.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com
@@ -1990,7 +1992,7 @@ apis:
   - type: Documentation
     url: https://docs.langchain.com/langsmith/deployments
 - aid: langsmith:langsmith-workspaces-api
-  name: LangSmith workspaces API
+  name: LangSmith Workspaces API
   description: The workspaces API from LangSmith — 25 operation(s) for workspaces.
   humanURL: https://docs.langchain.com/langsmith/tracing
   baseURL: https://api.smith.langchain.com

@@ -369,15 +369,19 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+    BulkExportCompression:
+      type: string
+      enum:
+      - none
+      - gzip
+      - snappy
+      - zstandard
+      title: BulkExportCompression
+    BulkExportUpdatableStatus:
+      type: string
+      enum:
+      - Cancelled
+      title: BulkExportUpdatableStatus
     BulkExportStatus:
       type: string
       enum:
@@ -433,212 +437,6 @@ components:
           default: true
       type: object
       title: BulkExportDestinationS3Config
-    BulkExportDestinationUpdate:
-      properties:
-        credentials:
-          $ref: '#/components/schemas/BulkExportDestinationS3Credentials'
-      type: object
-      required:
-      - credentials
-      title: BulkExportDestinationUpdate
-    BulkExportDestinationCreate:
-      properties:
-        destination_type:
-          $ref: '#/components/schemas/BulkExportDestinationType'
-          default: s3
-        display_name:
-          type: string
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_ ']+$
-          title: Display Name
-        config:
-          $ref: '#/components/schemas/BulkExportDestinationS3Config'
-        credentials:
-          anyOf:
-          - $ref: '#/components/schemas/BulkExportDestinationS3Credentials'
-          - type: 'null'
-      type: object
-      required:
-      - display_name
-      - config
-      title: BulkExportDestinationCreate
-    BulkExportDestination:
-      properties:
-        destination_type:
-          $ref: '#/components/schemas/BulkExportDestinationType'
-          default: s3
-        display_name:
-          type: string
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_ ']+$
-          title: Display Name
-        config:
-          $ref: '#/components/schemas/BulkExportDestinationS3Config'
-        id:
-          type: string
-          format: uuid
-          title: Id
-        tenant_id:
-          type: string
-          format: uuid
-          title: Tenant Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-        credentials_keys:
-          items:
-            type: string
-          type: array
-          title: Credentials Keys
-      type: object
-      required:
-      - display_name
-      - config
-      - id
-      - tenant_id
-      - created_at
-      - updated_at
-      - credentials_keys
-      title: BulkExportDestination
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    BulkExportCompression:
-      type: string
-      enum:
-      - none
-      - gzip
-      - snappy
-      - zstandard
-      title: BulkExportCompression
-    BulkExportUpdate:
-      properties:
-        status:
-          $ref: '#/components/schemas/BulkExportUpdatableStatus'
-          default: Cancelled
-      type: object
-      title: BulkExportUpdate
-    BulkExportCreate:
-      properties:
-        bulk_export_destination_id:
-          type: string
-          format: uuid
-          title: Bulk Export Destination Id
-        session_id:
-          type: string
-          format: uuid
-          title: Session Id
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
-        filter:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filter
-        format:
-          $ref: '#/components/schemas/BulkExportFormat'
-          default: Parquet
-        format_version:
-          $ref: '#/components/schemas/BulkExportFormatVersion'
-          default: v1
-        compression:
-          $ref: '#/components/schemas/BulkExportCompression'
-          default: gzip
-        interval_hours:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Interval Hours
-        export_fields:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Export Fields
-      type: object
-      required:
-      - bulk_export_destination_id
-      - session_id
-      - start_time
-      title: BulkExportCreate
-    BulkExportRunMetadata:
-      properties:
-        prefix:
-          type: string
-          title: Prefix
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
-        end_time:
-          type: string
-          format: date-time
-          title: End Time
-        execution_backend:
-          anyOf:
-          - type: string
-            enum:
-            - clickhouse
-            - smithdb
-          - type: 'null'
-          title: Execution Backend
-        result:
-          anyOf:
-          - $ref: '#/components/schemas/BulkExportRunProgress'
-          - type: 'null'
-      type: object
-      required:
-      - prefix
-      - start_time
-      - end_time
-      title: BulkExportRunMetadata
-    BulkExportFormat:
-      type: string
-      enum:
-      - Parquet
-      title: BulkExportFormat
-    BulkExportUpdatableStatus:
-      type: string
-      enum:
-      - Cancelled
-      title: BulkExportUpdatableStatus
-    BulkExportDestinationType:
-      type: string
-      enum:
-      - s3
-      title: BulkExportDestinationType
     BotocoreS3Config:
       properties:
         addressing_style:
@@ -678,105 +476,14 @@ components:
 
 
         See: https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html'
-    BulkExportRun:
+    BulkExportDestinationUpdate:
       properties:
-        bulk_export_id:
-          type: string
-          format: uuid
-          title: Bulk Export Id
-        metadata:
-          $ref: '#/components/schemas/BulkExportRunMetadata'
-        id:
-          type: string
-          format: uuid
-          title: Id
-        status:
-          $ref: '#/components/schemas/BulkExportRunStatus'
-        retry_number:
-          type: integer
-          title: Retry Number
-          default: 0
-        errors:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Errors
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-        finished_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Finished At
-        start_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Start Time
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
+        credentials:
+          $ref: '#/components/schemas/BulkExportDestinationS3Credentials'
       type: object
       required:
-      - bulk_export_id
-      - metadata
-      - id
-      - status
-      - created_at
-      - updated_at
-      - finished_at
-      title: BulkExportRun
-    BulkExportRunProgress:
-      properties:
-        rows_written:
-          type: integer
-          title: Rows Written
-        exported_files:
-          items:
-            type: string
-          type: array
-          title: Exported Files
-        export_path:
-          type: string
-          title: Export Path
-        latest_cursor:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Latest Cursor
-        pending_upload:
-          anyOf:
-          - $ref: '#/components/schemas/PendingUpload'
-          - type: 'null'
-      type: object
-      required:
-      - rows_written
-      - exported_files
-      - export_path
-      - latest_cursor
-      title: BulkExportRunProgress
-    BulkExportRunStatus:
-      type: string
-      enum:
-      - Cancelled
-      - Completed
-      - Created
-      - Failed
-      - TimedOut
-      - Running
-      title: BulkExportRunStatus
+      - credentials
+      title: BulkExportDestinationUpdate
     BulkExport:
       properties:
         bulk_export_destination_id:
@@ -865,6 +572,322 @@ components:
       - updated_at
       - finished_at
       title: BulkExport
+    BulkExportRun:
+      properties:
+        bulk_export_id:
+          type: string
+          format: uuid
+          title: Bulk Export Id
+        metadata:
+          $ref: '#/components/schemas/BulkExportRunMetadata'
+        id:
+          type: string
+          format: uuid
+          title: Id
+        status:
+          $ref: '#/components/schemas/BulkExportRunStatus'
+        retry_number:
+          type: integer
+          title: Retry Number
+          default: 0
+        errors:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Errors
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        finished_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Finished At
+        start_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+      type: object
+      required:
+      - bulk_export_id
+      - metadata
+      - id
+      - status
+      - created_at
+      - updated_at
+      - finished_at
+      title: BulkExportRun
+    BulkExportDestination:
+      properties:
+        destination_type:
+          $ref: '#/components/schemas/BulkExportDestinationType'
+          default: s3
+        display_name:
+          type: string
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_ ']+$
+          title: Display Name
+        config:
+          $ref: '#/components/schemas/BulkExportDestinationS3Config'
+        id:
+          type: string
+          format: uuid
+          title: Id
+        tenant_id:
+          type: string
+          format: uuid
+          title: Tenant Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        credentials_keys:
+          items:
+            type: string
+          type: array
+          title: Credentials Keys
+      type: object
+      required:
+      - display_name
+      - config
+      - id
+      - tenant_id
+      - created_at
+      - updated_at
+      - credentials_keys
+      title: BulkExportDestination
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    BulkExportDestinationCreate:
+      properties:
+        destination_type:
+          $ref: '#/components/schemas/BulkExportDestinationType'
+          default: s3
+        display_name:
+          type: string
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_ ']+$
+          title: Display Name
+        config:
+          $ref: '#/components/schemas/BulkExportDestinationS3Config'
+        credentials:
+          anyOf:
+          - $ref: '#/components/schemas/BulkExportDestinationS3Credentials'
+          - type: 'null'
+      type: object
+      required:
+      - display_name
+      - config
+      title: BulkExportDestinationCreate
+    BulkExportRunStatus:
+      type: string
+      enum:
+      - Cancelled
+      - Completed
+      - Created
+      - Failed
+      - TimedOut
+      - Running
+      title: BulkExportRunStatus
+    BulkExportDestinationS3Credentials:
+      properties:
+        access_key_id:
+          type: string
+          maxLength: 255
+          minLength: 1
+          title: Access Key Id
+        secret_access_key:
+          type: string
+          maxLength: 2048
+          minLength: 1
+          title: Secret Access Key
+        session_token:
+          anyOf:
+          - type: string
+            maxLength: 2048
+          - type: 'null'
+          title: Session Token
+      type: object
+      required:
+      - access_key_id
+      - secret_access_key
+      title: BulkExportDestinationS3Credentials
+    BulkExportUpdate:
+      properties:
+        status:
+          $ref: '#/components/schemas/BulkExportUpdatableStatus'
+          default: Cancelled
+      type: object
+      title: BulkExportUpdate
+    BulkExportDestinationType:
+      type: string
+      enum:
+      - s3
+      title: BulkExportDestinationType
+    BulkExportRunProgress:
+      properties:
+        rows_written:
+          type: integer
+          title: Rows Written
+        exported_files:
+          items:
+            type: string
+          type: array
+          title: Exported Files
+        export_path:
+          type: string
+          title: Export Path
+        latest_cursor:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Latest Cursor
+        pending_upload:
+          anyOf:
+          - $ref: '#/components/schemas/PendingUpload'
+          - type: 'null'
+      type: object
+      required:
+      - rows_written
+      - exported_files
+      - export_path
+      - latest_cursor
+      title: BulkExportRunProgress
+    BulkExportFormat:
+      type: string
+      enum:
+      - Parquet
+      title: BulkExportFormat
+    BulkExportRunMetadata:
+      properties:
+        prefix:
+          type: string
+          title: Prefix
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        end_time:
+          type: string
+          format: date-time
+          title: End Time
+        execution_backend:
+          anyOf:
+          - type: string
+            enum:
+            - clickhouse
+            - smithdb
+          - type: 'null'
+          title: Execution Backend
+        result:
+          anyOf:
+          - $ref: '#/components/schemas/BulkExportRunProgress'
+          - type: 'null'
+      type: object
+      required:
+      - prefix
+      - start_time
+      - end_time
+      title: BulkExportRunMetadata
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    BulkExportCreate:
+      properties:
+        bulk_export_destination_id:
+          type: string
+          format: uuid
+          title: Bulk Export Destination Id
+        session_id:
+          type: string
+          format: uuid
+          title: Session Id
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        filter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filter
+        format:
+          $ref: '#/components/schemas/BulkExportFormat'
+          default: Parquet
+        format_version:
+          $ref: '#/components/schemas/BulkExportFormatVersion'
+          default: v1
+        compression:
+          $ref: '#/components/schemas/BulkExportCompression'
+          default: gzip
+        interval_hours:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Interval Hours
+        export_fields:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Export Fields
+      type: object
+      required:
+      - bulk_export_destination_id
+      - session_id
+      - start_time
+      title: BulkExportCreate
     BulkExportFormatVersion:
       type: string
       enum:
@@ -901,29 +924,6 @@ components:
         2. Job crashes during upload
 
         3. Need to verify uploaded files before advancing cursor'
-    BulkExportDestinationS3Credentials:
-      properties:
-        access_key_id:
-          type: string
-          maxLength: 255
-          minLength: 1
-          title: Access Key Id
-        secret_access_key:
-          type: string
-          maxLength: 2048
-          minLength: 1
-          title: Secret Access Key
-        session_token:
-          anyOf:
-          - type: string
-            maxLength: 2048
-          - type: 'null'
-          title: Session Token
-      type: object
-      required:
-      - access_key_id
-      - secret_access_key
-      title: BulkExportDestinationS3Credentials
   securitySchemes:
     API_Key:
       type: apiKey

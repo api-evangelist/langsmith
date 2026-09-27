@@ -310,15 +310,6 @@ components:
           type: string
         visibility:
           type: string
-    skills.ListSkillsResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/skills.Skill'
-        next_cursor:
-          type: string
     skills.ErrorResponse:
       type: object
       properties:
@@ -330,7 +321,14 @@ components:
           type: integer
         type:
           type: string
-    skills.CreateSkillRequest:
+    skills.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+        type:
+          type: string
+    skills.ReplaceSkillRequest:
       type: object
       properties:
         files:
@@ -338,13 +336,6 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/skills.FileEntry'
         name:
-          type: string
-    skills.FileEntry:
-      type: object
-      properties:
-        content:
-          type: string
-        type:
           type: string
     skills.SkillOwner:
       type: object
@@ -359,7 +350,16 @@ components:
           type: string
         ls_user_id:
           type: string
-    skills.ReplaceSkillRequest:
+    skills.ListSkillsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills.Skill'
+        next_cursor:
+          type: string
+    skills.CreateSkillRequest:
       type: object
       properties:
         files:

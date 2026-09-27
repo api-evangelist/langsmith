@@ -290,24 +290,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    usage.ModelUsageResponse:
+    usage.ToolUsageResponse:
       type: object
       properties:
-        models:
+        tools:
           type: array
           items:
-            $ref: '#/components/schemas/usage.ModelUsage'
-    usage.UserUsageResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/usage.UserUsage'
-    errutil.InternalError:
-      type: object
-    errutil.UserError:
-      type: object
+            $ref: '#/components/schemas/usage.ToolUsage'
     usage.AgentUsageResponse:
       type: object
       properties:
@@ -315,6 +304,65 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/usage.AgentUsage'
+    usage.ModelUsage:
+      type: object
+      properties:
+        last_used:
+          type: string
+        model_name:
+          type: string
+        run_count:
+          type: integer
+        total_cost:
+          type: number
+    usage.UserUsageResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/usage.UserUsage'
+    usage.ToolUsage:
+      type: object
+      properties:
+        agent_count:
+          type: integer
+        avg_latency_ms:
+          type: number
+        last_used:
+          type: string
+        run_count:
+          type: integer
+        tool_name:
+          type: string
+    usage.ModelUsageResponse:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/usage.ModelUsage'
+    errutil.UserError:
+      type: object
+    usage.UserUsage:
+      type: object
+      properties:
+        agent_count:
+          type: integer
+        first_used:
+          type: string
+        last_used:
+          type: string
+        ls_user_id:
+          type: string
+        owner_email:
+          type: string
+        run_count:
+          type: integer
+        total_cost:
+          type: number
+    errutil.InternalError:
+      type: object
     usage.AgentUsage:
       type: object
       properties:
@@ -334,54 +382,6 @@ components:
           type: integer
         total_cost:
           type: number
-    usage.ModelUsage:
-      type: object
-      properties:
-        last_used:
-          type: string
-        model_name:
-          type: string
-        run_count:
-          type: integer
-        total_cost:
-          type: number
-    usage.ToolUsage:
-      type: object
-      properties:
-        agent_count:
-          type: integer
-        avg_latency_ms:
-          type: number
-        last_used:
-          type: string
-        run_count:
-          type: integer
-        tool_name:
-          type: string
-    usage.UserUsage:
-      type: object
-      properties:
-        agent_count:
-          type: integer
-        first_used:
-          type: string
-        last_used:
-          type: string
-        ls_user_id:
-          type: string
-        owner_email:
-          type: string
-        run_count:
-          type: integer
-        total_cost:
-          type: number
-    usage.ToolUsageResponse:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/usage.ToolUsage'
   securitySchemes:
     API_Key:
       type: apiKey

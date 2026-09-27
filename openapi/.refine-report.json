@@ -78,9 +78,7 @@
     "langsmith-usage-limits-api-openapi.yml",
     "langsmith-workspaces-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -162,8 +160,7 @@
     "langsmith-openapi.json: declared missing tag: ttl-settings",
     "langsmith-openapi.json: declared missing tag: usage-limits",
     "langsmith-openapi.json: declared missing tag: workspaces",
-    "superseded outputs removed: langsmith-o-auth-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 73 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "langsmith-access-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -210,7 +207,7 @@
     "langsmith-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "langsmith-model-price-map-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "langsmith-nps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "langsmith-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "langsmith-oauth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "langsmith-ok-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "langsmith-optimization-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "langsmith-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -151,16 +151,18 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    AddRepoOwnerRequest:
+    ListRepoOwnersResponse:
       properties:
-        email:
-          type: string
-          title: Email
+        owners:
+          items:
+            $ref: '#/components/schemas/RepoOwner'
+          type: array
+          title: Owners
       type: object
       required:
-      - email
-      title: AddRepoOwnerRequest
-      description: Request to add a repo owner.
+      - owners
+      title: ListRepoOwnersResponse
+      description: Response for listing repo owners.
     ValidationError:
       properties:
         loc:
@@ -182,38 +184,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ListRepoOwnersResponse:
-      properties:
-        owners:
-          items:
-            $ref: '#/components/schemas/RepoOwner'
-          type: array
-          title: Owners
-      type: object
-      required:
-      - owners
-      title: ListRepoOwnersResponse
-      description: Response for listing repo owners.
-    RemoveRepoOwnerRequest:
-      properties:
-        identity_id:
-          type: string
-          format: uuid
-          title: Identity Id
-      type: object
-      required:
-      - identity_id
-      title: RemoveRepoOwnerRequest
-      description: Request to remove a repo owner.
     RepoOwner:
       properties:
         identity_id:
@@ -254,6 +224,36 @@ components:
         Note: identity_id and email may be None when returned to users
 
         outside the repo''s tenant (PII protection).'
+    AddRepoOwnerRequest:
+      properties:
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - email
+      title: AddRepoOwnerRequest
+      description: Request to add a repo owner.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RemoveRepoOwnerRequest:
+      properties:
+        identity_id:
+          type: string
+          format: uuid
+          title: Identity Id
+      type: object
+      required:
+      - identity_id
+      title: RemoveRepoOwnerRequest
+      description: Request to remove a repo owner.
   securitySchemes:
     API_Key:
       type: apiKey

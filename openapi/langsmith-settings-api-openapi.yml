@@ -79,6 +79,15 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    SetTenantHandleRequest:
+      properties:
+        tenant_handle:
+          type: string
+          title: Tenant Handle
+      type: object
+      required:
+      - tenant_handle
+      title: SetTenantHandleRequest
     app__hub__crud__tenants__Tenant:
       properties:
         id:
@@ -124,15 +133,6 @@ components:
       - msg
       - type
       title: ValidationError
-    SetTenantHandleRequest:
-      properties:
-        tenant_handle:
-          type: string
-          title: Tenant Handle
-      type: object
-      required:
-      - tenant_handle
-      title: SetTenantHandleRequest
   securitySchemes:
     API_Key:
       type: apiKey

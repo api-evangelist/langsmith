@@ -139,21 +139,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    data_planes.PublicDataPlane:
-      type: object
-      properties:
-        api_url:
-          type: string
-        created_at:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        region:
-          type: string
-        status:
-          $ref: '#/components/schemas/data_planes.Status'
     data_planes.CreateDataPlaneRequestAws:
       type: object
       properties:
@@ -170,6 +155,13 @@ components:
           type: string
         vpc_cidr:
           type: string
+    data_planes.ListPublicDataPlanesResponse:
+      type: object
+      properties:
+        data_planes:
+          type: array
+          items:
+            $ref: '#/components/schemas/data_planes.PublicDataPlane'
     data_planes.Status:
       type: string
       enum:
@@ -190,13 +182,21 @@ components:
       - DataPlaneStatusDeprovisioning
       - DataPlaneStatusDeleted
       - DataPlaneStatusRevoked
-    data_planes.ListPublicDataPlanesResponse:
+    data_planes.PublicDataPlane:
       type: object
       properties:
-        data_planes:
-          type: array
-          items:
-            $ref: '#/components/schemas/data_planes.PublicDataPlane'
+        api_url:
+          type: string
+        created_at:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        region:
+          type: string
+        status:
+          $ref: '#/components/schemas/data_planes.Status'
   securitySchemes:
     API_Key:
       type: apiKey

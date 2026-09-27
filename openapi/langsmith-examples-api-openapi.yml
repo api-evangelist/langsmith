@@ -942,24 +942,33 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    examples.DeleteExamplesRequest:
+    examples.ErrorResponse:
       type: object
-      required:
-      - example_ids
-      - hard_delete
       properties:
-        example_ids:
-          description: ExampleIDs is a list of UUIDs identifying the examples to delete.
-          type: array
-          maxItems: 1000
-          minItems: 1
+        details:
+          description: Optional error details as JSON string
+          type: string
+          example: '{"field":"dataset_id","reason":"required"}'
+        error:
+          description: Error message
+          type: string
+          example: 'Invalid request: missing required fields'
+    AttachmentsOperations:
+      properties:
+        rename:
+          additionalProperties:
+            type: string
+          type: object
+          title: Rename
+          description: Mapping of old attachment names to new names
+        retain:
           items:
             type: string
-        hard_delete:
-          description: 'HardDelete indicates whether to perform a hard delete.
-
-            Currently only True is supported.'
-          type: boolean
+          type: array
+          title: Retain
+          description: List of attachment names to keep
+      type: object
+      title: AttachmentsOperations
     ValidationError:
       properties:
         loc:
@@ -981,152 +990,6 @@ components:
       - msg
       - type
       title: ValidationError
-    examples.ExamplesCreatedResponse:
-      type: object
-      properties:
-        as_of:
-          type: string
-          example: '2024-01-21T10:00:00.123456Z'
-        count:
-          type: integer
-          example: 1
-        example_ids:
-          type: array
-          items:
-            type: string
-          example:
-          - '["123e4567-e89b-12d3-a456-426614174000"]'
-    ExampleUpdate:
-      properties:
-        dataset_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Dataset Id
-        inputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Inputs
-        outputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Outputs
-        attachments_operations:
-          anyOf:
-          - $ref: '#/components/schemas/AttachmentsOperations'
-          - type: 'null'
-        metadata:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Metadata
-        split:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: string
-          - type: 'null'
-          title: Split
-        overwrite:
-          type: boolean
-          title: Overwrite
-          default: false
-      type: object
-      title: ExampleUpdate
-      description: Update class for Example.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ExampleUpdateWithID:
-      properties:
-        dataset_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Dataset Id
-        inputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Inputs
-        outputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Outputs
-        attachments_operations:
-          anyOf:
-          - $ref: '#/components/schemas/AttachmentsOperations'
-          - type: 'null'
-        metadata:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Metadata
-        split:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: string
-          - type: 'null'
-          title: Split
-        overwrite:
-          type: boolean
-          title: Overwrite
-          default: false
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: ExampleUpdateWithID
-      description: Bulk update class for Example (includes example id).
-    Body_upload_examples_from_csv_api_v1_examples_upload__dataset_id__post:
-      properties:
-        file:
-          type: string
-          format: binary
-          title: File
-        input_keys:
-          items:
-            type: string
-          type: array
-          title: Input Keys
-        output_keys:
-          items:
-            type: string
-          type: array
-          title: Output Keys
-        metadata_keys:
-          items:
-            type: string
-          type: array
-          title: Metadata Keys
-      type: object
-      required:
-      - file
-      - input_keys
-      title: Body_upload_examples_from_csv_api_v1_examples_upload__dataset_id__post
     ExampleValidationResult:
       properties:
         dataset_id:
@@ -1191,68 +1054,129 @@ components:
       type: object
       title: ExampleValidationResult
       description: Validation result for Example, combining fields from Create/Base/Update schemas.
-    ExampleSelect:
-      type: string
-      enum:
-      - id
-      - created_at
-      - modified_at
-      - name
-      - dataset_id
-      - source_run_id
-      - metadata
-      - inputs
-      - outputs
-      - attachment_urls
-      title: ExampleSelect
-    examples.ErrorResponse:
+    ExampleUpdate:
+      properties:
+        dataset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Dataset Id
+        inputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Inputs
+        outputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Outputs
+        attachments_operations:
+          anyOf:
+          - $ref: '#/components/schemas/AttachmentsOperations'
+          - type: 'null'
+        metadata:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Metadata
+        split:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: string
+          - type: 'null'
+          title: Split
+        overwrite:
+          type: boolean
+          title: Overwrite
+          default: false
       type: object
+      title: ExampleUpdate
+      description: Update class for Example.
+    Body_upload_examples_from_csv_api_v1_examples_upload__dataset_id__post:
       properties:
-        details:
-          description: Optional error details as JSON string
+        file:
           type: string
-          example: '{"field":"dataset_id","reason":"required"}'
-        error:
-          description: Error message
-          type: string
-          example: 'Invalid request: missing required fields'
-    ExampleListOrder:
-      type: string
-      enum:
-      - recent
-      - random
-      - recently_created
-      - id
-      title: ExampleListOrder
-    AttachmentsOperations:
-      properties:
-        rename:
-          additionalProperties:
-            type: string
-          type: object
-          title: Rename
-          description: Mapping of old attachment names to new names
-        retain:
+          format: binary
+          title: File
+        input_keys:
           items:
             type: string
           type: array
-          title: Retain
-          description: List of attachment names to keep
-      type: object
-      title: AttachmentsOperations
-    examples.ExamplesDeletedResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 1
-        example_ids:
-          type: array
+          title: Input Keys
+        output_keys:
           items:
             type: string
-          example:
-          - '["123e4567-e89b-12d3-a456-426614174000"]'
-    examples.ExamplesUpdatedResponse:
+          type: array
+          title: Output Keys
+        metadata_keys:
+          items:
+            type: string
+          type: array
+          title: Metadata Keys
+      type: object
+      required:
+      - file
+      - input_keys
+      title: Body_upload_examples_from_csv_api_v1_examples_upload__dataset_id__post
+    ExampleUpdateWithID:
+      properties:
+        dataset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Dataset Id
+        inputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Inputs
+        outputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Outputs
+        attachments_operations:
+          anyOf:
+          - $ref: '#/components/schemas/AttachmentsOperations'
+          - type: 'null'
+        metadata:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Metadata
+        split:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: string
+          - type: 'null'
+          title: Split
+        overwrite:
+          type: boolean
+          title: Overwrite
+          default: false
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: ExampleUpdateWithID
+      description: Bulk update class for Example (includes example id).
+    examples.ExamplesCreatedResponse:
       type: object
       properties:
         as_of:
@@ -1267,6 +1191,23 @@ components:
             type: string
           example:
           - '["123e4567-e89b-12d3-a456-426614174000"]'
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ExampleListOrder:
+      type: string
+      enum:
+      - recent
+      - random
+      - recently_created
+      - id
+      title: ExampleListOrder
     Example:
       properties:
         outputs:
@@ -1326,6 +1267,65 @@ components:
       - name
       title: Example
       description: Example schema.
+    examples.ExamplesDeletedResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 1
+        example_ids:
+          type: array
+          items:
+            type: string
+          example:
+          - '["123e4567-e89b-12d3-a456-426614174000"]'
+    examples.DeleteExamplesRequest:
+      type: object
+      required:
+      - example_ids
+      - hard_delete
+      properties:
+        example_ids:
+          description: ExampleIDs is a list of UUIDs identifying the examples to delete.
+          type: array
+          maxItems: 1000
+          minItems: 1
+          items:
+            type: string
+        hard_delete:
+          description: 'HardDelete indicates whether to perform a hard delete.
+
+            Currently only True is supported.'
+          type: boolean
+    ExampleSelect:
+      type: string
+      enum:
+      - id
+      - created_at
+      - modified_at
+      - name
+      - dataset_id
+      - source_run_id
+      - metadata
+      - inputs
+      - outputs
+      - attachment_urls
+      title: ExampleSelect
+    examples.ExamplesUpdatedResponse:
+      type: object
+      properties:
+        as_of:
+          type: string
+          example: '2024-01-21T10:00:00.123456Z'
+        count:
+          type: integer
+          example: 1
+        example_ids:
+          type: array
+          items:
+            type: string
+          example:
+          - '["123e4567-e89b-12d3-a456-426614174000"]'
   securitySchemes:
     API_Key:
       type: apiKey

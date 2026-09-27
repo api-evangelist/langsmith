@@ -316,23 +316,32 @@ components:
       x-enum-varnames:
       - MatchByKind
       - MatchByID
-    integrations.ProviderMatch:
+    integrations.CreateRequest:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        category:
+          type: string
+        description:
+          type: string
+        icon_url:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        url:
+          type: string
+    integrations.ListResponse:
       type: object
       properties:
-        by:
-          $ref: '#/components/schemas/integrations.MatchBy'
-        value:
-          type: string
-    integrations.ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-        detail:
-          type: string
-        status:
-          type: integer
-        type:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/integrations.Integration'
+        next_cursor:
           type: string
     integrations.ReplaceAuthMethodsRequest:
       type: object
@@ -341,26 +350,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/integrations.AuthMethod'
-    integrations.UpdateRequest:
+    integrations.ProviderMatch:
       type: object
       properties:
-        category:
+        by:
+          $ref: '#/components/schemas/integrations.MatchBy'
+        value:
           type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        icon_url:
-          type: string
-        name:
-          type: string
-    integrations.AuthMethod:
-      type: object
-      properties:
-        provider_match:
-          $ref: '#/components/schemas/integrations.ProviderMatch'
-        type:
-          $ref: '#/components/schemas/integrations.AuthType'
     integrations.Integration:
       type: object
       properties:
@@ -390,39 +386,26 @@ components:
           type: string
         url:
           type: string
-    integrations.Transport:
-      type: string
-      enum:
-      - mcp_http
-      x-enum-varnames:
-      - TransportMCPHTTP
-    integrations.CreateRequest:
+    integrations.UpdateRequest:
       type: object
-      required:
-      - name
-      - url
       properties:
         category:
           type: string
         description:
           type: string
+        enabled:
+          type: boolean
         icon_url:
           type: string
         name:
           type: string
-        source:
-          type: string
-        url:
-          type: string
-    integrations.ListResponse:
+    integrations.AuthMethod:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/integrations.Integration'
-        next_cursor:
-          type: string
+        provider_match:
+          $ref: '#/components/schemas/integrations.ProviderMatch'
+        type:
+          $ref: '#/components/schemas/integrations.AuthType'
     integrations.AuthType:
       type: string
       enum:
@@ -435,6 +418,23 @@ components:
       - AuthTypeHeaders
       - AuthTypeAPIKey
       - AuthTypeNone
+    integrations.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+    integrations.Transport:
+      type: string
+      enum:
+      - mcp_http
+      x-enum-varnames:
+      - TransportMCPHTTP
   securitySchemes:
     API_Key:
       type: apiKey

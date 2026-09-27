@@ -652,60 +652,6 @@ paths:
       - Bearer Auth: []
 components:
   schemas:
-    RepoExampleResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        start_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Start Time
-        inputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Inputs
-        outputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Outputs
-        session_id:
-          type: string
-          format: uuid
-          title: Session Id
-      type: object
-      required:
-      - id
-      - session_id
-      title: RepoExampleResponse
-      description: Response model for example runs
-    ListTagsResponse:
-      properties:
-        tags:
-          items:
-            $ref: '#/components/schemas/TagCount'
-          type: array
-          title: Tags
-      type: object
-      required:
-      - tags
-      title: ListTagsResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ForkRepoRequest:
       properties:
         repo_handle:
@@ -738,124 +684,31 @@ components:
       - repo_handle
       title: ForkRepoRequest
       description: Fields to fork a repo
-    ListReposResponse:
-      properties:
-        repos:
-          items:
-            $ref: '#/components/schemas/RepoWithLookups'
-          type: array
-          title: Repos
-        total:
-          type: integer
-          title: Total
-      type: object
-      required:
-      - repos
-      - total
-      title: ListReposResponse
     EPromptOptimizationAlgorithm:
       type: string
       enum:
       - promptim
       - demo
       title: EPromptOptimizationAlgorithm
-    TagCount:
+    GetRepoResponse:
       properties:
-        tag:
-          type: string
-          title: Tag
-        count:
-          type: integer
-          title: Count
+        repo:
+          $ref: '#/components/schemas/RepoWithLookups'
       type: object
       required:
-      - tag
-      - count
-      title: TagCount
-    TrueFalseLiteral:
-      type: string
-      enum:
-      - 'true'
-      - 'false'
-      title: TrueFalseLiteral
-    OptimizePromptResponse:
+      - repo
+      title: GetRepoResponse
+    ListTagsResponse:
       properties:
-        optimization_job_id:
-          type: string
-          format: uuid
-          title: Optimization Job Id
-      type: object
-      required:
-      - optimization_job_id
-      title: OptimizePromptResponse
-      description: Response from optimizing a prompt.
-    ValidationError:
-      properties:
-        loc:
+        tags:
           items:
-            anyOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/TagCount'
           type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          title: Tags
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    OptimizePromptJobRequest:
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/EPromptOptimizationAlgorithm'
-        config:
-          anyOf:
-          - $ref: '#/components/schemas/PromptimConfig'
-          - $ref: '#/components/schemas/DemoConfig'
-          title: Config
-        prompt_name:
-          type: string
-          title: Prompt Name
-      type: object
-      required:
-      - algorithm
-      - config
-      - prompt_name
-      title: OptimizePromptJobRequest
-      description: Request to optimize a prompt.
-    DemoConfig:
-      properties:
-        message_index:
-          type: integer
-          title: Message Index
-        metaprompt:
-          additionalProperties: true
-          type: object
-          title: Metaprompt
-        examples:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Examples
-        overall_feedback:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Overall Feedback
-      type: object
-      required:
-      - message_index
-      - metaprompt
-      - examples
-      - overall_feedback
-      title: DemoConfig
+      - tags
+      title: ListTagsResponse
     PromptimConfig:
       properties:
         message_index:
@@ -906,59 +759,39 @@ components:
       - num_epochs
       - auto_commit
       title: PromptimConfig
-    CreateRepoRequest:
+    OptimizePromptResponse:
       properties:
-        repo_handle:
+        optimization_job_id:
           type: string
-          title: Repo Handle
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        readme:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Readme
-        is_public:
-          type: boolean
-          title: Is Public
-        tags:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Tags
-        repo_type:
-          type: string
-          enum:
-          - prompt
-          - file
-          - agent
-          - skill
-          title: Repo Type
-          default: prompt
-        source:
-          anyOf:
-          - type: string
-            enum:
-            - internal
-            - external
-          - type: 'null'
-          title: Source
-        restricted_mode:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Restricted Mode
+          format: uuid
+          title: Optimization Job Id
       type: object
       required:
-      - repo_handle
-      - is_public
-      title: CreateRepoRequest
-      description: Fields to create a repo
+      - optimization_job_id
+      title: OptimizePromptResponse
+      description: Response from optimizing a prompt.
+    CommitManifestResponse:
+      properties:
+        commit_hash:
+          type: string
+          title: Commit Hash
+        manifest:
+          additionalProperties: true
+          type: object
+          title: Manifest
+        examples:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/RepoExampleResponse'
+            type: array
+          - type: 'null'
+          title: Examples
+      type: object
+      required:
+      - commit_hash
+      - manifest
+      title: CommitManifestResponse
+      description: Response model for get_commit_manifest.
     UpdateRepoRequest:
       properties:
         description:
@@ -997,28 +830,143 @@ components:
       type: object
       title: UpdateRepoRequest
       description: Fields to update a repo
-    CommitManifestResponse:
+    RepoExampleResponse:
       properties:
-        commit_hash:
+        id:
           type: string
-          title: Commit Hash
-        manifest:
-          additionalProperties: true
-          type: object
-          title: Manifest
-        examples:
+          format: uuid
+          title: Id
+        start_time:
           anyOf:
-          - items:
-              $ref: '#/components/schemas/RepoExampleResponse'
-            type: array
+          - type: string
+            format: date-time
           - type: 'null'
-          title: Examples
+          title: Start Time
+        inputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Inputs
+        outputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Outputs
+        session_id:
+          type: string
+          format: uuid
+          title: Session Id
       type: object
       required:
-      - commit_hash
-      - manifest
-      title: CommitManifestResponse
-      description: Response model for get_commit_manifest.
+      - id
+      - session_id
+      title: RepoExampleResponse
+      description: Response model for example runs
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DemoConfig:
+      properties:
+        message_index:
+          type: integer
+          title: Message Index
+        metaprompt:
+          additionalProperties: true
+          type: object
+          title: Metaprompt
+        examples:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Examples
+        overall_feedback:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Overall Feedback
+      type: object
+      required:
+      - message_index
+      - metaprompt
+      - examples
+      - overall_feedback
+      title: DemoConfig
+    TagCount:
+      properties:
+        tag:
+          type: string
+          title: Tag
+        count:
+          type: integer
+          title: Count
+      type: object
+      required:
+      - tag
+      - count
+      title: TagCount
+    TrueFalseLiteral:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+      title: TrueFalseLiteral
+    CreateRepoResponse:
+      properties:
+        repo:
+          $ref: '#/components/schemas/RepoWithLookups'
+      type: object
+      required:
+      - repo
+      title: CreateRepoResponse
+    OptimizePromptJobRequest:
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/EPromptOptimizationAlgorithm'
+        config:
+          anyOf:
+          - $ref: '#/components/schemas/PromptimConfig'
+          - $ref: '#/components/schemas/DemoConfig'
+          title: Config
+        prompt_name:
+          type: string
+          title: Prompt Name
+      type: object
+      required:
+      - algorithm
+      - config
+      - prompt_name
+      title: OptimizePromptJobRequest
+      description: Request to optimize a prompt.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     RepoWithLookups:
       properties:
         repo_handle:
@@ -1167,22 +1115,74 @@ components:
       - num_commits
       title: RepoWithLookups
       description: All database fields for repos, plus helpful computed fields.
-    CreateRepoResponse:
+    CreateRepoRequest:
       properties:
-        repo:
-          $ref: '#/components/schemas/RepoWithLookups'
+        repo_handle:
+          type: string
+          title: Repo Handle
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        readme:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Readme
+        is_public:
+          type: boolean
+          title: Is Public
+        tags:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Tags
+        repo_type:
+          type: string
+          enum:
+          - prompt
+          - file
+          - agent
+          - skill
+          title: Repo Type
+          default: prompt
+        source:
+          anyOf:
+          - type: string
+            enum:
+            - internal
+            - external
+          - type: 'null'
+          title: Source
+        restricted_mode:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Restricted Mode
       type: object
       required:
-      - repo
-      title: CreateRepoResponse
-    GetRepoResponse:
+      - repo_handle
+      - is_public
+      title: CreateRepoRequest
+      description: Fields to create a repo
+    ListReposResponse:
       properties:
-        repo:
-          $ref: '#/components/schemas/RepoWithLookups'
+        repos:
+          items:
+            $ref: '#/components/schemas/RepoWithLookups'
+          type: array
+          title: Repos
+        total:
+          type: integer
+          title: Total
       type: object
       required:
-      - repo
-      title: GetRepoResponse
+      - repos
+      - total
+      title: ListReposResponse
   securitySchemes:
     API_Key:
       type: apiKey

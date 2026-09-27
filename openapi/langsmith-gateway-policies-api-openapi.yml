@@ -333,6 +333,25 @@ components:
       properties:
         error:
           type: string
+    gateway_policies.UpdateGatewayPolicyRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        config:
+          type: object
+        description:
+          type: string
+        enabled:
+          type: boolean
+        name:
+          type: string
+        priority:
+          type: integer
+        subject_matchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
     gateway_policies.SubjectMatcher:
       type: object
       properties:
@@ -354,25 +373,6 @@ components:
         name:
           type: string
         policy_type:
-          type: string
-        priority:
-          type: integer
-        subject_matchers:
-          type: array
-          items:
-            $ref: '#/components/schemas/gateway_policies.SubjectMatcher'
-    gateway_policies.UpdateGatewayPolicyRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        config:
-          type: object
-        description:
-          type: string
-        enabled:
-          type: boolean
-        name:
           type: string
         priority:
           type: integer

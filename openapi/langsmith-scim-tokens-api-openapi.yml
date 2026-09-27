@@ -313,11 +313,6 @@ components:
           type: string
         updated_at:
           type: string
-    scim.CreateScimTokenPayload:
-      type: object
-      properties:
-        description:
-          type: string
     scim.ScimTokenResponse:
       type: object
       properties:
@@ -333,6 +328,11 @@ components:
         short_token:
           type: string
         updated_at:
+          type: string
+    scim.CreateScimTokenPayload:
+      type: object
+      properties:
+        description:
           type: string
   securitySchemes:
     API_Key:

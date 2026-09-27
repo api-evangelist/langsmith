@@ -198,15 +198,39 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BasicAuthResponse:
+    SSOProviderSlim:
       properties:
-        access_token:
+        provider_id:
           type: string
-          title: Access Token
+          format: uuid
+          title: Provider Id
+        organization_id:
+          type: string
+          format: uuid
+          title: Organization Id
+        organization_display_name:
+          type: string
+          title: Organization Display Name
       type: object
       required:
-      - access_token
-      title: BasicAuthResponse
+      - provider_id
+      - organization_id
+      - organization_display_name
+      title: SSOProviderSlim
+    SSOEmailVerificationSendRequest:
+      properties:
+        email:
+          type: string
+          title: Email
+        saml_provider_id:
+          type: string
+          format: uuid
+          title: Saml Provider Id
+      type: object
+      required:
+      - email
+      - saml_provider_id
+      title: SSOEmailVerificationSendRequest
     ValidationError:
       properties:
         loc:
@@ -228,25 +252,19 @@ components:
       - msg
       - type
       title: ValidationError
-    SSOProviderSlim:
+    authn.PublicAuthInfo:
+      type: object
       properties:
-        provider_id:
+        ls_user_id:
           type: string
-          format: uuid
-          title: Provider Id
         organization_id:
           type: string
-          format: uuid
-          title: Organization Id
-        organization_display_name:
+        tenant_id:
           type: string
-          title: Organization Display Name
-      type: object
-      required:
-      - provider_id
-      - organization_id
-      - organization_display_name
-      title: SSOProviderSlim
+        user_email:
+          type: string
+        user_id:
+          type: string
     HTTPValidationError:
       properties:
         detail:
@@ -256,6 +274,25 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    SSOEmailVerificationStatusResponse:
+      properties:
+        email_confirmed_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Email Confirmed At
+      type: object
+      title: SSOEmailVerificationStatusResponse
+    BasicAuthResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+      type: object
+      required:
+      - access_token
+      title: BasicAuthResponse
     SSOConfirmEmailRequest:
       properties:
         token:
@@ -265,6 +302,15 @@ components:
       required:
       - token
       title: SSOConfirmEmailRequest
+    _SSOEmailLookupRequest:
+      properties:
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - email
+      title: _SSOEmailLookupRequest
     SSOEmailVerificationStatusRequest:
       properties:
         email:
@@ -279,52 +325,6 @@ components:
       - email
       - saml_provider_id
       title: SSOEmailVerificationStatusRequest
-    _SSOEmailLookupRequest:
-      properties:
-        email:
-          type: string
-          title: Email
-      type: object
-      required:
-      - email
-      title: _SSOEmailLookupRequest
-    SSOEmailVerificationStatusResponse:
-      properties:
-        email_confirmed_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Email Confirmed At
-      type: object
-      title: SSOEmailVerificationStatusResponse
-    SSOEmailVerificationSendRequest:
-      properties:
-        email:
-          type: string
-          title: Email
-        saml_provider_id:
-          type: string
-          format: uuid
-          title: Saml Provider Id
-      type: object
-      required:
-      - email
-      - saml_provider_id
-      title: SSOEmailVerificationSendRequest
-    authn.PublicAuthInfo:
-      type: object
-      properties:
-        ls_user_id:
-          type: string
-        organization_id:
-          type: string
-        tenant_id:
-          type: string
-        user_email:
-          type: string
-        user_id:
-          type: string
   securitySchemes:
     API_Key:
       type: apiKey
