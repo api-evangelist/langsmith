@@ -145,13 +145,6 @@ components:
       - msg
       - type
       title: ValidationError
-    UsageLimitType:
-      type: string
-      enum:
-      - monthly_traces
-      - monthly_longlived_traces
-      title: UsageLimitType
-      description: Type of usage limit.
     HTTPValidationError:
       properties:
         detail:
@@ -210,6 +203,13 @@ components:
       - limit_value
       title: UpsertUsageLimit
       description: Request body for creating or updating a usage limit.
+    UsageLimitType:
+      type: string
+      enum:
+      - monthly_traces
+      - monthly_longlived_traces
+      title: UsageLimitType
+      description: Type of usage limit.
   securitySchemes:
     API_Key:
       type: apiKey

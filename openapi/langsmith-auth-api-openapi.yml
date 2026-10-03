@@ -198,39 +198,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SSOProviderSlim:
-      properties:
-        provider_id:
-          type: string
-          format: uuid
-          title: Provider Id
-        organization_id:
-          type: string
-          format: uuid
-          title: Organization Id
-        organization_display_name:
-          type: string
-          title: Organization Display Name
-      type: object
-      required:
-      - provider_id
-      - organization_id
-      - organization_display_name
-      title: SSOProviderSlim
-    SSOEmailVerificationSendRequest:
+    _SSOEmailLookupRequest:
       properties:
         email:
           type: string
           title: Email
-        saml_provider_id:
-          type: string
-          format: uuid
-          title: Saml Provider Id
       type: object
       required:
       - email
-      - saml_provider_id
-      title: SSOEmailVerificationSendRequest
+      title: _SSOEmailLookupRequest
     ValidationError:
       properties:
         loc:
@@ -252,19 +228,6 @@ components:
       - msg
       - type
       title: ValidationError
-    authn.PublicAuthInfo:
-      type: object
-      properties:
-        ls_user_id:
-          type: string
-        organization_id:
-          type: string
-        tenant_id:
-          type: string
-        user_email:
-          type: string
-        user_id:
-          type: string
     HTTPValidationError:
       properties:
         detail:
@@ -274,6 +237,15 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    SSOConfirmEmailRequest:
+      properties:
+        token:
+          type: string
+          title: Token
+      type: object
+      required:
+      - token
+      title: SSOConfirmEmailRequest
     SSOEmailVerificationStatusResponse:
       properties:
         email_confirmed_at:
@@ -293,24 +265,39 @@ components:
       required:
       - access_token
       title: BasicAuthResponse
-    SSOConfirmEmailRequest:
-      properties:
-        token:
-          type: string
-          title: Token
-      type: object
-      required:
-      - token
-      title: SSOConfirmEmailRequest
-    _SSOEmailLookupRequest:
+    SSOEmailVerificationSendRequest:
       properties:
         email:
           type: string
           title: Email
+        saml_provider_id:
+          type: string
+          format: uuid
+          title: Saml Provider Id
       type: object
       required:
       - email
-      title: _SSOEmailLookupRequest
+      - saml_provider_id
+      title: SSOEmailVerificationSendRequest
+    SSOProviderSlim:
+      properties:
+        provider_id:
+          type: string
+          format: uuid
+          title: Provider Id
+        organization_id:
+          type: string
+          format: uuid
+          title: Organization Id
+        organization_display_name:
+          type: string
+          title: Organization Display Name
+      type: object
+      required:
+      - provider_id
+      - organization_id
+      - organization_display_name
+      title: SSOProviderSlim
     SSOEmailVerificationStatusRequest:
       properties:
         email:
@@ -325,6 +312,19 @@ components:
       - email
       - saml_provider_id
       title: SSOEmailVerificationStatusRequest
+    authn.PublicAuthInfo:
+      type: object
+      properties:
+        ls_user_id:
+          type: string
+        organization_id:
+          type: string
+        tenant_id:
+          type: string
+        user_email:
+          type: string
+        user_id:
+          type: string
   securitySchemes:
     API_Key:
       type: apiKey

@@ -187,6 +187,27 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     CreateFeedbackConfigSchema:
       properties:
         feedback_key:
@@ -205,6 +226,39 @@ components:
       - feedback_key
       - feedback_config
       title: CreateFeedbackConfigSchema
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    FeedbackCategory:
+      properties:
+        value:
+          type: number
+          title: Value
+        label:
+          anyOf:
+          - type: string
+            minLength: 1
+          - type: 'null'
+          title: Label
+      type: object
+      required:
+      - value
+      title: FeedbackCategory
+      description: Specific value and label pair for feedback
+    FeedbackType:
+      type: string
+      enum:
+      - continuous
+      - categorical
+      - freeform
+      title: FeedbackType
+      description: Enum for feedback types.
     FeedbackConfigSchema:
       properties:
         feedback_key:
@@ -232,35 +286,24 @@ components:
       - tenant_id
       - modified_at
       title: FeedbackConfigSchema
-    ValidationError:
+    UpdateFeedbackConfigSchema:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        feedback_key:
           type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          title: Feedback Key
+        feedback_config:
+          anyOf:
+          - $ref: '#/components/schemas/FeedbackConfig'
+          - type: 'null'
+        is_lower_score_better:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Is Lower Score Better
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    FeedbackType:
-      type: string
-      enum:
-      - continuous
-      - categorical
-      - freeform
-      title: FeedbackType
-      description: Enum for feedback types.
+      - feedback_key
+      title: UpdateFeedbackConfigSchema
     FeedbackConfig:
       properties:
         type:
@@ -286,49 +329,6 @@ components:
       required:
       - type
       title: FeedbackConfig
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    FeedbackCategory:
-      properties:
-        value:
-          type: number
-          title: Value
-        label:
-          anyOf:
-          - type: string
-            minLength: 1
-          - type: 'null'
-          title: Label
-      type: object
-      required:
-      - value
-      title: FeedbackCategory
-      description: Specific value and label pair for feedback
-    UpdateFeedbackConfigSchema:
-      properties:
-        feedback_key:
-          type: string
-          title: Feedback Key
-        feedback_config:
-          anyOf:
-          - $ref: '#/components/schemas/FeedbackConfig'
-          - type: 'null'
-        is_lower_score_better:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Is Lower Score Better
-      type: object
-      required:
-      - feedback_key
-      title: UpdateFeedbackConfigSchema
   securitySchemes:
     API_Key:
       type: apiKey

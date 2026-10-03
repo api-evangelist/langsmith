@@ -475,40 +475,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    tools.Tool:
-      type: object
-      properties:
-        created_at:
-          type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        handle:
-          type: string
-        id:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
-        name:
-          type: string
-        parameters:
-          type: object
-          additionalProperties: true
-        returns:
-          type: object
-          additionalProperties: true
-        tenant_id:
-          type: string
-        updated_at:
-          type: string
-    tools.ErrorResponse:
-      type: object
-      properties:
-        error:
-          description: Error message
-          type: string
     tools.CreateToolPayload:
       type: object
       required:
@@ -552,6 +518,34 @@ components:
         returns:
           type: object
           additionalProperties: true
+    tools.Tool:
+      type: object
+      properties:
+        created_at:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        handle:
+          type: string
+        id:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+        name:
+          type: string
+        parameters:
+          type: object
+          additionalProperties: true
+        returns:
+          type: object
+          additionalProperties: true
+        tenant_id:
+          type: string
+        updated_at:
+          type: string
     tools.ListToolsResponse:
       type: object
       properties:
@@ -563,6 +557,12 @@ components:
             $ref: '#/components/schemas/tools.Tool'
         total:
           type: integer
+    tools.ErrorResponse:
+      type: object
+      properties:
+        error:
+          description: Error message
+          type: string
   securitySchemes:
     API_Key:
       type: apiKey

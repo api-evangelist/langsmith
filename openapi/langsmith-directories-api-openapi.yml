@@ -253,6 +253,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    directories.CreateDirectoryCommitRequest:
+      type: object
+      properties:
+        files:
+          description: Files maps path to an Entry (object = create/update/link, null = delete/unlink).
+          type: object
+          additionalProperties: {}
+        parent_commit:
+          type: string
     directories.GetDirectoryResponse:
       type: object
       properties:
@@ -263,11 +272,6 @@ components:
         files:
           type: object
           additionalProperties: {}
-    directories.CommitResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/directories.CommitInfo'
     directories.CommitInfo:
       type: object
       properties:
@@ -277,15 +281,11 @@ components:
           type: string
         id:
           type: string
-    directories.CreateDirectoryCommitRequest:
+    directories.CommitResponse:
       type: object
       properties:
-        files:
-          description: Files maps path to an Entry (object = create/update/link, null = delete/unlink).
-          type: object
-          additionalProperties: {}
-        parent_commit:
-          type: string
+        commit:
+          $ref: '#/components/schemas/directories.CommitInfo'
   securitySchemes:
     API_Key:
       type: apiKey

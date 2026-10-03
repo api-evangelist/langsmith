@@ -418,36 +418,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    github_app.UserConnectionMetadata:
-      type: object
-      properties:
-        github_username:
-          type: string
-    github_app.UpdateUserConnectionRequest:
-      type: object
-      properties:
-        actor_preference:
-          type: string
-    github_app.InstallLinkResponse:
-      type: object
-      properties:
-        install_url:
-          type: string
-    github_app.Repository:
-      type: object
-      properties:
-        default_branch:
-          type: string
-        full_name:
-          type: string
-        html_url:
-          type: string
-        id:
-          type: integer
-        name:
-          type: string
-        private:
-          type: boolean
     github_app.UserAuthLinkResponse:
       type: object
       properties:
@@ -464,12 +434,20 @@ components:
           $ref: '#/components/schemas/github_app.UserConnectionMetadata'
         type:
           type: string
-    github_app.TokenRequest:
+    github_app.UpdateUserConnectionRequest:
       type: object
       properties:
-        repository:
+        actor_preference:
           type: string
-        type:
+    github_app.UserConnectionMetadata:
+      type: object
+      properties:
+        github_username:
+          type: string
+    github_app.InstallLinkResponse:
+      type: object
+      properties:
+        install_url:
           type: string
     github_app.ErrorResponse:
       type: object
@@ -506,6 +484,28 @@ components:
           type: string
         user_id:
           type: string
+    github_app.TokenRequest:
+      type: object
+      properties:
+        repository:
+          type: string
+        type:
+          type: string
+    github_app.Repository:
+      type: object
+      properties:
+        default_branch:
+          type: string
+        full_name:
+          type: string
+        html_url:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        private:
+          type: boolean
   securitySchemes:
     API_Key:
       type: apiKey

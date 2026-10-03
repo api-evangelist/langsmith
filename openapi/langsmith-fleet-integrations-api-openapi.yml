@@ -308,6 +308,23 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    integrations.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+    integrations.Transport:
+      type: string
+      enum:
+      - mcp_http
+      x-enum-varnames:
+      - TransportMCPHTTP
     integrations.MatchBy:
       type: string
       enum:
@@ -316,6 +333,28 @@ components:
       x-enum-varnames:
       - MatchByKind
       - MatchByID
+    integrations.ListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/integrations.Integration'
+        next_cursor:
+          type: string
+    integrations.UpdateRequest:
+      type: object
+      properties:
+        category:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        icon_url:
+          type: string
+        name:
+          type: string
     integrations.CreateRequest:
       type: object
       required:
@@ -334,22 +373,6 @@ components:
           type: string
         url:
           type: string
-    integrations.ListResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/integrations.Integration'
-        next_cursor:
-          type: string
-    integrations.ReplaceAuthMethodsRequest:
-      type: object
-      properties:
-        auth_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/integrations.AuthMethod'
     integrations.ProviderMatch:
       type: object
       properties:
@@ -357,6 +380,18 @@ components:
           $ref: '#/components/schemas/integrations.MatchBy'
         value:
           type: string
+    integrations.AuthType:
+      type: string
+      enum:
+      - oauth2
+      - headers
+      - api_key
+      - none
+      x-enum-varnames:
+      - AuthTypeOAuth2
+      - AuthTypeHeaders
+      - AuthTypeAPIKey
+      - AuthTypeNone
     integrations.Integration:
       type: object
       properties:
@@ -386,19 +421,13 @@ components:
           type: string
         url:
           type: string
-    integrations.UpdateRequest:
+    integrations.ReplaceAuthMethodsRequest:
       type: object
       properties:
-        category:
-          type: string
-        description:
-          type: string
-        enabled:
-          type: boolean
-        icon_url:
-          type: string
-        name:
-          type: string
+        auth_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/integrations.AuthMethod'
     integrations.AuthMethod:
       type: object
       properties:
@@ -406,35 +435,6 @@ components:
           $ref: '#/components/schemas/integrations.ProviderMatch'
         type:
           $ref: '#/components/schemas/integrations.AuthType'
-    integrations.AuthType:
-      type: string
-      enum:
-      - oauth2
-      - headers
-      - api_key
-      - none
-      x-enum-varnames:
-      - AuthTypeOAuth2
-      - AuthTypeHeaders
-      - AuthTypeAPIKey
-      - AuthTypeNone
-    integrations.ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-        detail:
-          type: string
-        status:
-          type: integer
-        type:
-          type: string
-    integrations.Transport:
-      type: string
-      enum:
-      - mcp_http
-      x-enum-varnames:
-      - TransportMCPHTTP
   securitySchemes:
     API_Key:
       type: apiKey

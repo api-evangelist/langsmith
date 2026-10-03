@@ -429,6 +429,49 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    oauth.TokenErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+    oauth.ClientRegistrationResponse:
+      type: object
+      properties:
+        client_id:
+          type: string
+        client_id_issued_at:
+          type: integer
+        client_name:
+          type: string
+        grant_types:
+          type: array
+          items:
+            type: string
+        redirect_uris:
+          type: array
+          items:
+            type: string
+        response_types:
+          type: array
+          items:
+            type: string
+        token_endpoint_auth_method:
+          type: string
+    oauth.DeviceCodeResponse:
+      type: object
+      properties:
+        device_code:
+          type: string
+        expires_in:
+          type: integer
+        interval:
+          type: integer
+        user_code:
+          type: string
+        verification_uri:
+          type: string
     oauth.AuthorizationServerMetadata:
       type: object
       properties:
@@ -472,28 +515,18 @@ components:
           type: array
           items:
             type: string
-    oauth.ClientRegistrationResponse:
+    oauth.TokenResponse:
       type: object
       properties:
-        client_id:
+        access_token:
           type: string
-        client_id_issued_at:
+        expires_in:
           type: integer
-        client_name:
+        refresh_token:
           type: string
-        grant_types:
-          type: array
-          items:
-            type: string
-        redirect_uris:
-          type: array
-          items:
-            type: string
-        response_types:
-          type: array
-          items:
-            type: string
-        token_endpoint_auth_method:
+        token_type:
+          type: string
+        workspace_id:
           type: string
     oauth.ClientRegistrationRequest:
       type: object
@@ -515,39 +548,6 @@ components:
         scope:
           type: string
         token_endpoint_auth_method:
-          type: string
-    oauth.TokenErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
-    oauth.DeviceCodeResponse:
-      type: object
-      properties:
-        device_code:
-          type: string
-        expires_in:
-          type: integer
-        interval:
-          type: integer
-        user_code:
-          type: string
-        verification_uri:
-          type: string
-    oauth.TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
-        token_type:
-          type: string
-        workspace_id:
           type: string
   securitySchemes:
     API_Key:

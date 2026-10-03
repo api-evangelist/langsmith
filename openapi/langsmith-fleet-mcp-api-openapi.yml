@@ -846,6 +846,30 @@ components:
       properties:
         ls_user_id:
           type: string
+    mcptools.ListToolsResponse:
+      type: object
+      properties:
+        cached:
+          type: boolean
+        fetched_at:
+          type: string
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/mcptools.Tool'
+    mcptools.Tool:
+      type: object
+      properties:
+        annotations:
+          type: object
+          additionalProperties: {}
+        description:
+          type: string
+        inputSchema:
+          type: object
+          additionalProperties: {}
+        name:
+          type: string
     langchain_com_smith_fleet_mcp_servers.UpdateMcpServerPayload:
       type: object
       properties:
@@ -860,19 +884,13 @@ components:
           type: string
         url:
           type: string
-    langchain_com_smith_fleet_mcp_servers.RegisterOAuthProviderResponse:
+    mcp_servers.McpServerAPIError:
       type: object
       properties:
-        oauth_provider_id:
+        detail:
           type: string
-    langchain_com_smith_fleet_mcp_servers.OAuthMode:
-      type: string
-      enum:
-      - legacy_shared_provider
-      - per_user_dynamic_client
-      x-enum-varnames:
-      - OAuthModeLegacySharedProvider
-      - OAuthModePerUserDynamicClient
+        error:
+          type: string
     mcptools.ErrorResponse:
       type: object
       properties:
@@ -926,24 +944,14 @@ components:
       x-enum-varnames:
       - AuthTypeHeaders
       - AuthTypeOAuth
-    mcp_servers.McpServerAPIError:
-      type: object
-      properties:
-        detail:
-          type: string
-        error:
-          type: string
-    mcptools.ListToolsResponse:
-      type: object
-      properties:
-        cached:
-          type: boolean
-        fetched_at:
-          type: string
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/mcptools.Tool'
+    langchain_com_smith_fleet_mcp_servers.OAuthMode:
+      type: string
+      enum:
+      - legacy_shared_provider
+      - per_user_dynamic_client
+      x-enum-varnames:
+      - OAuthModeLegacySharedProvider
+      - OAuthModePerUserDynamicClient
     langchain_com_smith_fleet_mcp_servers.CreateMcpServerPayload:
       type: object
       required:
@@ -969,18 +977,10 @@ components:
           type: string
         vendor_id:
           type: string
-    mcptools.Tool:
+    langchain_com_smith_fleet_mcp_servers.RegisterOAuthProviderResponse:
       type: object
       properties:
-        annotations:
-          type: object
-          additionalProperties: {}
-        description:
-          type: string
-        inputSchema:
-          type: object
-          additionalProperties: {}
-        name:
+        oauth_provider_id:
           type: string
   securitySchemes:
     API_Key:
