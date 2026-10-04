@@ -89,27 +89,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     app__schemas__Tenant:
       properties:
         id:
@@ -154,46 +133,6 @@ components:
       - is_deleted
       title: Tenant
       description: Tenant schema.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    TenantCreate:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        organization_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Organization Id
-        display_name:
-          type: string
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_ ']+$
-          title: Display Name
-        tenant_handle:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tenant Handle
-        is_personal:
-          type: boolean
-          title: Is Personal
-          default: false
-      type: object
-      required:
-      - display_name
-      title: TenantCreate
-      description: Creation model for the tenant.
     TenantForUser:
       properties:
         id:
@@ -260,6 +199,67 @@ components:
       - is_personal
       - is_deleted
       title: TenantForUser
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    TenantCreate:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        organization_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Organization Id
+        display_name:
+          type: string
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_ ']+$
+          title: Display Name
+        tenant_handle:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tenant Handle
+        is_personal:
+          type: boolean
+          title: Is Personal
+          default: false
+      type: object
+      required:
+      - display_name
+      title: TenantCreate
+      description: Creation model for the tenant.
   securitySchemes:
     API_Key:
       type: apiKey

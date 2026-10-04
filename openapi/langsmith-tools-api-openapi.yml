@@ -475,49 +475,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    tools.CreateToolPayload:
-      type: object
-      required:
-      - description
-      - handle
-      - name
-      - parameters
-      properties:
-        description:
-          type: string
-        enabled:
-          type: boolean
-        handle:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
-        name:
-          type: string
-        parameters:
-          type: object
-          additionalProperties: true
-        returns:
-          type: object
-          additionalProperties: true
-    tools.UpdateToolPayload:
-      type: object
-      properties:
-        description:
-          type: string
-        enabled:
-          type: boolean
-        metadata:
-          type: object
-          additionalProperties: true
-        name:
-          type: string
-        parameters:
-          type: object
-          additionalProperties: true
-        returns:
-          type: object
-          additionalProperties: true
     tools.Tool:
       type: object
       properties:
@@ -546,6 +503,37 @@ components:
           type: string
         updated_at:
           type: string
+    tools.CreateToolPayload:
+      type: object
+      required:
+      - description
+      - handle
+      - name
+      - parameters
+      properties:
+        description:
+          type: string
+        enabled:
+          type: boolean
+        handle:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+        name:
+          type: string
+        parameters:
+          type: object
+          additionalProperties: true
+        returns:
+          type: object
+          additionalProperties: true
+    tools.ErrorResponse:
+      type: object
+      properties:
+        error:
+          description: Error message
+          type: string
     tools.ListToolsResponse:
       type: object
       properties:
@@ -557,12 +545,24 @@ components:
             $ref: '#/components/schemas/tools.Tool'
         total:
           type: integer
-    tools.ErrorResponse:
+    tools.UpdateToolPayload:
       type: object
       properties:
-        error:
-          description: Error message
+        description:
           type: string
+        enabled:
+          type: boolean
+        metadata:
+          type: object
+          additionalProperties: true
+        name:
+          type: string
+        parameters:
+          type: object
+          additionalProperties: true
+        returns:
+          type: object
+          additionalProperties: true
   securitySchemes:
     API_Key:
       type: apiKey

@@ -151,6 +151,26 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    RemoveRepoOwnerRequest:
+      properties:
+        identity_id:
+          type: string
+          format: uuid
+          title: Identity Id
+      type: object
+      required:
+      - identity_id
+      title: RemoveRepoOwnerRequest
+      description: Request to remove a repo owner.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -172,27 +192,6 @@ components:
       - msg
       - type
       title: ValidationError
-    ListRepoOwnersResponse:
-      properties:
-        owners:
-          items:
-            $ref: '#/components/schemas/RepoOwner'
-          type: array
-          title: Owners
-      type: object
-      required:
-      - owners
-      title: ListRepoOwnersResponse
-      description: Response for listing repo owners.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     RepoOwner:
       properties:
         identity_id:
@@ -233,17 +232,18 @@ components:
         Note: identity_id and email may be None when returned to users
 
         outside the repo''s tenant (PII protection).'
-    RemoveRepoOwnerRequest:
+    ListRepoOwnersResponse:
       properties:
-        identity_id:
-          type: string
-          format: uuid
-          title: Identity Id
+        owners:
+          items:
+            $ref: '#/components/schemas/RepoOwner'
+          type: array
+          title: Owners
       type: object
       required:
-      - identity_id
-      title: RemoveRepoOwnerRequest
-      description: Request to remove a repo owner.
+      - owners
+      title: ListRepoOwnersResponse
+      description: Response for listing repo owners.
     AddRepoOwnerRequest:
       properties:
         email:

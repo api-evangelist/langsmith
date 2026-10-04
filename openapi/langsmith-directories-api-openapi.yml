@@ -253,6 +253,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    directories.CommitInfo:
+      type: object
+      properties:
+        commit_hash:
+          type: string
+        created_at:
+          type: string
+        id:
+          type: string
     directories.CreateDirectoryCommitRequest:
       type: object
       properties:
@@ -262,6 +271,11 @@ components:
           additionalProperties: {}
         parent_commit:
           type: string
+    directories.CommitResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/directories.CommitInfo'
     directories.GetDirectoryResponse:
       type: object
       properties:
@@ -272,20 +286,6 @@ components:
         files:
           type: object
           additionalProperties: {}
-    directories.CommitInfo:
-      type: object
-      properties:
-        commit_hash:
-          type: string
-        created_at:
-          type: string
-        id:
-          type: string
-    directories.CommitResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/directories.CommitInfo'
   securitySchemes:
     API_Key:
       type: apiKey

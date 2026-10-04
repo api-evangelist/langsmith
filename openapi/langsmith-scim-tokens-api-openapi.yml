@@ -285,7 +285,7 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    scim.CreateScimTokenPayload:
+    scim.UpdateScimTokenPayload:
       type: object
       properties:
         description:
@@ -307,7 +307,7 @@ components:
           type: string
         updated_at:
           type: string
-    scim.UpdateScimTokenPayload:
+    scim.CreateScimTokenPayload:
       type: object
       properties:
         description:

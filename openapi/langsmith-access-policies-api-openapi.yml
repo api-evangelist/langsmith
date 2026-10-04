@@ -286,6 +286,31 @@ components:
         error:
           type: string
           example: 'Invalid request: missing required fields'
+    authz_internal.CreateAccessPolicyPayload:
+      type: object
+      properties:
+        condition_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/authz_internal.ConditionGroup'
+        description:
+          type: string
+        effect:
+          type: string
+        name:
+          type: string
+        role_ids:
+          description: if present, attach to the specified roles
+          type: array
+          items:
+            type: string
+    authz_internal.ListAccessPoliciesResponse:
+      type: object
+      properties:
+        access_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/authz_internal.AccessPolicy'
     authz_internal.Permission:
       type: string
       enum:
@@ -430,6 +455,22 @@ components:
       - OrganizationPATsCreate
       - OrganizationRead
       - OrganizationManage
+    authz_internal.AccessPolicyCreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+    authz_internal.Condition:
+      type: object
+      properties:
+        attribute_key:
+          type: string
+        attribute_name:
+          $ref: '#/components/schemas/authz_internal.AbacAttributeName'
+        attribute_value:
+          type: string
+        operator:
+          $ref: '#/components/schemas/authz_internal.AbacOperator'
     authz_internal.AccessPolicy:
       type: object
       properties:
@@ -453,65 +494,6 @@ components:
             type: string
         updated_at:
           type: string
-    authz_internal.AccessPolicyCreateResponse:
-      type: object
-      properties:
-        id:
-          type: string
-    authz_internal.ConditionGroup:
-      type: object
-      properties:
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/authz_internal.Condition'
-        permission:
-          $ref: '#/components/schemas/authz_internal.Permission'
-        resource_type:
-          type: string
-    authz_internal.CreateAccessPolicyPayload:
-      type: object
-      properties:
-        condition_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/authz_internal.ConditionGroup'
-        description:
-          type: string
-        effect:
-          type: string
-        name:
-          type: string
-        role_ids:
-          description: if present, attach to the specified roles
-          type: array
-          items:
-            type: string
-    authz_internal.Condition:
-      type: object
-      properties:
-        attribute_key:
-          type: string
-        attribute_name:
-          $ref: '#/components/schemas/authz_internal.AbacAttributeName'
-        attribute_value:
-          type: string
-        operator:
-          $ref: '#/components/schemas/authz_internal.AbacOperator'
-    authz_internal.AttachAccessPoliciesPayload:
-      type: object
-      properties:
-        access_policy_ids:
-          type: array
-          items:
-            type: string
-    authz_internal.ListAccessPoliciesResponse:
-      type: object
-      properties:
-        access_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/authz_internal.AccessPolicy'
     authz_internal.AbacOperator:
       type: string
       enum:
@@ -540,6 +522,24 @@ components:
       - AbacOperatorNotEqualsIgnoreCaseIfExists
       - AbacOperatorMatchesIfExists
       - AbacOperatorNotMatchesIfExists
+    authz_internal.ConditionGroup:
+      type: object
+      properties:
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/authz_internal.Condition'
+        permission:
+          $ref: '#/components/schemas/authz_internal.Permission'
+        resource_type:
+          type: string
+    authz_internal.AttachAccessPoliciesPayload:
+      type: object
+      properties:
+        access_policy_ids:
+          type: array
+          items:
+            type: string
   securitySchemes:
     API_Key:
       type: apiKey

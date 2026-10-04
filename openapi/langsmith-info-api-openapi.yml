@@ -117,6 +117,16 @@ components:
       - version
       title: InfoGetResponse
       description: The LangSmith server info.
+    HealthInfoGetResponse:
+      properties:
+        clickhouse_disk_free_pct:
+          type: number
+          title: Clickhouse Disk Free Pct
+      type: object
+      required:
+      - clickhouse_disk_free_pct
+      title: HealthInfoGetResponse
+      description: The LangSmith server info.
     CustomerInfo:
       properties:
         customer_id:
@@ -131,16 +141,6 @@ components:
       - customer_name
       title: CustomerInfo
       description: Customer info.
-    HealthInfoGetResponse:
-      properties:
-        clickhouse_disk_free_pct:
-          type: number
-          title: Clickhouse Disk Free Pct
-      type: object
-      required:
-      - clickhouse_disk_free_pct
-      title: HealthInfoGetResponse
-      description: The LangSmith server info.
   securitySchemes:
     API_Key:
       type: apiKey

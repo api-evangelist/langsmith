@@ -429,13 +429,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    oauth.TokenErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
     oauth.ClientRegistrationResponse:
       type: object
       properties:
@@ -459,18 +452,33 @@ components:
             type: string
         token_endpoint_auth_method:
           type: string
-    oauth.DeviceCodeResponse:
+    oauth.ClientRegistrationRequest:
       type: object
       properties:
-        device_code:
+        client_name:
           type: string
-        expires_in:
-          type: integer
-        interval:
-          type: integer
-        user_code:
+        grant_types:
+          type: array
+          items:
+            type: string
+        redirect_uris:
+          type: array
+          items:
+            type: string
+        response_types:
+          type: array
+          items:
+            type: string
+        scope:
           type: string
-        verification_uri:
+        token_endpoint_auth_method:
+          type: string
+    oauth.TokenErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
           type: string
     oauth.AuthorizationServerMetadata:
       type: object
@@ -515,6 +523,19 @@ components:
           type: array
           items:
             type: string
+    oauth.DeviceCodeResponse:
+      type: object
+      properties:
+        device_code:
+          type: string
+        expires_in:
+          type: integer
+        interval:
+          type: integer
+        user_code:
+          type: string
+        verification_uri:
+          type: string
     oauth.TokenResponse:
       type: object
       properties:
@@ -527,27 +548,6 @@ components:
         token_type:
           type: string
         workspace_id:
-          type: string
-    oauth.ClientRegistrationRequest:
-      type: object
-      properties:
-        client_name:
-          type: string
-        grant_types:
-          type: array
-          items:
-            type: string
-        redirect_uris:
-          type: array
-          items:
-            type: string
-        response_types:
-          type: array
-          items:
-            type: string
-        scope:
-          type: string
-        token_endpoint_auth_method:
           type: string
   securitySchemes:
     API_Key:

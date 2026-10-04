@@ -285,6 +285,58 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    skills.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+        type:
+          type: string
+    skills.ListSkillsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills.Skill'
+        next_cursor:
+          type: string
+    skills.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+    skills.Skill:
+      type: object
+      properties:
+        commit_hash:
+          type: string
+        commit_id:
+          type: string
+        created_at:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/skills.FileEntry'
+        id:
+          type: string
+        name:
+          type: string
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/skills.SkillOwner'
+        updated_at:
+          type: string
+        visibility:
+          type: string
     skills.ReplaceSkillRequest:
       type: object
       properties:
@@ -315,58 +367,6 @@ components:
         identity_id:
           type: string
         ls_user_id:
-          type: string
-    skills.ListSkillsResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/skills.Skill'
-        next_cursor:
-          type: string
-    skills.Skill:
-      type: object
-      properties:
-        commit_hash:
-          type: string
-        commit_id:
-          type: string
-        created_at:
-          type: string
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/skills.FileEntry'
-        id:
-          type: string
-        name:
-          type: string
-        owners:
-          type: array
-          items:
-            $ref: '#/components/schemas/skills.SkillOwner'
-        updated_at:
-          type: string
-        visibility:
-          type: string
-    skills.FileEntry:
-      type: object
-      properties:
-        content:
-          type: string
-        type:
-          type: string
-    skills.ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-        detail:
-          type: string
-        status:
-          type: integer
-        type:
           type: string
   securitySchemes:
     API_Key:

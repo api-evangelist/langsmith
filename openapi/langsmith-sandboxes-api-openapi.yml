@@ -912,15 +912,150 @@ components:
           type: string
         name:
           type: string
-    sandboxes.ClaimListResponse:
+    sandboxes.AccessControl:
+      type: object
+      properties:
+        allow_list:
+          type: array
+          items:
+            type: string
+        deny_list:
+          type: array
+          items:
+            type: string
+    sandboxes.BatchDeleteResponse:
+      type: object
+      properties:
+        deleted:
+          type: array
+          items:
+            type: string
+        skipped:
+          type: array
+          items:
+            $ref: '#/components/schemas/sandboxes.BatchDeleteSkipped'
+    sandboxes.HeaderType:
+      type: string
+      enum:
+      - plaintext
+      - opaque
+      - workspace_secret
+      x-enum-varnames:
+      - HeaderTypePlaintext
+      - HeaderTypeOpaque
+      - HeaderTypeWorkspaceSecret
+    sandboxes.SnapshotResponse:
+      type: object
+      properties:
+        created_at:
+          type: string
+        created_by:
+          type: string
+        docker_image:
+          type: string
+        fs_capacity_bytes:
+          type: integer
+        fs_used_bytes:
+          type: integer
+        id:
+          type: string
+        image_digest:
+          type: string
+        name:
+          type: string
+        registry_id:
+          type: string
+        source_sandbox_id:
+          type: string
+        status:
+          type: string
+        status_message:
+          type: string
+        updated_at:
+          type: string
+    sandboxes.ProxyConfig:
+      type: object
+      properties:
+        access_control:
+          $ref: '#/components/schemas/sandboxes.AccessControl'
+        callbacks:
+          type: array
+          items:
+            $ref: '#/components/schemas/sandboxes.Callback'
+        no_proxy:
+          type: array
+          items:
+            type: string
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/sandboxes.ProxyRule'
+    sandboxes.BatchDeleteSkipped:
+      type: object
+      properties:
+        name:
+          type: string
+        reason:
+          type: string
+    sandboxes.ServiceURLPayload:
+      type: object
+      properties:
+        expires_in_seconds:
+          type: integer
+        port:
+          type: integer
+    authn.PublicAuthInfo:
+      type: object
+      properties:
+        ls_user_id:
+          type: string
+        organization_id:
+          type: string
+        tenant_id:
+          type: string
+        user_email:
+          type: string
+        user_id:
+          type: string
+    sandboxes.ClaimStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        status_message:
+          type: string
+    sandboxes.ServiceURLResponse:
+      type: object
+      properties:
+        browser_url:
+          type: string
+        expires_at:
+          type: string
+        service_url:
+          type: string
+        token:
+          type: string
+    sandboxes.SnapshotListResponse:
       type: object
       properties:
         offset:
           type: integer
-        sandboxes:
+        snapshots:
           type: array
           items:
-            $ref: '#/components/schemas/sandboxes.ClaimResponse'
+            $ref: '#/components/schemas/sandboxes.SnapshotResponse'
+    sandboxes.ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: object
+          properties:
+            error:
+              type: string
+            error_id:
+              type: string
+            message:
+              type: string
     sandboxes.ClaimResponse:
       type: object
       properties:
@@ -960,101 +1095,6 @@ components:
           type: string
         vcpus:
           type: integer
-    sandboxes.BatchDeleteResponse:
-      type: object
-      properties:
-        deleted:
-          type: array
-          items:
-            type: string
-        skipped:
-          type: array
-          items:
-            $ref: '#/components/schemas/sandboxes.BatchDeleteSkipped'
-    sandboxes.CreateSnapshotPayload:
-      type: object
-      required:
-      - docker_image
-      - fs_capacity_bytes
-      - name
-      properties:
-        docker_image:
-          type: string
-        fs_capacity_bytes:
-          type: integer
-        name:
-          type: string
-        registry_id:
-          type: string
-    sandboxes.BatchDeleteSkipped:
-      type: object
-      properties:
-        name:
-          type: string
-        reason:
-          type: string
-    sandboxes.HeaderType:
-      type: string
-      enum:
-      - plaintext
-      - opaque
-      - workspace_secret
-      x-enum-varnames:
-      - HeaderTypePlaintext
-      - HeaderTypeOpaque
-      - HeaderTypeWorkspaceSecret
-    sandboxes.ProxyConfig:
-      type: object
-      properties:
-        access_control:
-          $ref: '#/components/schemas/sandboxes.AccessControl'
-        callbacks:
-          type: array
-          items:
-            $ref: '#/components/schemas/sandboxes.Callback'
-        no_proxy:
-          type: array
-          items:
-            type: string
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/sandboxes.ProxyRule'
-    sandboxes.BatchDeleteRequest:
-      type: object
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-    sandboxes.ClaimStatusResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        status_message:
-          type: string
-    sandboxes.CreateClaimPayload:
-      type: object
-      properties:
-        delete_after_stop_seconds:
-          type: integer
-        fs_capacity_bytes:
-          type: integer
-        idle_ttl_seconds:
-          type: integer
-        mem_bytes:
-          type: integer
-        name:
-          type: string
-        proxy_config:
-          $ref: '#/components/schemas/sandboxes.ProxyConfig'
-        snapshot_id:
-          type: string
-        snapshot_name:
-          type: string
-        vcpus:
-          type: integer
     sandboxes.Callback:
       type: object
       required:
@@ -1079,37 +1119,13 @@ components:
           minimum: 60
         url:
           type: string
-    sandboxes.ErrorResponse:
+    sandboxes.BatchDeleteRequest:
       type: object
       properties:
-        detail:
-          type: object
-          properties:
-            error:
-              type: string
-            error_id:
-              type: string
-            message:
-              type: string
-    sandboxes.ProxyHeader:
-      type: object
-      required:
-      - name
-      - type
-      properties:
-        is_set:
-          type: boolean
-        name:
-          type: string
-        type:
-          enum:
-          - plaintext
-          - opaque
-          - workspace_secret
-          allOf:
-          - $ref: '#/components/schemas/sandboxes.HeaderType'
-        value:
-          type: string
+        names:
+          type: array
+          items:
+            type: string
     sandboxes.UsageResponse:
       type: object
       properties:
@@ -1141,51 +1157,87 @@ components:
           type: integer
         templates_count:
           type: integer
-    sandboxes.SnapshotListResponse:
+    sandboxes.ClaimListResponse:
       type: object
       properties:
         offset:
           type: integer
-        snapshots:
+        sandboxes:
           type: array
           items:
-            $ref: '#/components/schemas/sandboxes.SnapshotResponse'
-    sandboxes.SnapshotResponse:
+            $ref: '#/components/schemas/sandboxes.ClaimResponse'
+    sandboxes.UpdateClaimPayload:
       type: object
       properties:
-        created_at:
+        delete_after_stop_seconds:
+          type: integer
+        fs_capacity_bytes:
+          type: integer
+        idle_ttl_seconds:
+          type: integer
+        mem_bytes:
+          type: integer
+        name:
           type: string
-        created_by:
+        proxy_config:
+          $ref: '#/components/schemas/sandboxes.ProxyConfig'
+        vcpus:
+          type: integer
+    sandboxes.ProxyHeader:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        is_set:
+          type: boolean
+        name:
           type: string
+        type:
+          enum:
+          - plaintext
+          - opaque
+          - workspace_secret
+          allOf:
+          - $ref: '#/components/schemas/sandboxes.HeaderType'
+        value:
+          type: string
+    sandboxes.CreateClaimPayload:
+      type: object
+      properties:
+        delete_after_stop_seconds:
+          type: integer
+        fs_capacity_bytes:
+          type: integer
+        idle_ttl_seconds:
+          type: integer
+        mem_bytes:
+          type: integer
+        name:
+          type: string
+        proxy_config:
+          $ref: '#/components/schemas/sandboxes.ProxyConfig'
+        snapshot_id:
+          type: string
+        snapshot_name:
+          type: string
+        vcpus:
+          type: integer
+    sandboxes.CreateSnapshotPayload:
+      type: object
+      required:
+      - docker_image
+      - fs_capacity_bytes
+      - name
+      properties:
         docker_image:
           type: string
         fs_capacity_bytes:
           type: integer
-        fs_used_bytes:
-          type: integer
-        id:
-          type: string
-        image_digest:
-          type: string
         name:
           type: string
         registry_id:
           type: string
-        source_sandbox_id:
-          type: string
-        status:
-          type: string
-        status_message:
-          type: string
-        updated_at:
-          type: string
-    sandboxes.ServiceURLPayload:
-      type: object
-      properties:
-        expires_in_seconds:
-          type: integer
-        port:
-          type: integer
     sandboxes.ProxyRule:
       type: object
       required:
@@ -1208,58 +1260,6 @@ components:
           items:
             type: string
         name:
-          type: string
-    sandboxes.UpdateClaimPayload:
-      type: object
-      properties:
-        delete_after_stop_seconds:
-          type: integer
-        fs_capacity_bytes:
-          type: integer
-        idle_ttl_seconds:
-          type: integer
-        mem_bytes:
-          type: integer
-        name:
-          type: string
-        proxy_config:
-          $ref: '#/components/schemas/sandboxes.ProxyConfig'
-        vcpus:
-          type: integer
-    sandboxes.AccessControl:
-      type: object
-      properties:
-        allow_list:
-          type: array
-          items:
-            type: string
-        deny_list:
-          type: array
-          items:
-            type: string
-    sandboxes.ServiceURLResponse:
-      type: object
-      properties:
-        browser_url:
-          type: string
-        expires_at:
-          type: string
-        service_url:
-          type: string
-        token:
-          type: string
-    authn.PublicAuthInfo:
-      type: object
-      properties:
-        ls_user_id:
-          type: string
-        organization_id:
-          type: string
-        tenant_id:
-          type: string
-        user_email:
-          type: string
-        user_id:
           type: string
   securitySchemes:
     API_Key:

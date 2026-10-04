@@ -164,6 +164,11 @@ paths:
       - Bearer Auth: []
 components:
   schemas:
+    ttl_settings.UpdateTTLSettingsRequest:
+      type: object
+      properties:
+        longlived_ttl_days:
+          type: integer
     ttl_settings.TTLSettingsResponse:
       type: object
       properties:
@@ -173,11 +178,18 @@ components:
           type: integer
         tenant_id:
           type: string
-    ttl_settings.UpdateTTLSettingsRequest:
-      type: object
-      properties:
-        longlived_ttl_days:
-          type: integer
+    ConfiguredBy:
+      type: string
+      enum:
+      - system
+      - user
+      title: ConfiguredBy
+    TraceTier:
+      type: string
+      enum:
+      - longlived
+      - shortlived
+      title: TraceTier
     ValidationError:
       properties:
         loc:
@@ -227,12 +239,6 @@ components:
       - default_trace_tier
       title: UpsertTTLSettingsRequest
       description: Base TTL settings model.
-    TraceTier:
-      type: string
-      enum:
-      - longlived
-      - shortlived
-      title: TraceTier
     TTLSettings:
       properties:
         tenant_id:
@@ -280,12 +286,6 @@ components:
       - configured_by
       title: TTLSettings
       description: TTL settings model.
-    ConfiguredBy:
-      type: string
-      enum:
-      - system
-      - user
-      title: ConfiguredBy
   securitySchemes:
     API_Key:
       type: apiKey

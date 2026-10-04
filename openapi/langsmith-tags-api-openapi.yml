@@ -222,80 +222,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    RepoUpdateTagRequest:
-      properties:
-        commit_id:
-          type: string
-          format: uuid
-          title: Commit Id
-        skip_webhooks:
-          anyOf:
-          - type: boolean
-          - items:
-              type: string
-              format: uuid
-            type: array
-          title: Skip Webhooks
-          default: false
-      type: object
-      required:
-      - commit_id
-      title: RepoUpdateTagRequest
-      description: Fields to update a prompt tag
-    RepoTagRequest:
-      properties:
-        tag_name:
-          type: string
-          title: Tag Name
-        commit_id:
-          type: string
-          format: uuid
-          title: Commit Id
-        skip_webhooks:
-          anyOf:
-          - type: boolean
-          - items:
-              type: string
-              format: uuid
-            type: array
-          title: Skip Webhooks
-          default: false
-      type: object
-      required:
-      - tag_name
-      - commit_id
-      title: RepoTagRequest
-      description: Fields to create a prompt tag
     RepoTag:
       properties:
         id:
@@ -335,6 +261,80 @@ components:
       - updated_at
       title: RepoTag
       description: Fields for a prompt tag
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    RepoTagRequest:
+      properties:
+        tag_name:
+          type: string
+          title: Tag Name
+        commit_id:
+          type: string
+          format: uuid
+          title: Commit Id
+        skip_webhooks:
+          anyOf:
+          - type: boolean
+          - items:
+              type: string
+              format: uuid
+            type: array
+          title: Skip Webhooks
+          default: false
+      type: object
+      required:
+      - tag_name
+      - commit_id
+      title: RepoTagRequest
+      description: Fields to create a prompt tag
+    RepoUpdateTagRequest:
+      properties:
+        commit_id:
+          type: string
+          format: uuid
+          title: Commit Id
+        skip_webhooks:
+          anyOf:
+          - type: boolean
+          - items:
+              type: string
+              format: uuid
+            type: array
+          title: Skip Webhooks
+          default: false
+      type: object
+      required:
+      - commit_id
+      title: RepoUpdateTagRequest
+      description: Fields to update a prompt tag
   securitySchemes:
     API_Key:
       type: apiKey

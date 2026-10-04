@@ -68,33 +68,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    sandboxes.HeaderType:
-      type: string
-      enum:
-      - plaintext
-      - opaque
-      - workspace_secret
-      x-enum-varnames:
-      - HeaderTypePlaintext
-      - HeaderTypeOpaque
-      - HeaderTypeWorkspaceSecret
-    sandboxes.ProxyConfig:
-      type: object
-      properties:
-        access_control:
-          $ref: '#/components/schemas/sandboxes.AccessControl'
-        callbacks:
-          type: array
-          items:
-            $ref: '#/components/schemas/sandboxes.Callback'
-        no_proxy:
-          type: array
-          items:
-            type: string
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/sandboxes.ProxyRule'
     sandboxes.ClaimResponse:
       type: object
       properties:
@@ -134,71 +107,23 @@ components:
           type: string
         vcpus:
           type: integer
-    sandboxes.ProxyRule:
+    sandboxes.ProxyConfig:
       type: object
-      required:
-      - match_hosts
-      - name
       properties:
-        enabled:
-          type: boolean
-        headers:
+        access_control:
+          $ref: '#/components/schemas/sandboxes.AccessControl'
+        callbacks:
           type: array
           items:
-            $ref: '#/components/schemas/sandboxes.ProxyHeader'
-        match_hosts:
-          type: array
-          minItems: 1
-          items:
-            type: string
-        match_paths:
+            $ref: '#/components/schemas/sandboxes.Callback'
+        no_proxy:
           type: array
           items:
             type: string
-        name:
-          type: string
-    sandboxes.ErrorResponse:
-      type: object
-      properties:
-        detail:
-          type: object
-          properties:
-            error:
-              type: string
-            error_id:
-              type: string
-            message:
-              type: string
-    sandboxes.ProxyHeader:
-      type: object
-      required:
-      - name
-      - type
-      properties:
-        is_set:
-          type: boolean
-        name:
-          type: string
-        type:
-          enum:
-          - plaintext
-          - opaque
-          - workspace_secret
-          allOf:
-          - $ref: '#/components/schemas/sandboxes.HeaderType'
-        value:
-          type: string
-    sandboxes.AccessControl:
-      type: object
-      properties:
-        allow_list:
+        rules:
           type: array
           items:
-            type: string
-        deny_list:
-          type: array
-          items:
-            type: string
+            $ref: '#/components/schemas/sandboxes.ProxyRule'
     sandboxes.Callback:
       type: object
       required:
@@ -222,6 +147,81 @@ components:
           maximum: 3600
           minimum: 60
         url:
+          type: string
+    sandboxes.AccessControl:
+      type: object
+      properties:
+        allow_list:
+          type: array
+          items:
+            type: string
+        deny_list:
+          type: array
+          items:
+            type: string
+    sandboxes.HeaderType:
+      type: string
+      enum:
+      - plaintext
+      - opaque
+      - workspace_secret
+      x-enum-varnames:
+      - HeaderTypePlaintext
+      - HeaderTypeOpaque
+      - HeaderTypeWorkspaceSecret
+    sandboxes.ProxyHeader:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        is_set:
+          type: boolean
+        name:
+          type: string
+        type:
+          enum:
+          - plaintext
+          - opaque
+          - workspace_secret
+          allOf:
+          - $ref: '#/components/schemas/sandboxes.HeaderType'
+        value:
+          type: string
+    sandboxes.ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: object
+          properties:
+            error:
+              type: string
+            error_id:
+              type: string
+            message:
+              type: string
+    sandboxes.ProxyRule:
+      type: object
+      required:
+      - match_hosts
+      - name
+      properties:
+        enabled:
+          type: boolean
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/sandboxes.ProxyHeader'
+        match_hosts:
+          type: array
+          minItems: 1
+          items:
+            type: string
+        match_paths:
+          type: array
+          items:
+            type: string
+        name:
           type: string
   securitySchemes:
     API_Key:
