@@ -280,12 +280,104 @@ components:
       - resource_tag_key
       x-enum-varnames:
       - AbacAttributeNameResourceTagKey
+    authz_internal.ConditionGroup:
+      type: object
+      properties:
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/authz_internal.Condition'
+        permission:
+          $ref: '#/components/schemas/authz_internal.Permission'
+        resource_type:
+          type: string
+    authz_internal.Condition:
+      type: object
+      properties:
+        attribute_key:
+          type: string
+        attribute_name:
+          $ref: '#/components/schemas/authz_internal.AbacAttributeName'
+        attribute_value:
+          type: string
+        operator:
+          $ref: '#/components/schemas/authz_internal.AbacOperator'
     abac.ErrorResponse:
       type: object
       properties:
         error:
           type: string
           example: 'Invalid request: missing required fields'
+    authz_internal.AttachAccessPoliciesPayload:
+      type: object
+      properties:
+        access_policy_ids:
+          type: array
+          items:
+            type: string
+    authz_internal.AccessPolicy:
+      type: object
+      properties:
+        condition_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/authz_internal.ConditionGroup'
+        created_at:
+          type: string
+        description:
+          type: string
+        effect:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        role_ids:
+          type: array
+          items:
+            type: string
+        updated_at:
+          type: string
+    authz_internal.AbacOperator:
+      type: string
+      enum:
+      - equals
+      - not_equals
+      - equals_ignore_case
+      - not_equals_ignore_case
+      - matches
+      - not_matches
+      - equals_if_exists
+      - not_equals_if_exists
+      - equals_ignore_case_if_exists
+      - not_equals_ignore_case_if_exists
+      - matches_if_exists
+      - not_matches_if_exists
+      x-enum-varnames:
+      - AbacOperatorEquals
+      - AbacOperatorNotEquals
+      - AbacOperatorEqualsIgnoreCase
+      - AbacOperatorNotEqualsIgnoreCase
+      - AbacOperatorMatches
+      - AbacOperatorNotMatches
+      - AbacOperatorEqualsIfExists
+      - AbacOperatorNotEqualsIfExists
+      - AbacOperatorEqualsIgnoreCaseIfExists
+      - AbacOperatorNotEqualsIgnoreCaseIfExists
+      - AbacOperatorMatchesIfExists
+      - AbacOperatorNotMatchesIfExists
+    authz_internal.ListAccessPoliciesResponse:
+      type: object
+      properties:
+        access_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/authz_internal.AccessPolicy'
+    authz_internal.AccessPolicyCreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
     authz_internal.CreateAccessPolicyPayload:
       type: object
       properties:
@@ -304,13 +396,6 @@ components:
           type: array
           items:
             type: string
-    authz_internal.ListAccessPoliciesResponse:
-      type: object
-      properties:
-        access_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/authz_internal.AccessPolicy'
     authz_internal.Permission:
       type: string
       enum:
@@ -455,91 +540,6 @@ components:
       - OrganizationPATsCreate
       - OrganizationRead
       - OrganizationManage
-    authz_internal.AccessPolicyCreateResponse:
-      type: object
-      properties:
-        id:
-          type: string
-    authz_internal.Condition:
-      type: object
-      properties:
-        attribute_key:
-          type: string
-        attribute_name:
-          $ref: '#/components/schemas/authz_internal.AbacAttributeName'
-        attribute_value:
-          type: string
-        operator:
-          $ref: '#/components/schemas/authz_internal.AbacOperator'
-    authz_internal.AccessPolicy:
-      type: object
-      properties:
-        condition_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/authz_internal.ConditionGroup'
-        created_at:
-          type: string
-        description:
-          type: string
-        effect:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        role_ids:
-          type: array
-          items:
-            type: string
-        updated_at:
-          type: string
-    authz_internal.AbacOperator:
-      type: string
-      enum:
-      - equals
-      - not_equals
-      - equals_ignore_case
-      - not_equals_ignore_case
-      - matches
-      - not_matches
-      - equals_if_exists
-      - not_equals_if_exists
-      - equals_ignore_case_if_exists
-      - not_equals_ignore_case_if_exists
-      - matches_if_exists
-      - not_matches_if_exists
-      x-enum-varnames:
-      - AbacOperatorEquals
-      - AbacOperatorNotEquals
-      - AbacOperatorEqualsIgnoreCase
-      - AbacOperatorNotEqualsIgnoreCase
-      - AbacOperatorMatches
-      - AbacOperatorNotMatches
-      - AbacOperatorEqualsIfExists
-      - AbacOperatorNotEqualsIfExists
-      - AbacOperatorEqualsIgnoreCaseIfExists
-      - AbacOperatorNotEqualsIgnoreCaseIfExists
-      - AbacOperatorMatchesIfExists
-      - AbacOperatorNotMatchesIfExists
-    authz_internal.ConditionGroup:
-      type: object
-      properties:
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/authz_internal.Condition'
-        permission:
-          $ref: '#/components/schemas/authz_internal.Permission'
-        resource_type:
-          type: string
-    authz_internal.AttachAccessPoliciesPayload:
-      type: object
-      properties:
-        access_policy_ids:
-          type: array
-          items:
-            type: string
   securitySchemes:
     API_Key:
       type: apiKey

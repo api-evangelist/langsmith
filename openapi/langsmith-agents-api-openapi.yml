@@ -250,89 +250,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    agents.AgentMetadata:
-      type: object
-      properties:
-        agent_type:
-          type: string
-        agent_version:
-          type: string
-        icon:
-          type: string
-        icon_color:
-          type: string
-        shared_read_users:
-          type: array
-          items:
-            type: string
-        shared_run_users:
-          type: array
-          items:
-            type: string
-        shared_update_users:
-          type: array
-          items:
-            type: string
-        tenant_access_level:
-          type: string
-        visibility_scope:
-          type: string
-    agents.UpdateAgentRequest:
-      type: object
-      properties:
-        config:
-          $ref: '#/components/schemas/agents.AgentConfig'
-        deleted_paths:
-          type: array
-          items:
-            type: string
-        description:
-          type: string
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/agents.FileEntry'
-        metadata:
-          $ref: '#/components/schemas/agents.AgentMetadata'
-        name:
-          type: string
-    agents.CreateAgentRequest:
-      type: object
-      properties:
-        config:
-          $ref: '#/components/schemas/agents.AgentConfig'
-        description:
-          type: string
-        files:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/agents.FileEntry'
-        graph_id:
-          type: string
-        metadata:
-          $ref: '#/components/schemas/agents.AgentMetadata'
-        name:
-          type: string
-    agents.Agent:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        status:
-          type: string
-    agents.ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-        detail:
-          type: string
-        status:
-          type: integer
-        type:
-          type: string
     agents.AgentConfigurable:
       type: object
       properties:
@@ -380,16 +297,6 @@ components:
           type: string
         updated_at:
           type: string
-    agents.FileEntry:
-      type: object
-      properties:
-        content:
-          type: string
-    agents.AgentConfig:
-      type: object
-      properties:
-        configurable:
-          $ref: '#/components/schemas/agents.AgentConfigurable'
     agents.UpdateAgentResponse:
       type: object
       properties:
@@ -417,6 +324,63 @@ components:
           type: string
         updated_at:
           type: string
+    agents.AgentConfig:
+      type: object
+      properties:
+        configurable:
+          $ref: '#/components/schemas/agents.AgentConfigurable'
+    agents.CreateAgentRequest:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        graph_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+    agents.FileEntry:
+      type: object
+      properties:
+        content:
+          type: string
+    agents.UpdateAgentRequest:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/agents.AgentConfig'
+        deleted_paths:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        files:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/agents.FileEntry'
+        metadata:
+          $ref: '#/components/schemas/agents.AgentMetadata'
+        name:
+          type: string
+    agents.ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
     agents.ListAgentsResponse:
       type: object
       properties:
@@ -424,6 +388,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/agents.Agent'
+    agents.Agent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+    agents.AgentMetadata:
+      type: object
+      properties:
+        agent_type:
+          type: string
+        agent_version:
+          type: string
+        icon:
+          type: string
+        icon_color:
+          type: string
+        shared_read_users:
+          type: array
+          items:
+            type: string
+        shared_run_users:
+          type: array
+          items:
+            type: string
+        shared_update_users:
+          type: array
+          items:
+            type: string
+        tenant_access_level:
+          type: string
+        visibility_scope:
+          type: string
   securitySchemes:
     API_Key:
       type: apiKey

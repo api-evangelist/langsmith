@@ -308,18 +308,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    integrations.AuthType:
-      type: string
-      enum:
-      - oauth2
-      - headers
-      - api_key
-      - none
-      x-enum-varnames:
-      - AuthTypeOAuth2
-      - AuthTypeHeaders
-      - AuthTypeAPIKey
-      - AuthTypeNone
     integrations.UpdateRequest:
       type: object
       properties:
@@ -351,31 +339,18 @@ components:
           type: integer
         type:
           type: string
-    integrations.AuthMethod:
-      type: object
-      properties:
-        provider_match:
-          $ref: '#/components/schemas/integrations.ProviderMatch'
-        type:
-          $ref: '#/components/schemas/integrations.AuthType'
-    integrations.CreateRequest:
-      type: object
-      required:
-      - name
-      - url
-      properties:
-        category:
-          type: string
-        description:
-          type: string
-        icon_url:
-          type: string
-        name:
-          type: string
-        source:
-          type: string
-        url:
-          type: string
+    integrations.AuthType:
+      type: string
+      enum:
+      - oauth2
+      - headers
+      - api_key
+      - none
+      x-enum-varnames:
+      - AuthTypeOAuth2
+      - AuthTypeHeaders
+      - AuthTypeAPIKey
+      - AuthTypeNone
     integrations.Integration:
       type: object
       properties:
@@ -405,6 +380,13 @@ components:
           type: string
         url:
           type: string
+    integrations.AuthMethod:
+      type: object
+      properties:
+        provider_match:
+          $ref: '#/components/schemas/integrations.ProviderMatch'
+        type:
+          $ref: '#/components/schemas/integrations.AuthType'
     integrations.ProviderMatch:
       type: object
       properties:
@@ -426,6 +408,24 @@ components:
           items:
             $ref: '#/components/schemas/integrations.Integration'
         next_cursor:
+          type: string
+    integrations.CreateRequest:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        category:
+          type: string
+        description:
+          type: string
+        icon_url:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        url:
           type: string
     integrations.MatchBy:
       type: string

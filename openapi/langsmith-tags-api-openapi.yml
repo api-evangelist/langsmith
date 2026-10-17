@@ -222,75 +222,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    RepoTag:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        repo_id:
-          type: string
-          format: uuid
-          title: Repo Id
-        commit_id:
-          type: string
-          format: uuid
-          title: Commit Id
-        commit_hash:
-          type: string
-          title: Commit Hash
-        tag_name:
-          type: string
-          title: Tag Name
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - repo_id
-      - commit_id
-      - commit_hash
-      - tag_name
-      - created_at
-      - updated_at
-      title: RepoTag
-      description: Fields for a prompt tag
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     RepoTagRequest:
       properties:
         tag_name:
@@ -335,6 +266,75 @@ components:
       - commit_id
       title: RepoUpdateTagRequest
       description: Fields to update a prompt tag
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    RepoTag:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        repo_id:
+          type: string
+          format: uuid
+          title: Repo Id
+        commit_id:
+          type: string
+          format: uuid
+          title: Commit Id
+        commit_hash:
+          type: string
+          title: Commit Hash
+        tag_name:
+          type: string
+          title: Tag Name
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - repo_id
+      - commit_id
+      - commit_hash
+      - tag_name
+      - created_at
+      - updated_at
+      title: RepoTag
+      description: Fields for a prompt tag
   securitySchemes:
     API_Key:
       type: apiKey

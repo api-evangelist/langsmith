@@ -211,29 +211,6 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/hub_environments.EnvironmentEntry'
-    hub_environments.EnvironmentEntry:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          maxLength: 64
-          minLength: 1
-    hub_environments.HubEnvironmentsModel:
-      type: object
-      properties:
-        environments:
-          type: array
-          items:
-            $ref: '#/components/schemas/hub_environments.EnvironmentEntry'
-        id:
-          type: string
-    hub_environments.ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
     hub_environments.UpdateEnvironmentsRequest:
       type: object
       required:
@@ -244,6 +221,29 @@ components:
           maxItems: 4
           items:
             $ref: '#/components/schemas/hub_environments.EnvironmentEntry'
+    hub_environments.HubEnvironmentsModel:
+      type: object
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/hub_environments.EnvironmentEntry'
+        id:
+          type: string
+    hub_environments.EnvironmentEntry:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          minLength: 1
+    hub_environments.ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
   securitySchemes:
     API_Key:
       type: apiKey

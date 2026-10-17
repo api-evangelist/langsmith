@@ -419,13 +419,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    evaluators.BulkDeleteEvaluatorFailedItem:
-      type: object
-      properties:
-        error:
-          type: string
-        id:
-          type: string
     evaluators.CreateCodeEvaluatorRequest:
       type: object
       properties:
@@ -434,120 +427,27 @@ components:
         language:
           description: 'Default: "python"'
           type: string
-    evaluators.UpdateCodeEvaluatorRequest:
+    evaluators.EvaluatorRunRule:
       type: object
       properties:
-        code:
-          type: string
-        language:
-          type: string
-    evaluators.LLMEvaluator:
-      type: object
-      properties:
-        annotation_queue_id:
-          type: string
-        commit_hash_or_tag:
-          type: string
         corrections_dataset_id:
           type: string
-        evaluator_id:
+        dataset_id:
+          type: string
+        dataset_name:
+          type: string
+        group_by:
+          type: string
+        id:
           type: string
         num_few_shot_examples:
           type: integer
-        prompt_id:
+        session_id:
           type: string
-        prompt_repo_handle:
-          type: string
-        use_corrections_dataset:
-          description: 'Derived from the evaluator''s run rules — shared across all rules on this evaluator.
-
-            Nil when the evaluator has no run rules.'
-          type: boolean
-        variable_mapping:
-          description: JSONB
-          type: object
-    evaluators.CreateLLMEvaluatorRequest:
-      type: object
-      properties:
-        commit_hash_or_tag:
-          type: string
-        prompt_repo_handle:
-          type: string
-        variable_mapping:
-          type: object
-    evaluators.ListEvaluatorsResponse:
-      type: object
-      properties:
-        evaluators:
-          type: array
-          items:
-            $ref: '#/components/schemas/evaluators.Evaluator'
-        total:
-          type: integer
-    evaluators.CreateEvaluatorRequest:
-      type: object
-      properties:
-        code_evaluator:
-          $ref: '#/components/schemas/evaluators.CreateCodeEvaluatorRequest'
-        llm_evaluator:
-          $ref: '#/components/schemas/evaluators.CreateLLMEvaluatorRequest'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/evaluators.EvaluatorType'
-    evaluators.ErrorResponse:
-      type: object
-      properties:
-        error:
-          description: Error message
-          type: string
-    evaluators.CodeEvaluator:
-      type: object
-      properties:
-        code:
-          type: string
-        evaluator_id:
-          type: string
-        language:
-          description: 'Default: "python"'
-          type: string
-    evaluators.EvaluatorType:
-      type: string
-      enum:
-      - llm
-      - code
-      x-enum-varnames:
-      - EvaluatorTypeLLM
-      - EvaluatorTypeCode
-    evaluators.UpdateLLMEvaluatorRequest:
-      type: object
-      properties:
-        commit_hash_or_tag:
-          type: string
-        num_few_shot_examples:
-          type: integer
-        prompt_repo_handle:
+        session_name:
           type: string
         use_corrections_dataset:
           type: boolean
-        variable_mapping:
-          type: object
-    evaluators.UpdateEvaluatorResponse:
-      type: object
-      properties:
-        evaluator:
-          $ref: '#/components/schemas/evaluators.Evaluator'
-    evaluators.BulkDeleteEvaluatorsResponse:
-      type: object
-      properties:
-        failed:
-          type: array
-          items:
-            $ref: '#/components/schemas/evaluators.BulkDeleteEvaluatorFailedItem'
-        succeeded:
-          type: array
-          items:
-            type: string
     evaluators.Evaluator:
       type: object
       properties:
@@ -579,11 +479,6 @@ components:
           $ref: '#/components/schemas/evaluators.EvaluatorType'
         updated_at:
           type: string
-    evaluators.CreateEvaluatorResponse:
-      type: object
-      properties:
-        evaluator:
-          $ref: '#/components/schemas/evaluators.Evaluator'
     evaluators.UpdateEvaluatorRequest:
       type: object
       properties:
@@ -593,27 +488,132 @@ components:
           $ref: '#/components/schemas/evaluators.UpdateLLMEvaluatorRequest'
         name:
           type: string
-    evaluators.EvaluatorRunRule:
+    evaluators.CreateLLMEvaluatorRequest:
       type: object
       properties:
-        corrections_dataset_id:
+        commit_hash_or_tag:
           type: string
-        dataset_id:
+        prompt_repo_handle:
           type: string
-        dataset_name:
-          type: string
-        group_by:
+        variable_mapping:
+          type: object
+    evaluators.UpdateEvaluatorResponse:
+      type: object
+      properties:
+        evaluator:
+          $ref: '#/components/schemas/evaluators.Evaluator'
+    evaluators.ListEvaluatorsResponse:
+      type: object
+      properties:
+        evaluators:
+          type: array
+          items:
+            $ref: '#/components/schemas/evaluators.Evaluator'
+        total:
+          type: integer
+    evaluators.BulkDeleteEvaluatorFailedItem:
+      type: object
+      properties:
+        error:
           type: string
         id:
           type: string
+    evaluators.EvaluatorType:
+      type: string
+      enum:
+      - llm
+      - code
+      x-enum-varnames:
+      - EvaluatorTypeLLM
+      - EvaluatorTypeCode
+    evaluators.LLMEvaluator:
+      type: object
+      properties:
+        annotation_queue_id:
+          type: string
+        commit_hash_or_tag:
+          type: string
+        corrections_dataset_id:
+          type: string
+        evaluator_id:
+          type: string
         num_few_shot_examples:
           type: integer
-        session_id:
+        prompt_id:
           type: string
-        session_name:
+        prompt_repo_handle:
+          type: string
+        use_corrections_dataset:
+          description: 'Derived from the evaluator''s run rules — shared across all rules on this evaluator.
+
+            Nil when the evaluator has no run rules.'
+          type: boolean
+        variable_mapping:
+          description: JSONB
+          type: object
+    evaluators.CreateEvaluatorRequest:
+      type: object
+      properties:
+        code_evaluator:
+          $ref: '#/components/schemas/evaluators.CreateCodeEvaluatorRequest'
+        llm_evaluator:
+          $ref: '#/components/schemas/evaluators.CreateLLMEvaluatorRequest'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/evaluators.EvaluatorType'
+    evaluators.CreateEvaluatorResponse:
+      type: object
+      properties:
+        evaluator:
+          $ref: '#/components/schemas/evaluators.Evaluator'
+    evaluators.UpdateLLMEvaluatorRequest:
+      type: object
+      properties:
+        commit_hash_or_tag:
+          type: string
+        num_few_shot_examples:
+          type: integer
+        prompt_repo_handle:
           type: string
         use_corrections_dataset:
           type: boolean
+        variable_mapping:
+          type: object
+    evaluators.UpdateCodeEvaluatorRequest:
+      type: object
+      properties:
+        code:
+          type: string
+        language:
+          type: string
+    evaluators.CodeEvaluator:
+      type: object
+      properties:
+        code:
+          type: string
+        evaluator_id:
+          type: string
+        language:
+          description: 'Default: "python"'
+          type: string
+    evaluators.ErrorResponse:
+      type: object
+      properties:
+        error:
+          description: Error message
+          type: string
+    evaluators.BulkDeleteEvaluatorsResponse:
+      type: object
+      properties:
+        failed:
+          type: array
+          items:
+            $ref: '#/components/schemas/evaluators.BulkDeleteEvaluatorFailedItem'
+        succeeded:
+          type: array
+          items:
+            type: string
   securitySchemes:
     API_Key:
       type: apiKey

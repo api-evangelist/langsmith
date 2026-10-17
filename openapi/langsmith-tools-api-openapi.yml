@@ -475,6 +475,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    tools.ErrorResponse:
+      type: object
+      properties:
+        error:
+          description: Error message
+          type: string
     tools.Tool:
       type: object
       properties:
@@ -503,6 +509,17 @@ components:
           type: string
         updated_at:
           type: string
+    tools.ListToolsResponse:
+      type: object
+      properties:
+        next_offset:
+          type: integer
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/tools.Tool'
+        total:
+          type: integer
     tools.CreateToolPayload:
       type: object
       required:
@@ -528,23 +545,6 @@ components:
         returns:
           type: object
           additionalProperties: true
-    tools.ErrorResponse:
-      type: object
-      properties:
-        error:
-          description: Error message
-          type: string
-    tools.ListToolsResponse:
-      type: object
-      properties:
-        next_offset:
-          type: integer
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/tools.Tool'
-        total:
-          type: integer
     tools.UpdateToolPayload:
       type: object
       properties:

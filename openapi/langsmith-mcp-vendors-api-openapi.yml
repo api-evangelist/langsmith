@@ -481,56 +481,25 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    mcp_vendors.McpVendorStatus:
-      type: string
-      enum:
-      - enabled
-      - disabled
-      x-enum-varnames:
-      - McpVendorStatusEnabled
-      - McpVendorStatusDisabled
-    mcp_vendors.McpGatewayToolFilter:
+    mcp_vendors.McpGatewayBinding:
       type: object
       properties:
-        allowed_tools:
-          type: array
-          items:
-            type: string
-    mcp_vendors.ListVendorToolsResponse:
-      type: object
-      properties:
-        limit:
-          type: integer
-        offset:
-          type: integer
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/mcp_vendors.VendorTool'
-        total:
-          type: integer
-    mcp_vendors.ErrorResponse:
-      type: object
-      properties:
-        detail:
+        id:
           type: string
-        message:
+        type:
           type: string
-    mcp_vendors.VendorTool:
+    mcp_vendors.McpVendor:
       type: object
       properties:
         description:
           type: string
+        icon:
+          type: string
         name:
           type: string
-    mcp_vendors.ArcadeAccountOrg:
-      type: object
-      properties:
-        is_default:
-          type: boolean
-        name:
-          type: string
-        organization_id:
+        status:
+          $ref: '#/components/schemas/mcp_vendors.McpVendorStatus'
+        vendor_id:
           type: string
     mcp_vendors.ListMcpGatewaysResponse:
       type: object
@@ -547,24 +516,13 @@ components:
           type: integer
         total_count:
           type: integer
-    mcp_vendors.ArcadeAccountResponseList:
+    mcp_vendors.McpGatewayToolFilter:
       type: object
       properties:
-        organizations:
+        allowed_tools:
           type: array
           items:
-            $ref: '#/components/schemas/mcp_vendors.ArcadeAccountOrg'
-        projects:
-          type: array
-          items:
-            $ref: '#/components/schemas/mcp_vendors.ArcadeAccountProject'
-    mcp_vendors.ArcadeSettingsRequest:
-      type: object
-      properties:
-        organization_id:
-          type: string
-        project_id:
-          type: string
+            type: string
     mcp_vendors.ArcadeAccountProject:
       type: object
       properties:
@@ -576,25 +534,27 @@ components:
           type: string
         project_id:
           type: string
-    mcp_vendors.McpVendor:
+    mcp_vendors.ListMcpVendorsResponse:
       type: object
       properties:
-        description:
-          type: string
-        icon:
-          type: string
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/mcp_vendors.McpVendorStatus'
-        vendor_id:
-          type: string
-    mcp_vendors.McpGatewayBinding:
+        mcp_vendors:
+          type: array
+          items:
+            $ref: '#/components/schemas/mcp_vendors.McpVendor'
+    mcp_vendors.McpVendorStatus:
+      type: string
+      enum:
+      - enabled
+      - disabled
+      x-enum-varnames:
+      - McpVendorStatusEnabled
+      - McpVendorStatusDisabled
+    mcp_vendors.ErrorResponse:
       type: object
       properties:
-        id:
+        detail:
           type: string
-        type:
+        message:
           type: string
     mcp_vendors.ArcadeSettingsResponse:
       type: object
@@ -605,29 +565,6 @@ components:
           type: string
         project_id:
           type: string
-    mcp_vendors.GetMcpVendorResponse:
-      type: object
-      properties:
-        description:
-          type: string
-        icon:
-          type: string
-        name:
-          type: string
-        provider_id:
-          type: string
-        settings: {}
-        status:
-          $ref: '#/components/schemas/mcp_vendors.McpVendorStatus'
-        vendor_id:
-          type: string
-    mcp_vendors.ListMcpVendorsResponse:
-      type: object
-      properties:
-        mcp_vendors:
-          type: array
-          items:
-            $ref: '#/components/schemas/mcp_vendors.McpVendor'
     mcp_vendors.McpGateway:
       type: object
       properties:
@@ -652,6 +589,69 @@ components:
         tool_filter:
           $ref: '#/components/schemas/mcp_vendors.McpGatewayToolFilter'
         updated_at:
+          type: string
+    mcp_vendors.GetMcpVendorResponse:
+      type: object
+      properties:
+        description:
+          type: string
+        icon:
+          type: string
+        name:
+          type: string
+        provider_id:
+          type: string
+        settings: {}
+        status:
+          $ref: '#/components/schemas/mcp_vendors.McpVendorStatus'
+        vendor_id:
+          type: string
+    mcp_vendors.ListVendorToolsResponse:
+      type: object
+      properties:
+        limit:
+          type: integer
+        offset:
+          type: integer
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/mcp_vendors.VendorTool'
+        total:
+          type: integer
+    mcp_vendors.ArcadeAccountResponseList:
+      type: object
+      properties:
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/mcp_vendors.ArcadeAccountOrg'
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/mcp_vendors.ArcadeAccountProject'
+    mcp_vendors.ArcadeSettingsRequest:
+      type: object
+      properties:
+        organization_id:
+          type: string
+        project_id:
+          type: string
+    mcp_vendors.VendorTool:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+    mcp_vendors.ArcadeAccountOrg:
+      type: object
+      properties:
+        is_default:
+          type: boolean
+        name:
+          type: string
+        organization_id:
           type: string
   securitySchemes:
     API_Key:

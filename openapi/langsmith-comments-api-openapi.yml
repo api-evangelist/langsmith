@@ -357,6 +357,15 @@ components:
       - comments
       - total
       title: ListCommentsResponse
+    CreateCommentRequest:
+      properties:
+        content:
+          type: string
+          title: Content
+      type: object
+      required:
+      - content
+      title: CreateCommentRequest
     Comment:
       properties:
         id:
@@ -416,15 +425,6 @@ components:
       - num_sub_comments
       - num_likes
       title: Comment
-    CreateCommentRequest:
-      properties:
-        content:
-          type: string
-          title: Content
-      type: object
-      required:
-      - content
-      title: CreateCommentRequest
   securitySchemes:
     API_Key:
       type: apiKey

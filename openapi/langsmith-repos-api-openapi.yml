@@ -652,49 +652,6 @@ paths:
       - Bearer Auth: []
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CommitManifestResponse:
-      properties:
-        commit_hash:
-          type: string
-          title: Commit Hash
-        manifest:
-          additionalProperties: true
-          type: object
-          title: Manifest
-        examples:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/RepoExampleResponse'
-            type: array
-          - type: 'null'
-          title: Examples
-      type: object
-      required:
-      - commit_hash
-      - manifest
-      title: CommitManifestResponse
-      description: Response model for get_commit_manifest.
     GetRepoResponse:
       properties:
         repo:
@@ -703,6 +660,141 @@ components:
       required:
       - repo
       title: GetRepoResponse
+    ForkRepoRequest:
+      properties:
+        repo_handle:
+          type: string
+          title: Repo Handle
+        readme:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Readme
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        tags:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Tags
+        is_public:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Is Public
+      type: object
+      required:
+      - repo_handle
+      title: ForkRepoRequest
+      description: Fields to fork a repo
+    RepoExampleResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        start_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start Time
+        inputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Inputs
+        outputs:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Outputs
+        session_id:
+          type: string
+          format: uuid
+          title: Session Id
+      type: object
+      required:
+      - id
+      - session_id
+      title: RepoExampleResponse
+      description: Response model for example runs
+    OptimizePromptJobRequest:
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/EPromptOptimizationAlgorithm'
+        config:
+          anyOf:
+          - $ref: '#/components/schemas/PromptimConfig'
+          - $ref: '#/components/schemas/DemoConfig'
+          title: Config
+        prompt_name:
+          type: string
+          title: Prompt Name
+      type: object
+      required:
+      - algorithm
+      - config
+      - prompt_name
+      title: OptimizePromptJobRequest
+      description: Request to optimize a prompt.
+    PromptimConfig:
+      properties:
+        message_index:
+          type: integer
+          title: Message Index
+        task_description:
+          type: string
+          title: Task Description
+        dataset_name:
+          type: string
+          title: Dataset Name
+        train_split:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Train Split
+        dev_split:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dev Split
+        test_split:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Test Split
+        evaluators:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Evaluators
+        num_epochs:
+          type: integer
+          title: Num Epochs
+        auto_commit:
+          type: boolean
+          title: Auto Commit
+      type: object
+      required:
+      - message_index
+      - task_description
+      - dataset_name
+      - train_split
+      - dev_split
+      - test_split
+      - evaluators
+      - num_epochs
+      - auto_commit
+      title: PromptimConfig
     UpdateRepoRequest:
       properties:
         description:
@@ -741,6 +833,108 @@ components:
       type: object
       title: UpdateRepoRequest
       description: Fields to update a repo
+    EPromptOptimizationAlgorithm:
+      type: string
+      enum:
+      - promptim
+      - demo
+      title: EPromptOptimizationAlgorithm
+    CommitManifestResponse:
+      properties:
+        commit_hash:
+          type: string
+          title: Commit Hash
+        manifest:
+          additionalProperties: true
+          type: object
+          title: Manifest
+        examples:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/RepoExampleResponse'
+            type: array
+          - type: 'null'
+          title: Examples
+      type: object
+      required:
+      - commit_hash
+      - manifest
+      title: CommitManifestResponse
+      description: Response model for get_commit_manifest.
+    DemoConfig:
+      properties:
+        message_index:
+          type: integer
+          title: Message Index
+        metaprompt:
+          additionalProperties: true
+          type: object
+          title: Metaprompt
+        examples:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Examples
+        overall_feedback:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Overall Feedback
+      type: object
+      required:
+      - message_index
+      - metaprompt
+      - examples
+      - overall_feedback
+      title: DemoConfig
+    CreateRepoResponse:
+      properties:
+        repo:
+          $ref: '#/components/schemas/RepoWithLookups'
+      type: object
+      required:
+      - repo
+      title: CreateRepoResponse
+    TrueFalseLiteral:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+      title: TrueFalseLiteral
+    TagCount:
+      properties:
+        tag:
+          type: string
+          title: Tag
+        count:
+          type: integer
+          title: Count
+      type: object
+      required:
+      - tag
+      - count
+      title: TagCount
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    OptimizePromptResponse:
+      properties:
+        optimization_job_id:
+          type: string
+          format: uuid
+          title: Optimization Job Id
+      type: object
+      required:
+      - optimization_job_id
+      title: OptimizePromptResponse
+      description: Response from optimizing a prompt.
     RepoWithLookups:
       properties:
         repo_handle:
@@ -889,40 +1083,27 @@ components:
       - num_commits
       title: RepoWithLookups
       description: All database fields for repos, plus helpful computed fields.
-    RepoExampleResponse:
+    ValidationError:
       properties:
-        id:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          format: uuid
-          title: Id
-        start_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Start Time
-        inputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Inputs
-        outputs:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Outputs
-        session_id:
+          title: Message
+        type:
           type: string
-          format: uuid
-          title: Session Id
+          title: Error Type
       type: object
       required:
-      - id
-      - session_id
-      title: RepoExampleResponse
-      description: Response model for example runs
+      - loc
+      - msg
+      - type
+      title: ValidationError
     ListTagsResponse:
       properties:
         tags:
@@ -934,6 +1115,21 @@ components:
       required:
       - tags
       title: ListTagsResponse
+    ListReposResponse:
+      properties:
+        repos:
+          items:
+            $ref: '#/components/schemas/RepoWithLookups'
+          type: array
+          title: Repos
+        total:
+          type: integer
+          title: Total
+      type: object
+      required:
+      - repos
+      - total
+      title: ListReposResponse
     CreateRepoRequest:
       properties:
         repo_handle:
@@ -987,202 +1183,6 @@ components:
       - is_public
       title: CreateRepoRequest
       description: Fields to create a repo
-    PromptimConfig:
-      properties:
-        message_index:
-          type: integer
-          title: Message Index
-        task_description:
-          type: string
-          title: Task Description
-        dataset_name:
-          type: string
-          title: Dataset Name
-        train_split:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Train Split
-        dev_split:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Dev Split
-        test_split:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Test Split
-        evaluators:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: Evaluators
-        num_epochs:
-          type: integer
-          title: Num Epochs
-        auto_commit:
-          type: boolean
-          title: Auto Commit
-      type: object
-      required:
-      - message_index
-      - task_description
-      - dataset_name
-      - train_split
-      - dev_split
-      - test_split
-      - evaluators
-      - num_epochs
-      - auto_commit
-      title: PromptimConfig
-    DemoConfig:
-      properties:
-        message_index:
-          type: integer
-          title: Message Index
-        metaprompt:
-          additionalProperties: true
-          type: object
-          title: Metaprompt
-        examples:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Examples
-        overall_feedback:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Overall Feedback
-      type: object
-      required:
-      - message_index
-      - metaprompt
-      - examples
-      - overall_feedback
-      title: DemoConfig
-    ListReposResponse:
-      properties:
-        repos:
-          items:
-            $ref: '#/components/schemas/RepoWithLookups'
-          type: array
-          title: Repos
-        total:
-          type: integer
-          title: Total
-      type: object
-      required:
-      - repos
-      - total
-      title: ListReposResponse
-    OptimizePromptResponse:
-      properties:
-        optimization_job_id:
-          type: string
-          format: uuid
-          title: Optimization Job Id
-      type: object
-      required:
-      - optimization_job_id
-      title: OptimizePromptResponse
-      description: Response from optimizing a prompt.
-    OptimizePromptJobRequest:
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/EPromptOptimizationAlgorithm'
-        config:
-          anyOf:
-          - $ref: '#/components/schemas/PromptimConfig'
-          - $ref: '#/components/schemas/DemoConfig'
-          title: Config
-        prompt_name:
-          type: string
-          title: Prompt Name
-      type: object
-      required:
-      - algorithm
-      - config
-      - prompt_name
-      title: OptimizePromptJobRequest
-      description: Request to optimize a prompt.
-    ForkRepoRequest:
-      properties:
-        repo_handle:
-          type: string
-          title: Repo Handle
-        readme:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Readme
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        tags:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Tags
-        is_public:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Is Public
-      type: object
-      required:
-      - repo_handle
-      title: ForkRepoRequest
-      description: Fields to fork a repo
-    TagCount:
-      properties:
-        tag:
-          type: string
-          title: Tag
-        count:
-          type: integer
-          title: Count
-      type: object
-      required:
-      - tag
-      - count
-      title: TagCount
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    CreateRepoResponse:
-      properties:
-        repo:
-          $ref: '#/components/schemas/RepoWithLookups'
-      type: object
-      required:
-      - repo
-      title: CreateRepoResponse
-    TrueFalseLiteral:
-      type: string
-      enum:
-      - 'true'
-      - 'false'
-      title: TrueFalseLiteral
-    EPromptOptimizationAlgorithm:
-      type: string
-      enum:
-      - promptim
-      - demo
-      title: EPromptOptimizationAlgorithm
   securitySchemes:
     API_Key:
       type: apiKey

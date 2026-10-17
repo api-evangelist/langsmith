@@ -89,50 +89,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    app__schemas__Tenant:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        organization_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Organization Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        display_name:
-          type: string
-          title: Display Name
-        is_personal:
-          type: boolean
-          title: Is Personal
-        is_deleted:
-          type: boolean
-          title: Is Deleted
-        tenant_handle:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tenant Handle
-        data_plane_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Data Plane Url
-      type: object
-      required:
-      - id
-      - created_at
-      - display_name
-      - is_personal
-      - is_deleted
-      title: Tenant
-      description: Tenant schema.
     TenantForUser:
       properties:
         id:
@@ -208,6 +164,50 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    app__schemas__Tenant:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        organization_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Organization Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        display_name:
+          type: string
+          title: Display Name
+        is_personal:
+          type: boolean
+          title: Is Personal
+        is_deleted:
+          type: boolean
+          title: Is Deleted
+        tenant_handle:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tenant Handle
+        data_plane_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Data Plane Url
+      type: object
+      required:
+      - id
+      - created_at
+      - display_name
+      - is_personal
+      - is_deleted
+      title: Tenant
+      description: Tenant schema.
     ValidationError:
       properties:
         loc:

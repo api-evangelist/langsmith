@@ -290,13 +290,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    usage.ModelUsageResponse:
+    errutil.InternalError:
       type: object
-      properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/usage.ModelUsage'
     usage.UserUsage:
       type: object
       properties:
@@ -314,6 +309,8 @@ components:
           type: integer
         total_cost:
           type: number
+    errutil.UserError:
+      type: object
     usage.ModelUsage:
       type: object
       properties:
@@ -325,15 +322,6 @@ components:
           type: integer
         total_cost:
           type: number
-    errutil.InternalError:
-      type: object
-    usage.UserUsageResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/usage.UserUsage'
     usage.ToolUsageResponse:
       type: object
       properties:
@@ -341,8 +329,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/usage.ToolUsage'
-    errutil.UserError:
-      type: object
     usage.ToolUsage:
       type: object
       properties:
@@ -356,6 +342,27 @@ components:
           type: integer
         tool_name:
           type: string
+    usage.AgentUsageResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/usage.AgentUsage'
+    usage.UserUsageResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/usage.UserUsage'
+    usage.ModelUsageResponse:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/usage.ModelUsage'
     usage.AgentUsage:
       type: object
       properties:
@@ -375,13 +382,6 @@ components:
           type: integer
         total_cost:
           type: number
-    usage.AgentUsageResponse:
-      type: object
-      properties:
-        agents:
-          type: array
-          items:
-            $ref: '#/components/schemas/usage.AgentUsage'
   securitySchemes:
     API_Key:
       type: apiKey

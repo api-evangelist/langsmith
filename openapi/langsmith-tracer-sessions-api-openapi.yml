@@ -1325,86 +1325,18 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    GetClusteringJobConfigsResponse:
+    GetRunClusteringJobsResponse:
       properties:
-        configs:
+        clustering_jobs:
           items:
-            $ref: '#/components/schemas/ClusteringJobConfigResponse'
+            $ref: '#/components/schemas/RunClusteringJobPydantic'
           type: array
-          title: Configs
+          title: Clustering Jobs
       type: object
       required:
-      - configs
-      title: GetClusteringJobConfigsResponse
-      description: Response to get clustering job configs.
-    SingleCustomChartSubSectionResponse:
-      properties:
-        title:
-          type: string
-          title: Title
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        index:
-          type: integer
-          title: Index
-        id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: string
-          title: Id
-        charts:
-          items:
-            $ref: '#/components/schemas/SingleCustomChartResponse'
-          type: array
-          title: Charts
-      type: object
-      required:
-      - title
-      - index
-      - id
-      - charts
-      title: SingleCustomChartSubSectionResponse
-    TracerSessionUpdate:
-      properties:
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        default_dataset_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Default Dataset Id
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
-        extra:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Extra
-        trace_tier:
-          anyOf:
-          - $ref: '#/components/schemas/TraceTier'
-          - type: 'null'
-      type: object
-      title: TracerSessionUpdate
-      description: Update class for TracerSession.
+      - clustering_jobs
+      title: GetRunClusteringJobsResponse
+      description: Response to get all cluster jobs for a session.
     CreateRunClusteringJobRequest:
       properties:
         config_id:
@@ -1507,12 +1439,185 @@ components:
       type: object
       title: CreateRunClusteringJobRequest
       description: Request to create a run clustering job.
-    CustomChartsSectionRequest:
+    CreateClusteringJobConfigRequest:
       properties:
-        timezone:
+        name:
           type: string
-          title: Timezone
-          default: UTC
+          maxLength: 255
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        config:
+          $ref: '#/components/schemas/CreateRunClusteringJobRequest'
+        schedule_cron:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Schedule Cron
+      type: object
+      required:
+      - name
+      - config
+      title: CreateClusteringJobConfigRequest
+      description: Request to create a clustering job config.
+    DeleteClusteringJobConfigResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - id
+      - message
+      title: DeleteClusteringJobConfigResponse
+      description: Response to delete a clustering job config.
+    CustomChartMetric:
+      type: string
+      enum:
+      - run_count
+      - latency_p50
+      - latency_p99
+      - latency_avg
+      - first_token_p50
+      - first_token_p99
+      - total_tokens
+      - prompt_tokens
+      - completion_tokens
+      - median_tokens
+      - completion_tokens_p50
+      - prompt_tokens_p50
+      - tokens_p99
+      - completion_tokens_p99
+      - prompt_tokens_p99
+      - feedback
+      - feedback_score_avg
+      - feedback_values
+      - total_cost
+      - prompt_cost
+      - completion_cost
+      - error_rate
+      - streaming_rate
+      - cost_p50
+      - cost_p99
+      title: CustomChartMetric
+      description: Metrics you can chart. Feedback metrics are not available for organization-scoped charts.
+    HostProjectChartMetric:
+      type: string
+      enum:
+      - memory_usage
+      - cpu_usage
+      - disk_usage
+      - restart_count
+      - replica_count
+      - worker_count
+      - lg_run_count
+      - responses_per_second
+      - error_responses_per_second
+      - p95_latency
+      title: HostProjectChartMetric
+      description: LGP Metrics you can chart.
+    UpdateRunClusteringJobRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: UpdateRunClusteringJobRequest
+      description: Request to update a session cluster job.
+    FilterViewType:
+      type: string
+      enum:
+      - runs
+      - threads
+      - single_run
+      title: FilterViewType
+    SingleCustomChartResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CustomChartsDataPoint'
+          type: array
+          title: Data
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: string
+          title: Id
+        title:
+          type: string
+          title: Title
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        metadata:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Metadata
+        index:
+          type: integer
+          title: Index
+        chart_type:
+          $ref: '#/components/schemas/CustomChartType'
+        series:
+          items:
+            $ref: '#/components/schemas/CustomChartSeries'
+          type: array
+          title: Series
+        common_filters:
+          anyOf:
+          - $ref: '#/components/schemas/CustomChartSeriesFilters'
+          - type: 'null'
+      type: object
+      required:
+      - data
+      - id
+      - title
+      - index
+      - chart_type
+      - series
+      title: SingleCustomChartResponse
+    FilterViewCreate:
+      properties:
+        filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filter String
+        trace_filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Trace Filter String
+        tree_filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tree Filter String
+        display_name:
+          type: string
+          title: Display Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/FilterViewType'
+          default: runs
         start_time:
           anyOf:
           - type: string
@@ -1525,22 +1630,58 @@ components:
             format: date-time
           - type: 'null'
           title: End Time
-        stride:
-          $ref: '#/components/schemas/TimedeltaInput'
-          default:
-            days: 0
-            hours: 0
-            minutes: 15
-        omit_data:
-          type: boolean
-          title: Omit Data
-          default: false
-        group_by:
+        duration:
           anyOf:
-          - $ref: '#/components/schemas/RunStatsGroupBy'
+          - type: string
           - type: 'null'
+          title: Duration
       type: object
-      title: CustomChartsSectionRequest
+      required:
+      - display_name
+      title: FilterViewCreate
+    UpdateRunClusteringJobResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        status:
+          type: string
+          title: Status
+      type: object
+      required:
+      - name
+      - status
+      title: UpdateRunClusteringJobResponse
+      description: Response to update a session cluster job.
+    GenerateClusteringJobConfigRequest:
+      properties:
+        user_context:
+          additionalProperties:
+            type: string
+          type: object
+          title: User Context
+        model:
+          type: string
+          enum:
+          - openai
+          - anthropic
+          title: Model
+          default: openai
+        cluster_model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cluster Model
+        summary_model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Summary Model
+      type: object
+      required:
+      - user_context
+      title: GenerateClusteringJobConfigRequest
+      description: Request to auto-generate a clustering job config.
     GetRunClusteringJobResponse:
       properties:
         id:
@@ -1611,27 +1752,694 @@ components:
       - clusters
       title: GetRunClusteringJobResponse
       description: Response to get a specific cluster job for a session.
-    ValidationError:
+    GetClusteringJobConfigsResponse:
       properties:
-        loc:
+        configs:
           items:
-            anyOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/ClusteringJobConfigResponse'
           type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          title: Configs
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - configs
+      title: GetClusteringJobConfigsResponse
+      description: Response to get clustering job configs.
+    CustomChartSeriesFilters:
+      properties:
+        filter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filter
+        trace_filter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Trace Filter
+        tree_filter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tree Filter
+        session:
+          anyOf:
+          - items:
+              type: string
+              format: uuid
+            type: array
+          - type: 'null'
+          title: Session
+      type: object
+      title: CustomChartSeriesFilters
+    CustomChartsSection:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        index:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Index
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: string
+          title: Id
+        session_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Session Id
+        charts:
+          items:
+            $ref: '#/components/schemas/SingleCustomChartResponse'
+          type: array
+          title: Charts
+        sub_sections:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SingleCustomChartSubSectionResponse'
+            type: array
+          - type: 'null'
+          title: Sub Sections
+      type: object
+      required:
+      - title
+      - id
+      - charts
+      title: CustomChartsSection
+    CreateClusteringJobConfigResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        config:
+          $ref: '#/components/schemas/SavedRunClusteringJobRequest'
+        schedule_cron:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Schedule Cron
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - config
+      title: CreateClusteringJobConfigResponse
+      description: Response to create a clustering job config.
+    RunCluster:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        parent_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Parent Id
+        level:
+          type: integer
+          title: Level
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        parent_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Parent Name
+        num_runs:
+          type: integer
+          title: Num Runs
+        stats:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Stats
+      type: object
+      required:
+      - id
+      - level
+      - name
+      - description
+      - num_runs
+      - stats
+      title: RunCluster
+      description: A single cluster of runs.
+    HighlightedRun:
+      properties:
+        run_id:
+          type: string
+          format: uuid
+          title: Run Id
+        cluster_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Cluster Id
+        cluster_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cluster Name
+        rank:
+          type: integer
+          title: Rank
+        highlight_reason:
+          type: string
+          title: Highlight Reason
+        summary:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Summary
+      type: object
+      required:
+      - run_id
+      - rank
+      - highlight_reason
+      title: HighlightedRun
+      description: A trace highlighted in an insights report summary. Up to 10 per insights job.
+    CustomChartSeries:
+      properties:
+        name:
+          type: string
+          title: Name
+        filters:
+          anyOf:
+          - $ref: '#/components/schemas/CustomChartSeriesFilters'
+          - type: 'null'
+        metric:
+          $ref: '#/components/schemas/CustomChartMetric'
+        feedback_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Feedback Key
+        workspace_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Workspace Id
+        project_metric:
+          anyOf:
+          - $ref: '#/components/schemas/HostProjectChartMetric'
+          - type: 'null'
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: string
+          title: Id
+        group_by:
+          anyOf:
+          - $ref: '#/components/schemas/RunStatsGroupBySeriesResponse'
+          - type: 'null'
+      type: object
+      required:
+      - name
+      - metric
+      - id
+      title: CustomChartSeries
+    TimedeltaInput:
+      properties:
+        days:
+          type: integer
+          title: Days
+          default: 0
+        hours:
+          type: integer
+          title: Hours
+          default: 0
+        minutes:
+          type: integer
+          title: Minutes
+          default: 0
+      type: object
+      title: TimedeltaInput
+      description: Timedelta input.
+    DeleteRunClusteringJobResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - id
+      - message
+      title: DeleteRunClusteringJobResponse
+      description: Response to delete a session cluster job.
+    TracerSessionCreate:
+      properties:
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        extra:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Extra
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        default_dataset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Default Dataset Id
+        reference_dataset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Reference Dataset Id
+        trace_tier:
+          anyOf:
+          - $ref: '#/components/schemas/TraceTier'
+          - type: 'null'
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Id
+      type: object
+      title: TracerSessionCreate
+      description: Create class for TracerSession.
+    TraceTier:
+      type: string
+      enum:
+      - longlived
+      - shortlived
+      title: TraceTier
+    RunStatsGroupBySeriesResponse:
+      properties:
+        attribute:
+          type: string
+          enum:
+          - name
+          - run_type
+          - tag
+          - metadata
+          title: Attribute
+        path:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Path
+        max_groups:
+          type: integer
+          title: Max Groups
+          default: 5
+        set_by:
+          anyOf:
+          - type: string
+            enum:
+            - section
+            - series
+          - type: 'null'
+          title: Set By
+      type: object
+      required:
+      - attribute
+      title: RunStatsGroupBySeriesResponse
+      description: Include additional information about where the group_by param was set.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    FilterView:
+      properties:
+        filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filter String
+        trace_filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Trace Filter String
+        tree_filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tree Filter String
+        display_name:
+          type: string
+          title: Display Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/FilterViewType'
+          default: runs
+        start_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        duration:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Duration
+        id:
+          type: string
+          format: uuid
+          title: Id
+        session_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Session Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - display_name
+      - id
+      - created_at
+      - updated_at
+      title: FilterView
+    SessionSortableColumns:
+      type: string
+      enum:
+      - name
+      - start_time
+      - last_run_start_time
+      - latency_p50
+      - latency_p99
+      - error_rate
+      - feedback
+      - runs_count
+      title: SessionSortableColumns
+    CreateRunClusteringJobResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        status:
+          type: string
+          title: Status
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+      type: object
+      required:
+      - id
+      - name
+      - status
+      title: CreateRunClusteringJobResponse
+      description: Response to creating a run clustering job.
+    FilterViewRename:
+      properties:
+        display_name:
+          type: string
+          title: Display Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+      type: object
+      required:
+      - display_name
+      title: FilterViewRename
+    TracerSessionWithoutVirtualFields:
+      properties:
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        extra:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Extra
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        default_dataset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Default Dataset Id
+        reference_dataset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Reference Dataset Id
+        trace_tier:
+          anyOf:
+          - $ref: '#/components/schemas/TraceTier'
+          - type: 'null'
+        id:
+          type: string
+          format: uuid
+          title: Id
+        tenant_id:
+          type: string
+          format: uuid
+          title: Tenant Id
+        last_run_start_time_live:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Run Start Time Live
+      type: object
+      required:
+      - id
+      - tenant_id
+      title: TracerSessionWithoutVirtualFields
+      description: TracerSession schema.
+    SingleCustomChartSubSectionResponse:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        index:
+          type: integer
+          title: Index
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: string
+          title: Id
+        charts:
+          items:
+            $ref: '#/components/schemas/SingleCustomChartResponse'
+          type: array
+          title: Charts
+      type: object
+      required:
+      - title
+      - index
+      - id
+      - charts
+      title: SingleCustomChartSubSectionResponse
+    FilterViewUpdate:
+      properties:
+        filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filter String
+        display_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Display Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        trace_filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Trace Filter String
+        tree_filter_string:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tree Filter String
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/FilterViewType'
+          - type: 'null'
+        start_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        duration:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Duration
+      type: object
+      title: FilterViewUpdate
+    InsightsSummary:
+      properties:
+        key_points:
+          items:
+            type: string
+          type: array
+          title: Key Points
+        title:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Title
+        highlighted_traces:
+          items:
+            $ref: '#/components/schemas/HighlightedRun'
+          type: array
+          title: Highlighted Traces
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Created At
+      type: object
+      title: InsightsSummary
+      description: High level summary of an insights job that pulls out patterns and specific traces.
+    CustomChartsSectionRequest:
+      properties:
+        timezone:
+          type: string
+          title: Timezone
+          default: UTC
+        start_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Start Time
+        end_time:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: End Time
+        stride:
+          $ref: '#/components/schemas/TimedeltaInput'
+          default:
+            days: 0
+            hours: 0
+            minutes: 15
+        omit_data:
+          type: boolean
+          title: Omit Data
+          default: false
+        group_by:
+          anyOf:
+          - $ref: '#/components/schemas/RunStatsGroupBy'
+          - type: 'null'
+      type: object
+      title: CustomChartsSectionRequest
     TracerSession:
       properties:
         start_time:
@@ -1793,407 +2601,6 @@ components:
       - tenant_id
       title: TracerSession
       description: TracerSession schema.
-    GenerateClusteringJobConfigRequest:
-      properties:
-        user_context:
-          additionalProperties:
-            type: string
-          type: object
-          title: User Context
-        model:
-          type: string
-          enum:
-          - openai
-          - anthropic
-          title: Model
-          default: openai
-        cluster_model:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Cluster Model
-        summary_model:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Summary Model
-      type: object
-      required:
-      - user_context
-      title: GenerateClusteringJobConfigRequest
-      description: Request to auto-generate a clustering job config.
-    FetchClusteringJobRunsResult:
-      properties:
-        runs:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Runs
-        offset:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Offset
-      type: object
-      required:
-      - runs
-      - offset
-      title: FetchClusteringJobRunsResult
-    CreateRunClusteringJobResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        status:
-          type: string
-          title: Status
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
-      type: object
-      required:
-      - id
-      - name
-      - status
-      title: CreateRunClusteringJobResponse
-      description: Response to creating a run clustering job.
-    SessionSortableColumns:
-      type: string
-      enum:
-      - name
-      - start_time
-      - last_run_start_time
-      - latency_p50
-      - latency_p99
-      - error_rate
-      - feedback
-      - runs_count
-      title: SessionSortableColumns
-    UpdateRunClusteringJobRequest:
-      properties:
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: UpdateRunClusteringJobRequest
-      description: Request to update a session cluster job.
-    CustomChartType:
-      type: string
-      enum:
-      - line
-      - bar
-      title: CustomChartType
-      description: Enum for custom chart types.
-    CustomChartSeriesFilters:
-      properties:
-        filter:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filter
-        trace_filter:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Trace Filter
-        tree_filter:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tree Filter
-        session:
-          anyOf:
-          - items:
-              type: string
-              format: uuid
-            type: array
-          - type: 'null'
-          title: Session
-      type: object
-      title: CustomChartSeriesFilters
-    FilterView:
-      properties:
-        filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filter String
-        trace_filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Trace Filter String
-        tree_filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tree Filter String
-        display_name:
-          type: string
-          title: Display Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        type:
-          $ref: '#/components/schemas/FilterViewType'
-          default: runs
-        start_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Start Time
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
-        duration:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Duration
-        id:
-          type: string
-          format: uuid
-          title: Id
-        session_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Session Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - display_name
-      - id
-      - created_at
-      - updated_at
-      title: FilterView
-    InsightsSummary:
-      properties:
-        key_points:
-          items:
-            type: string
-          type: array
-          title: Key Points
-        title:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Title
-        highlighted_traces:
-          items:
-            $ref: '#/components/schemas/HighlightedRun'
-          type: array
-          title: Highlighted Traces
-        created_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Created At
-      type: object
-      title: InsightsSummary
-      description: High level summary of an insights job that pulls out patterns and specific traces.
-    GenerateClusteringJobConfigResponse:
-      properties:
-        summary_prompt:
-          type: string
-          title: Summary Prompt
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        attribute_schemas:
-          anyOf:
-          - additionalProperties:
-              additionalProperties: true
-              type: object
-            type: object
-          - type: 'null'
-          title: Attribute Schemas
-      type: object
-      required:
-      - summary_prompt
-      title: GenerateClusteringJobConfigResponse
-      description: Auto-generated clustering job config (not persisted; frontend creates the config).
-    FilterViewUpdate:
-      properties:
-        filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filter String
-        display_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Display Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        trace_filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Trace Filter String
-        tree_filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tree Filter String
-        type:
-          anyOf:
-          - $ref: '#/components/schemas/FilterViewType'
-          - type: 'null'
-        start_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Start Time
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
-        duration:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Duration
-      type: object
-      title: FilterViewUpdate
-    CreateClusteringJobConfigRequest:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        config:
-          $ref: '#/components/schemas/CreateRunClusteringJobRequest'
-        schedule_cron:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Schedule Cron
-      type: object
-      required:
-      - name
-      - config
-      title: CreateClusteringJobConfigRequest
-      description: Request to create a clustering job config.
-    FilterViewCreate:
-      properties:
-        filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filter String
-        trace_filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Trace Filter String
-        tree_filter_string:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tree Filter String
-        display_name:
-          type: string
-          title: Display Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        type:
-          $ref: '#/components/schemas/FilterViewType'
-          default: runs
-        start_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Start Time
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
-        duration:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Duration
-      type: object
-      required:
-      - display_name
-      title: FilterViewCreate
-    RunStatsGroupBySeriesResponse:
-      properties:
-        attribute:
-          type: string
-          enum:
-          - name
-          - run_type
-          - tag
-          - metadata
-          title: Attribute
-        path:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Path
-        max_groups:
-          type: integer
-          title: Max Groups
-          default: 5
-        set_by:
-          anyOf:
-          - type: string
-            enum:
-            - section
-            - series
-          - type: 'null'
-          title: Set By
-      type: object
-      required:
-      - attribute
-      title: RunStatsGroupBySeriesResponse
-      description: Include additional information about where the group_by param was set.
     RunClusteringJobPydantic:
       properties:
         id:
@@ -2254,54 +2661,12 @@ components:
       - created_at
       title: RunClusteringJobPydantic
       description: Session cluster job
-    CustomChartsDataPoint:
+    TracerSessionUpdate:
       properties:
-        series_id:
-          type: string
-          title: Series Id
-        timestamp:
-          type: string
-          format: date-time
-          title: Timestamp
-        value:
-          anyOf:
-          - type: integer
-          - type: number
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Value
-        group:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Group
-      type: object
-      required:
-      - series_id
-      - timestamp
-      - value
-      title: CustomChartsDataPoint
-    TracerSessionWithoutVirtualFields:
-      properties:
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
-        end_time:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: End Time
-        extra:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Extra
         name:
-          type: string
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Name
         description:
           anyOf:
@@ -2314,196 +2679,6 @@ components:
             format: uuid
           - type: 'null'
           title: Default Dataset Id
-        reference_dataset_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Reference Dataset Id
-        trace_tier:
-          anyOf:
-          - $ref: '#/components/schemas/TraceTier'
-          - type: 'null'
-        id:
-          type: string
-          format: uuid
-          title: Id
-        tenant_id:
-          type: string
-          format: uuid
-          title: Tenant Id
-        last_run_start_time_live:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Last Run Start Time Live
-      type: object
-      required:
-      - id
-      - tenant_id
-      title: TracerSessionWithoutVirtualFields
-      description: TracerSession schema.
-    CustomChartSeries:
-      properties:
-        name:
-          type: string
-          title: Name
-        filters:
-          anyOf:
-          - $ref: '#/components/schemas/CustomChartSeriesFilters'
-          - type: 'null'
-        metric:
-          $ref: '#/components/schemas/CustomChartMetric'
-        feedback_key:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Feedback Key
-        workspace_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Workspace Id
-        project_metric:
-          anyOf:
-          - $ref: '#/components/schemas/HostProjectChartMetric'
-          - type: 'null'
-        id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: string
-          title: Id
-        group_by:
-          anyOf:
-          - $ref: '#/components/schemas/RunStatsGroupBySeriesResponse'
-          - type: 'null'
-      type: object
-      required:
-      - name
-      - metric
-      - id
-      title: CustomChartSeries
-    SingleCustomChartResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CustomChartsDataPoint'
-          type: array
-          title: Data
-        id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: string
-          title: Id
-        title:
-          type: string
-          title: Title
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        metadata:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Metadata
-        index:
-          type: integer
-          title: Index
-        chart_type:
-          $ref: '#/components/schemas/CustomChartType'
-        series:
-          items:
-            $ref: '#/components/schemas/CustomChartSeries'
-          type: array
-          title: Series
-        common_filters:
-          anyOf:
-          - $ref: '#/components/schemas/CustomChartSeriesFilters'
-          - type: 'null'
-      type: object
-      required:
-      - data
-      - id
-      - title
-      - index
-      - chart_type
-      - series
-      title: SingleCustomChartResponse
-    HostProjectChartMetric:
-      type: string
-      enum:
-      - memory_usage
-      - cpu_usage
-      - disk_usage
-      - restart_count
-      - replica_count
-      - worker_count
-      - lg_run_count
-      - responses_per_second
-      - error_responses_per_second
-      - p95_latency
-      title: HostProjectChartMetric
-      description: LGP Metrics you can chart.
-    DeleteClusteringJobConfigResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        message:
-          type: string
-          title: Message
-      type: object
-      required:
-      - id
-      - message
-      title: DeleteClusteringJobConfigResponse
-      description: Response to delete a clustering job config.
-    UpdateClusteringJobConfigRequest:
-      properties:
-        name:
-          anyOf:
-          - type: string
-            maxLength: 255
-          - type: 'null'
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        config:
-          anyOf:
-          - $ref: '#/components/schemas/CreateRunClusteringJobRequest'
-          - type: 'null'
-        schedule_cron:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Schedule Cron
-      type: object
-      title: UpdateClusteringJobConfigRequest
-      description: Request to update a clustering job config.
-    RootModel_Dict_str__list_str___:
-      additionalProperties:
-        items:
-          type: string
-        type: array
-      type: object
-      title: RootModel[Dict[str, list[str]]]
-    TracerSessionCreate:
-      properties:
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
         end_time:
           anyOf:
           - type: string
@@ -2516,39 +2691,13 @@ components:
             type: object
           - type: 'null'
           title: Extra
-        name:
-          type: string
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        default_dataset_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Default Dataset Id
-        reference_dataset_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Reference Dataset Id
         trace_tier:
           anyOf:
           - $ref: '#/components/schemas/TraceTier'
           - type: 'null'
-        id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Id
       type: object
-      title: TracerSessionCreate
-      description: Create class for TracerSession.
+      title: TracerSessionUpdate
+      description: Update class for TracerSession.
     GetRunClusterResponse:
       properties:
         id:
@@ -2582,73 +2731,82 @@ components:
       - description
       title: GetRunClusterResponse
       description: Response to get a specific cluster from a specific cluster job.
-    DeleteRunClusteringJobResponse:
+    GenerateClusteringJobConfigResponse:
       properties:
-        id:
+        summary_prompt:
           type: string
-          format: uuid
-          title: Id
-        message:
-          type: string
-          title: Message
+          title: Summary Prompt
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        attribute_schemas:
+          anyOf:
+          - additionalProperties:
+              additionalProperties: true
+              type: object
+            type: object
+          - type: 'null'
+          title: Attribute Schemas
       type: object
       required:
-      - id
-      - message
-      title: DeleteRunClusteringJobResponse
-      description: Response to delete a session cluster job.
-    FilterViewType:
-      type: string
-      enum:
-      - runs
-      - threads
-      - single_run
-      title: FilterViewType
-    CustomChartsSection:
+      - summary_prompt
+      title: GenerateClusteringJobConfigResponse
+      description: Auto-generated clustering job config (not persisted; frontend creates the config).
+    UpdateClusteringJobConfigRequest:
       properties:
-        title:
-          type: string
-          title: Title
+        name:
+          anyOf:
+          - type: string
+            maxLength: 255
+          - type: 'null'
+          title: Name
         description:
           anyOf:
           - type: string
           - type: 'null'
           title: Description
-        index:
+        config:
+          anyOf:
+          - $ref: '#/components/schemas/CreateRunClusteringJobRequest'
+          - type: 'null'
+        schedule_cron:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Schedule Cron
+      type: object
+      title: UpdateClusteringJobConfigRequest
+      description: Request to update a clustering job config.
+    CustomChartsDataPoint:
+      properties:
+        series_id:
+          type: string
+          title: Series Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        value:
           anyOf:
           - type: integer
+          - type: number
+          - additionalProperties: true
+            type: object
           - type: 'null'
-          title: Index
-        id:
+          title: Value
+        group:
           anyOf:
           - type: string
-            format: uuid
-          - type: string
-          title: Id
-        session_id:
-          anyOf:
-          - type: string
-            format: uuid
           - type: 'null'
-          title: Session Id
-        charts:
-          items:
-            $ref: '#/components/schemas/SingleCustomChartResponse'
-          type: array
-          title: Charts
-        sub_sections:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/SingleCustomChartSubSectionResponse'
-            type: array
-          - type: 'null'
-          title: Sub Sections
+          title: Group
       type: object
       required:
-      - title
-      - id
-      - charts
-      title: CustomChartsSection
+      - series_id
+      - timestamp
+      - value
+      title: CustomChartsDataPoint
     ClusteringJobConfigResponse:
       properties:
         id:
@@ -2683,36 +2841,52 @@ components:
       - prebuilt
       title: ClusteringJobConfigResponse
       description: Full clustering job config with all details.
-    CustomChartMetric:
-      type: string
-      enum:
-      - run_count
-      - latency_p50
-      - latency_p99
-      - latency_avg
-      - first_token_p50
-      - first_token_p99
-      - total_tokens
-      - prompt_tokens
-      - completion_tokens
-      - median_tokens
-      - completion_tokens_p50
-      - prompt_tokens_p50
-      - tokens_p99
-      - completion_tokens_p99
-      - prompt_tokens_p99
-      - feedback
-      - feedback_score_avg
-      - feedback_values
-      - total_cost
-      - prompt_cost
-      - completion_cost
-      - error_rate
-      - streaming_rate
-      - cost_p50
-      - cost_p99
-      title: CustomChartMetric
-      description: Metrics you can chart. Feedback metrics are not available for organization-scoped charts.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    FetchClusteringJobRunsResult:
+      properties:
+        runs:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Runs
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Offset
+      type: object
+      required:
+      - runs
+      - offset
+      title: FetchClusteringJobRunsResult
+    RootModel_Dict_str__list_str___:
+      additionalProperties:
+        items:
+          type: string
+        type: array
+      type: object
+      title: RootModel[Dict[str, list[str]]]
     RunStatsGroupBy:
       properties:
         attribute:
@@ -2737,6 +2911,13 @@ components:
       - attribute
       title: RunStatsGroupBy
       description: Group by param for run stats.
+    CustomChartType:
+      type: string
+      enum:
+      - line
+      - bar
+      title: CustomChartType
+      description: Enum for custom chart types.
     SavedRunClusteringJobRequest:
       properties:
         name:
@@ -2819,187 +3000,6 @@ components:
       - model
       title: SavedRunClusteringJobRequest
       description: Request to create a run clustering job.
-    HighlightedRun:
-      properties:
-        run_id:
-          type: string
-          format: uuid
-          title: Run Id
-        cluster_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Cluster Id
-        cluster_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Cluster Name
-        rank:
-          type: integer
-          title: Rank
-        highlight_reason:
-          type: string
-          title: Highlight Reason
-        summary:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Summary
-      type: object
-      required:
-      - run_id
-      - rank
-      - highlight_reason
-      title: HighlightedRun
-      description: A trace highlighted in an insights report summary. Up to 10 per insights job.
-    CreateClusteringJobConfigResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        config:
-          $ref: '#/components/schemas/SavedRunClusteringJobRequest'
-        schedule_cron:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Schedule Cron
-      type: object
-      required:
-      - id
-      - name
-      - description
-      - config
-      title: CreateClusteringJobConfigResponse
-      description: Response to create a clustering job config.
-    TimedeltaInput:
-      properties:
-        days:
-          type: integer
-          title: Days
-          default: 0
-        hours:
-          type: integer
-          title: Hours
-          default: 0
-        minutes:
-          type: integer
-          title: Minutes
-          default: 0
-      type: object
-      title: TimedeltaInput
-      description: Timedelta input.
-    UpdateRunClusteringJobResponse:
-      properties:
-        name:
-          type: string
-          title: Name
-        status:
-          type: string
-          title: Status
-      type: object
-      required:
-      - name
-      - status
-      title: UpdateRunClusteringJobResponse
-      description: Response to update a session cluster job.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    TraceTier:
-      type: string
-      enum:
-      - longlived
-      - shortlived
-      title: TraceTier
-    FilterViewRename:
-      properties:
-        display_name:
-          type: string
-          title: Display Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-      type: object
-      required:
-      - display_name
-      title: FilterViewRename
-    GetRunClusteringJobsResponse:
-      properties:
-        clustering_jobs:
-          items:
-            $ref: '#/components/schemas/RunClusteringJobPydantic'
-          type: array
-          title: Clustering Jobs
-      type: object
-      required:
-      - clustering_jobs
-      title: GetRunClusteringJobsResponse
-      description: Response to get all cluster jobs for a session.
-    RunCluster:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        parent_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Parent Id
-        level:
-          type: integer
-          title: Level
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        parent_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Parent Name
-        num_runs:
-          type: integer
-          title: Num Runs
-        stats:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Stats
-      type: object
-      required:
-      - id
-      - level
-      - name
-      - description
-      - num_runs
-      - stats
-      title: RunCluster
-      description: A single cluster of runs.
   securitySchemes:
     API_Key:
       type: apiKey

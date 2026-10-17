@@ -262,6 +262,16 @@ components:
           type: string
         id:
           type: string
+    directories.GetDirectoryResponse:
+      type: object
+      properties:
+        commit_hash:
+          type: string
+        commit_id:
+          type: string
+        files:
+          type: object
+          additionalProperties: {}
     directories.CreateDirectoryCommitRequest:
       type: object
       properties:
@@ -276,16 +286,6 @@ components:
       properties:
         commit:
           $ref: '#/components/schemas/directories.CommitInfo'
-    directories.GetDirectoryResponse:
-      type: object
-      properties:
-        commit_hash:
-          type: string
-        commit_id:
-          type: string
-        files:
-          type: object
-          additionalProperties: {}
   securitySchemes:
     API_Key:
       type: apiKey

@@ -50,6 +50,16 @@ paths:
                 $ref: '#/components/schemas/HealthInfoGetResponse'
 components:
   schemas:
+    HealthInfoGetResponse:
+      properties:
+        clickhouse_disk_free_pct:
+          type: number
+          title: Clickhouse Disk Free Pct
+      type: object
+      required:
+      - clickhouse_disk_free_pct
+      title: HealthInfoGetResponse
+      description: The LangSmith server info.
     BatchIngestConfig:
       properties:
         use_multipart_endpoint:
@@ -79,6 +89,20 @@ components:
       type: object
       title: BatchIngestConfig
       description: Batch ingest config.
+    CustomerInfo:
+      properties:
+        customer_id:
+          type: string
+          title: Customer Id
+        customer_name:
+          type: string
+          title: Customer Name
+      type: object
+      required:
+      - customer_id
+      - customer_name
+      title: CustomerInfo
+      description: Customer info.
     InfoGetResponse:
       properties:
         version:
@@ -117,30 +141,6 @@ components:
       - version
       title: InfoGetResponse
       description: The LangSmith server info.
-    HealthInfoGetResponse:
-      properties:
-        clickhouse_disk_free_pct:
-          type: number
-          title: Clickhouse Disk Free Pct
-      type: object
-      required:
-      - clickhouse_disk_free_pct
-      title: HealthInfoGetResponse
-      description: The LangSmith server info.
-    CustomerInfo:
-      properties:
-        customer_id:
-          type: string
-          title: Customer Id
-        customer_name:
-          type: string
-          title: Customer Name
-      type: object
-      required:
-      - customer_id
-      - customer_name
-      title: CustomerInfo
-      description: Customer info.
   securitySchemes:
     API_Key:
       type: apiKey

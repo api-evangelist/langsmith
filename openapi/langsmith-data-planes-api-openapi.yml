@@ -139,6 +139,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    data_planes.CreateDataPlaneRequestAws:
+      type: object
+      properties:
+        external_id:
+          description: 'ExternalID is the value LangSmith presents as ExternalId when assuming role_arn. Must
+
+            match the ExternalId condition in the customer role''s trust policy. Required.'
+          type: string
+        name:
+          type: string
+        region:
+          type: string
+        role_arn:
+          type: string
+        vpc_cidr:
+          type: string
+    data_planes.ListPublicDataPlanesResponse:
+      type: object
+      properties:
+        data_planes:
+          type: array
+          items:
+            $ref: '#/components/schemas/data_planes.PublicDataPlane'
     data_planes.Status:
       type: string
       enum:
@@ -159,22 +182,6 @@ components:
       - DataPlaneStatusDeprovisioning
       - DataPlaneStatusDeleted
       - DataPlaneStatusRevoked
-    data_planes.CreateDataPlaneRequestAws:
-      type: object
-      properties:
-        external_id:
-          description: 'ExternalID is the value LangSmith presents as ExternalId when assuming role_arn. Must
-
-            match the ExternalId condition in the customer role''s trust policy. Required.'
-          type: string
-        name:
-          type: string
-        region:
-          type: string
-        role_arn:
-          type: string
-        vpc_cidr:
-          type: string
     data_planes.PublicDataPlane:
       type: object
       properties:
@@ -190,13 +197,6 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/data_planes.Status'
-    data_planes.ListPublicDataPlanesResponse:
-      type: object
-      properties:
-        data_planes:
-          type: array
-          items:
-            $ref: '#/components/schemas/data_planes.PublicDataPlane'
   securitySchemes:
     API_Key:
       type: apiKey
